@@ -1,4 +1,5 @@
-import 'package:fisio_seguro_app/screens/Consulta/consulta_screen.dart';
+import 'package:fisio_seguro_app/screens/Physiotherapist/PatientAdministration/patient_list_screen.dart';
+import 'package:fisio_seguro_app/screens/consulta/consulta_screen.dart';
 import 'package:fisio_seguro_app/screens/auth/main_screen.dart';
 import 'package:fisio_seguro_app/screens/home/home_patient_screen.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,9 @@ class AppRouter {
       ),
       GoRoute(path: '/ConsultasScreen',
       pageBuilder: (context, state) =>  const MaterialPage(child: ConsultasScreen()),
+      ),
+      GoRoute(path: '/patient_List_Screen',
+      pageBuilder: (context, state) =>  const MaterialPage(child: PatientListScreen()),
       ),
     ],
   );

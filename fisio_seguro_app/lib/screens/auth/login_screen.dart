@@ -5,12 +5,8 @@
 import 'package:fisio_seguro_app/reusable_widgets/reusable_widget.dart';
 import 'package:fisio_seguro_app/screens/auth/register_screen.dart';
 import 'package:fisio_seguro_app/screens/auth/reset_password.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import 'package:fisio_seguro_app/providers/auth_provider.dart';
-import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
