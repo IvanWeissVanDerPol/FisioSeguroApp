@@ -1,0 +1,29 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "program": "lib/main.dart",
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "fisio_seguro",
+            "request": "launch",
+            "program": "C:/Users/Mentormate/shared docs/FPUNA/tp_flutter/FisioSeguroApp/fisio_seguro_app/lib/main.dart",
+            "type": "dart"
+        },
+        {
+            "name": "fisio_seguro (profile mode)",
+            "cwd": "FisioSeguro\\fisio_seguro",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "fisio_seguro (release mode)",
+            "cwd": "FisioSeguro\\fisio_seguro",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
