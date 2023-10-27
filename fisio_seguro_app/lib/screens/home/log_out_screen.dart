@@ -6,14 +6,14 @@ import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class LogOutScreen extends StatefulWidget {
+  const LogOutScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _LogOutScreenState createState() => _LogOutScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _LogOutScreenState extends State<LogOutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

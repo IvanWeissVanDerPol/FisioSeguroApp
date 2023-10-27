@@ -7,14 +7,14 @@ import 'package:fisio_seguro_app/screens/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class HomePhysiotherapistsScreen extends StatefulWidget {
-  const HomePhysiotherapistsScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _HomePhysiotherapistsScreenState createState() => _HomePhysiotherapistsScreenState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomePhysiotherapistsScreenState extends State<HomePhysiotherapistsScreen> {
+class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +34,11 @@ class _HomePhysiotherapistsScreenState extends State<HomePhysiotherapistsScreen>
           ),
         ],
       ),
-      body: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        //decoration: AppDecorations.linearGradient,
-        child:  SingleChildScrollView(
+      body: BackgroundGradient(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: SingleChildScrollView(
           child: Padding(
             padding: const  EdgeInsets.all(20.0),
             child: Column(
@@ -47,14 +47,15 @@ class _HomePhysiotherapistsScreenState extends State<HomePhysiotherapistsScreen>
                  const Text('Bienvenido al Sistema de Seguimiento de Pacientes'),
                  const SizedBox(height: 20.0),
                  //ActionCard(title: '', description: '', onTap: () {  },),
-                  ActionCard(title: 'Pacientes', description: 'Administrar pacientes', onTap: () { context.push('/home_patient'); },),
+                  ActionCard(icon: Icons.auto_stories,title: 'Categoria de Consultas', description: 'Se puede agregar, modificar o eliminar la categoria de las consultas.', onTap: () { context.push('/ConsultasScreen'); },),
                   const SizedBox(height: 20.0),
-                  ActionCard(title: 'Ejercicios', description: 'Administrar ejercicios', onTap: () {  },),
+                  ActionCard(icon: Icons.app_registration, title: 'Registro De Personas', description: 'Accede al registro de personas donde se puede crear un nuevo persona o modificar uno ya existente, Tambien se le asigna si es doctor o paciente.', onTap: () { context.push('/PersonRegistryScreen'); },),
                   const SizedBox(height: 20.0),
-                  ActionCard(title: 'Evaluaciones', description: 'Administrar evaluaciones', onTap: () {  },),
+                  ActionCard(icon: Icons.mode_edit,title: 'Reserva de Turnos', description: 'Accede a la reserva de turnos para agregar o modificar un turno, tambien se puede indicar a que hora se tendra el turno.', onTap: () {  },),
                   const SizedBox(height: 20.0),
-                  ActionCard(title: 'Reportes', description: 'Generar reportes', onTap: () {  },),
-              ],
+                  ActionCard(icon: Icons.view_list,title: 'Ficha Clinica', description: 'Accede a la ficha clinica para agregar o modificar la ficha, tambien se puede hacer un reporte en excel o pdf.', onTap: () {  },),
+             ],
+              ),
             ),
           ),
         ),

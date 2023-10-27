@@ -24,9 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
+      body: BackgroundGradient(
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.fromLTRB(20, MediaQuery.of(context).size.height * 0.1, 20, 0),
@@ -65,48 +63,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 forgetPassword(context),
                 // Login Button
                 FirebaseUIButton(
-                  title: "Login patient",
-                  onTap: () async {
-                    context.push('/home_patient');
-                    // final email = _emailTextController.text;
-                    // final password = _passwordTextController.text;
-                    // if (email.isNotEmpty && password.isNotEmpty) {
-                    //   try {
-                    //     // Llama al método de inicio de sesión del proveedor de autenticación
-                    //     await context.read<AuthProvider>().login(email, password);
-                    //     //get user type
-                    //     String? userType = context.read<AuthProvider>().userType;
-                    //     if (userType == 'Physician') {
-                    //       context.push('/home_physiotherapists');
-                    //     } else if (userType == 'Patient') {
-                    //       context.push('/home_patient');
-                    //     } else {
-                    //       ScaffoldMessenger.of(context).showSnackBar(
-                    //         const SnackBar(content: Text('User type not found')),
-                    //       );
-                    //     }
-                    //   } catch (e) {
-                    //     if (kDebugMode) {
-                    //       print(e);
-                    //     }
-                    //     // Muestra un mensaje de error si el login falla
-                    //     ScaffoldMessenger.of(context).showSnackBar(
-                    //       SnackBar(content: Text('Login failed: $e')),
-                    //     );
-                    //   }
-                    // } else {
-                    //   // Muestra un mensaje de error si los campos están vacíos
-                    //   ScaffoldMessenger.of(context).showSnackBar(
-                    //     const SnackBar(content: Text('Please enter both email and password')),
-                    //   );
-                    // }
-                  },
-                ),
-                //login physiotherapist
-                FirebaseUIButton(
-                    title: "Login physiotherapist",
+                    title: "Login home",
                     onTap: () async {
-                      context.push('/home_physiotherapists');
+                      context.push('/home');
                     }),
                 signUpOption()
               ],

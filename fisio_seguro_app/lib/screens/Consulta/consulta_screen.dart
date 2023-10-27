@@ -2,128 +2,72 @@
 
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class ConsultaScreen extends StatefulWidget {
+  const ConsultaScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: ConsultasScreen(),
-    );
-  }
+  _ConsultaScreenState createState() => _ConsultaScreenState();
 }
 
-class ConsultasScreen extends StatefulWidget {
-  const ConsultasScreen({super.key});
+class _ConsultaScreenState extends State<ConsultaScreen> {
+  // Mock data
+  List<Map<String, dynamic>> categories = [
+    {'id': 1, 'descripcion': 'Cardiología'},
+    {'id': 2, 'descripcion': 'Dermatología'},
+    // ... add more categories as needed
+  ];
 
-  @override
-  _ConsultasScreenState createState() => _ConsultasScreenState();
-}
-
-class _ConsultasScreenState extends State<ConsultasScreen> {
-  final ConsultaService consultaService = ConsultaService();
-
-  Categoria newConsulta = Categoria(id: -1, descripcion: '', isEditing: false);
-  List<Categoria> listaDeConsultas = [];
-
+  // Controllers for form inputs
   TextEditingController idController = TextEditingController();
   TextEditingController descripcionController = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-    loadConsultas();
-  }
-
-  void loadConsultas() {
-    listaDeConsultas = consultaService.getConsultasSample();
-  }
-
-  void addConsulta() {
-    setState(() {
-      Categoria consulta = Categoria(
-        id: int.parse(idController.text),
-        descripcion: descripcionController.text,
-        isEditing: false,
-      );
-      listaDeConsultas.add(consulta);
-      // Clear the text fields
-      idController.clear();
-      descripcionController.clear();
-    });
-  }
-
-  void editConsulta(Categoria consulta) {
-    setState(() {
-      consulta.isEditing = true;
-    });
-  }
-
-  void updateConsulta(Categoria consulta, int index) {
-    setState(() {
-      listaDeConsultas[index] = consulta;
-      consulta.isEditing = false;
-    });
-  }
-
-  void deleteConsulta(int id) {
-    setState(() {
-      listaDeConsultas.removeWhere((consulta) => consulta.id == id);
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Categoria de Consultas'),
-      ),
-      body: Container(
+      appBar: AppBar(title: const Text('Categoria de Consultas')),
+      body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // Formulario
+            // Form for adding new category
             TextField(
               controller: idController,
-              decoration: const InputDecoration(
-                labelText: 'Id Categoría:',
-              ),
               keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                labelText: 'Id Categoría',
+              ),
             ),
+            const SizedBox(height: 10),
             TextField(
               controller: descripcionController,
               decoration: const InputDecoration(
-                labelText: 'Descripción:',
+                labelText: 'Descripción',
               ),
             ),
+            const SizedBox(height: 10),
             ElevatedButton(
-              onPressed: addConsulta,
+              onPressed: _addCategory,
               child: const Text('Agregar Categoria'),
             ),
-            // Tabla
+            const SizedBox(height: 20),
+            // Table to display categories
             Expanded(
               child: ListView.builder(
-                itemCount: listaDeConsultas.length,
+                itemCount: categories.length,
                 itemBuilder: (context, index) {
-                  final consulta = listaDeConsultas[index];
                   return ListTile(
-                    title: Text('Id: ${consulta.id}, Descripción: ${consulta.descripcion}'),
+                    title: Text('Id: ${categories[index]['id']}'),
+                    subtitle: Text('Descripción: ${categories[index]['descripcion']}'),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        if (!consulta.isEditing)
-                          IconButton(
-                            icon: const Icon(Icons.edit),
-                            onPressed: () => editConsulta(consulta),
-                          ),
-                        if (consulta.isEditing)
-                          IconButton(
-                            icon: const Icon(Icons.check),
-                            onPressed: () => updateConsulta(consulta, index),
-                          ),
                         IconButton(
-                          icon: const Icon(Icons.delete),
-                          onPressed: () => deleteConsulta(consulta.id),
+                          icon: const Icon(Icons.edit, color: Colors.blue),
+                          onPressed: () => _editCategory(index),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => _deleteCategory(index),
                         ),
                       ],
                     ),
@@ -136,27 +80,27 @@ class _ConsultasScreenState extends State<ConsultasScreen> {
       ),
     );
   }
-}
 
-class Categoria {
-  bool isEditing;
-  int id;
-  String descripcion;
+  void _addCategory() {
+    if (idController.text.isNotEmpty && descripcionController.text.isNotEmpty) {
+      setState(() {
+        categories.add({
+          'id': int.parse(idController.text),
+          'descripcion': descripcionController.text
+        });
+        idController.clear();
+        descripcionController.clear();
+      });
+    }
+  }
 
-  Categoria({
-    required this.isEditing,
-    required this.id,
-    required this.descripcion,
-  });
-}
+  void _editCategory(int index) {
+    // Function to handle category editing (can be implemented further based on requirements)
+  }
 
-class ConsultaService {
-  List<Categoria> getConsultasSample() {
-    // Suponiendo que tienes una lista inicial de consultas
-    return [
-      Categoria(id: 1, descripcion: 'Consulta 1', isEditing: false),
-      Categoria(id: 2, descripcion: 'Consulta 2', isEditing: false),
-      // ... otras consultas
-    ];
+  void _deleteCategory(int index) {
+    setState(() {
+      categories.removeAt(index);
+    });
   }
 }

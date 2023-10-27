@@ -4,14 +4,19 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTheme {
   ThemeData getTheme() => ThemeData(
         // General Configurations
-        primaryColor: AppGeneric.primaryColor,
+        
+        primaryColor: AppGeneric.palleteColor_1,
         scaffoldBackgroundColor: AppGeneric.background,
         colorScheme: const ColorScheme.light(
-          background: AppGeneric.tertiaryColor,
-          primary: AppGeneric.primaryColor,
-          secondary: AppGeneric.secondaryColor,
+          background: AppGeneric.palleteColor_3,
+          primary: AppGeneric.palleteColor_1,
+          secondary: AppGeneric.palleteColor_2,
           onPrimary: AppGeneric.text,
           onSecondary: AppGeneric.text,
+        ),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: AppGeneric.palleteColor_1,
+          foregroundColor: AppGeneric.text,
         ),
         brightness: Brightness.light, // Set to Brightness.dark for dark theme
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -25,17 +30,18 @@ class AppTheme {
             fontWeight: FontWeight.bold,
           ),
           iconTheme: const IconThemeData(
-            color: AppGeneric.primaryDarker,
+            color: AppGeneric.palleteColor_2,
           ),
           elevation: 0,
           centerTitle: true,
-          backgroundColor: AppGeneric.primaryColor,
+          backgroundColor: AppGeneric.palleteColor_1,
         ),
         //textfield theme
         textSelectionTheme: const TextSelectionThemeData(
           cursorColor: AppGeneric.cursorColor,
-          selectionColor: AppGeneric.primaryColor,
-          selectionHandleColor: AppGeneric.primaryColor,
+          selectionColor: AppGeneric.palleteColor_1,
+          selectionHandleColor: AppGeneric.palleteColor_1,
+
         ),
         textTheme: TextTheme(
           displayLarge: GoogleFonts.montserratAlternates(fontSize: 96, fontWeight: FontWeight.w300, letterSpacing: -1.5),
@@ -56,8 +62,8 @@ class AppTheme {
         // Button Theme Configurations
         buttonTheme: const ButtonThemeData(
           colorScheme: ColorScheme.light(
-            primary: AppGeneric.primaryColor,
-            secondary: AppGeneric.secondaryColor,
+            primary: AppGeneric.palleteColor_1,
+            secondary: AppGeneric.palleteColor_2,
             surface: AppGeneric.background,
             background: AppGeneric.background,
             error: AppGeneric.elementsError,
@@ -68,7 +74,7 @@ class AppTheme {
             onError: AppGeneric.text,
             brightness: Brightness.light,
           ),
-          buttonColor: AppGeneric.primaryColor,
+          buttonColor: AppGeneric.palleteColor_1,
           textTheme: ButtonTextTheme.primary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -76,10 +82,14 @@ class AppTheme {
         ),
 
         // Input Decoration Configurations
-        inputDecorationTheme: InputDecorationTheme(
+        inputDecorationTheme: const InputDecorationTheme(
           filled: true,
-
+          fillColor: AppGeneric.palleteColor_1_light,
+          iconColor: AppGeneric.iconColor,
+          prefixIconColor: AppGeneric.iconColor,
+          suffixIconColor: AppGeneric.iconColor,
         ),
+        
 
         // Icon Theme Configurations
         iconTheme: const IconThemeData(
@@ -99,9 +109,9 @@ class AppTheme {
             backgroundColor: MaterialStateProperty.resolveWith<Color>(
               (Set<MaterialState> states) {
                 if (states.contains(MaterialState.pressed)) {
-                  return AppGeneric.primaryColor.withOpacity(0.5);
+                  return AppGeneric.palleteColor_1.withOpacity(0.5);
                 }
-                return AppGeneric.primaryColor; // Use the component's default.
+                return AppGeneric.palleteColor_1; // Use the component's default.
               },
             ),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -115,7 +125,7 @@ class AppTheme {
         // TextButton Theme Configuration
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
-            foregroundColor: AppGeneric.primaryColor,
+            foregroundColor: AppGeneric.palleteColor_1,
           ),
         ),
       );
@@ -140,13 +150,13 @@ class AppTheme {
       // border: const OutlineInputBorder(
       //   borderRadius: BorderRadius.all(Radius.circular(8)),
       //   borderSide: BorderSide(
-      //     color: AppGeneric.primaryColor,
+      //     color: AppGeneric.palleteColor_1,
       //   ),
       // ),
       // focusedBorder: const OutlineInputBorder(
       //   borderRadius: BorderRadius.all(Radius.circular(8)),
       //   borderSide: BorderSide(
-      //     color: AppGeneric.primaryColor,
+      //     color: AppGeneric.palleteColor_1,
       //   ),
       // ),
     );
@@ -154,17 +164,23 @@ class AppTheme {
 }
 
 class AppGeneric {
-  static const Color primaryColorDarker = Color.fromARGB(255, 63, 31, 94);
-  static const Color primaryColor = Color.fromARGB(255, 111, 53, 165);
-  static const Color secondaryColor = Color.fromARGB(255, 149, 70, 196);
-  static const Color tertiaryColor = Color.fromARGB(255, 181, 42, 200);
-  static const Color text = AppGeneric.tertiaryColor;
+
+  static const Color palleteColor_1 = Color.fromARGB(255, 146, 53, 242);
+  //a color similar to the first one but lighter for the background of text fields rgb(207, 165, 249)
+  // ignore: constant_identifier_names
+  static const Color palleteColor_1_light = Color.fromARGB(255, 207, 165, 249);
+  static const Color palleteColor_2 = Color.fromARGB(255, 242, 53, 192);
+  static const Color palleteColor_3 = Color.fromARGB(255, 208, 53, 242);
+  static const Color palleteColor_4 = Color.fromARGB(255, 84, 53, 242);
+  static const Color palleteColor_5 = Color.fromARGB(255, 242, 53, 79);
+
+  static const Color text = AppGeneric.palleteColor_1_light;
   static const Color background = Colors.white;
   static const Color elementsNormal = Colors.white;
   static const Color elementsError = Colors.red;
   static const Color elementsHint = Colors.white70;
   static const Color cursorColor = Colors.white;
-  static const Color iconColor = AppGeneric.text;
+  static const Color iconColor = Colors.black;
   static const Color textFileInitialTextColor = AppGeneric.text;
   static const Color textFileInputTextColor = AppGeneric.text;
   static const Color textFieldTextColor = AppGeneric.text;
@@ -179,9 +195,9 @@ class AppGeneric {
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
     colors: [
-      AppGeneric.primaryColor,
-      AppGeneric.secondaryColor,
-      AppGeneric.tertiaryColor,
+      AppGeneric.palleteColor_1_light,
+      AppGeneric.palleteColor_2,
+      AppGeneric.palleteColor_1_light,
     ],
   );
 }

@@ -1,5 +1,5 @@
+import 'package:fisio_seguro_app/themes/themes.dart';
 import 'package:flutter/material.dart';
-
 
 class LogoWidget extends StatelessWidget {
   final String imageName;
@@ -16,7 +16,6 @@ class LogoWidget extends StatelessWidget {
     );
   }
 }
-
 
 class ReusableElevatedButton extends StatelessWidget {
   final Icon icon;
@@ -36,29 +35,24 @@ class ReusableElevatedButton extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: 50,
       margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(90),
+        color: AppGeneric.palleteColor_1,
+      ),
       child: ElevatedButton.icon(
         onPressed: () => onTap(),
         style: ButtonStyle(
-            alignment: Alignment.centerLeft,
-            backgroundColor: MaterialStateProperty.resolveWith((states) {
-              if (states.contains(MaterialState.pressed)) {
-                return Colors.black26;
-              }
-              return Colors.white;
-            }),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
+          backgroundColor: MaterialStateProperty.all(AppGeneric.palleteColor_1),
+        ),
         icon: icon,
         label: Text(
           buttonText,
-          textAlign: TextAlign.left,
+          style: const TextStyle(color: AppGeneric.text, fontSize: 16),
         ),
       ),
     );
   }
 }
-
 
 class FirebaseUIButton extends StatelessWidget {
   final String title;
@@ -76,22 +70,18 @@ class FirebaseUIButton extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: 50,
       margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(90),
+        color: AppGeneric.palleteColor_1,
+      ),
       child: ElevatedButton(
         onPressed: () => onTap(),
         style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.resolveWith((states) {
-              if (states.contains(MaterialState.pressed)) {
-                return Colors.black26;
-              }
-              return Colors.white;
-            }),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
+          backgroundColor: MaterialStateProperty.all(AppGeneric.palleteColor_1),
+        ),
         child: Text(
           title,
-          style: const TextStyle(
-              color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 16),
+          style: const TextStyle(color: AppGeneric.text, fontSize: 16),
         ),
       ),
     );
@@ -122,19 +112,23 @@ class ReusableTextField extends StatelessWidget {
       decoration: InputDecoration(
         prefixIcon: Icon(
           leadingIcon,
+          color: AppGeneric.iconColor,
         ),
         hintText: hintText,
         labelText: hintText,
         filled: true,
+        fillColor: AppGeneric.palleteColor_1_light,
         floatingLabelBehavior: FloatingLabelBehavior.never,
       ),
       keyboardType: isObscure ? TextInputType.visiblePassword : TextInputType.emailAddress,
+      style: const TextStyle(color: AppGeneric.text),
     );
   }
 }
 
 class ActionCard extends StatelessWidget {
   final String title;
+  final IconData icon;
   final String description;
   final VoidCallback onTap;
 
@@ -142,6 +136,7 @@ class ActionCard extends StatelessWidget {
     Key? key,
     required this.title,
     required this.description,
+    required this.icon,
     required this.onTap,
   }) : super(key: key);
 
@@ -150,6 +145,7 @@ class ActionCard extends StatelessWidget {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: Card(
+        color: AppGeneric.palleteColor_1,
         elevation: 4.0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
@@ -161,20 +157,41 @@ class ActionCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Icon(
+                  icon,
+                  color: AppGeneric.iconColor,
+                  size: 40.0,
+                ),
                 Text(
                   title,
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: const TextStyle(color: AppGeneric.text, fontSize: 20),
                 ),
                 const SizedBox(height: 8.0),
                 Text(
                   description,
-                  style: Theme.of(context).textTheme.titleMedium,
+                  style: const TextStyle(color: AppGeneric.text, fontSize: 16),
                 ),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class BackgroundGradient extends StatelessWidget {
+  final Widget child;
+
+  const BackgroundGradient({Key? key, required this.child}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: double.infinity,
+      width: double.infinity,
+      decoration: const BoxDecoration(gradient: AppGeneric.linearGradient),
+      child: child,
     );
   }
 }
