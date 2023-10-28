@@ -9,3 +9,5 @@
 /fisio_seguro_app/web
 /fisio_seguro_app/windows
 .*
+.flutter-plugins   
+.flutter-plugins-dependencies
