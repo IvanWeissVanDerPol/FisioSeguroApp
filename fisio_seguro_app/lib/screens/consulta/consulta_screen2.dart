@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
-class ConsultaScreen extends StatefulWidget {
-  const ConsultaScreen({super.key});
+class ConsultaScreen2 extends StatefulWidget {
+  const ConsultaScreen2({super.key});
 
   @override
-  _ConsultaScreenState createState() => _ConsultaScreenState();
+  _ConsultaScreen2State createState() => _ConsultaScreen2State();
 }
 
-class _ConsultaScreenState extends State<ConsultaScreen> {
+class _ConsultaScreen2State extends State<ConsultaScreen2> {
   List<Map<String, dynamic>> categories = [];
 
   // Controllers for form inputs

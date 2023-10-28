@@ -40,6 +40,7 @@ dependencies:
   go_router: ^12.0.0
   google_fonts: ^6.1.0
   provider: ^6.0.1
+  path_provider: ^2.1.1
 
 dev_dependencies:
   flutter_test:
@@ -53,4 +54,6 @@ flutter:
   assets:
     - assets/images/
     - assets/persons.json
+    - assets/categories.json
+
 

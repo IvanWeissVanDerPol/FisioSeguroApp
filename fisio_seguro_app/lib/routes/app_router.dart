@@ -4,6 +4,7 @@ import 'package:fisio_seguro_app/screens/RegistroDePersona/lista_de_personas_scr
 import 'package:fisio_seguro_app/screens/RegistroDePersona/person_registry_screen.dart';
 import 'package:fisio_seguro_app/screens/auth/main_screen.dart';
 import 'package:fisio_seguro_app/screens/consulta/consulta_screen.dart';
+import 'package:fisio_seguro_app/screens/consulta/consulta_screen2.dart';
 import 'package:fisio_seguro_app/screens/home/home_screen.dart';
 
 import 'package:fisio_seguro_app/screens/home/log_out_screen.dart';
@@ -58,9 +59,9 @@ class AppRouter {
         path: '/RegisterPersonScreen',
         pageBuilder: (context, state) => const MaterialPage(child: RegistrationFormScreen()),
       ),
-      // GoRoute(path: '/PersonRegistryScreen',
-      // pageBuilder: (context, state) =>  const MaterialPage(child: PersonRegistryScreen()),
-      // ),
+      GoRoute(path: '/ConsultasScreen2',
+      pageBuilder: (context, state) =>  const MaterialPage(child: ConsultaScreen2()),
+      ),
       // GoRoute(path: '/PersonRegistryScreen',
       // pageBuilder: (context, state) =>  const MaterialPage(child: PersonRegistryScreen()),
       // ),

@@ -17,6 +17,7 @@ Future<void> main() async {
   );
   runApp(
     MultiProvider(
+      
       providers: [
         ChangeNotifierProvider(create: (context) => AuthProvider()),
         ChangeNotifierProvider(create: (context) => PhysiotherapistProvider()),

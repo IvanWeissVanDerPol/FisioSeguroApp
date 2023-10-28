@@ -1,0 +1,23 @@
+[
+  {"id": 1, "descripcion": "Cardiología"},
+  {"id": 2, "descripcion": "Dermatología"},
+  {"id": 3, "descripcion": "Neurología"},
+  {"id": 4, "descripcion": "Pediatría"},
+  {"id": 5, "descripcion": "Ginecología"},
+  {"id": 6, "descripcion": "Ortopedia"},
+  {"id": 7, "descripcion": "Oftalmología"},
+  {"id": 8, "descripcion": "Urología"},
+  {"id": 9, "descripcion": "Psiquiatría"},
+  {"id": 10, "descripcion": "Oncología"},
+  {"id": 11, "descripcion": "Endocrinología"},
+  {"id": 12, "descripcion": "Gastroenterología"},
+  {"id": 13, "descripcion": "Nefrología"},
+  {"id": 14, "descripcion": "Reumatología"},
+  {"id": 15, "descripcion": "Hematología"},
+  {"id": 16, "descripcion": "Infectología"},
+  {"id": 17, "descripcion": "Alergología"},
+  {"id": 18, "descripcion": "Dentista"},
+  {"id": 19, "descripcion": "Geriatría"},
+  {"id": 20, "descripcion": "Otorrinolaringología"}
+  ]
+  
