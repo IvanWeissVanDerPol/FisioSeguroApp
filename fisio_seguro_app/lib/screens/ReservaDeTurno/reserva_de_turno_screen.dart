@@ -12,7 +12,7 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
   String? selectedDoctor = '';
   String? selectedPatient = '';
   DateTime? selectedDate;
-  String selectedTime = '';
+  String? selectedTime = null;
 
   @override
   Widget build(BuildContext context) {
@@ -71,30 +71,38 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
             ),
             const SizedBox(height: 10),
             const Text('Hora:'),
-            // DropdownButton<String>(
-            //   value: selectedTime,
-            //   hint: const Text('Selecciona una hora'),
-            //   items: [
-            //     '09:00 - 10:00',
-            //     '10:00 - 11:00',
-            //     '11:00 - 12:00',
-            //     // ... add other time slots here
-            //   ]
-            //       .map((time) => DropdownMenuItem(
-            //             value: time,
-            //             child: Text(time),
-            //           ))
-            //       .toList(),
-            //   onChanged: (value) {
-            //     setState(() {
-            //       selectedTime = value ?? '';
-            //     });
-            //   },
-            // ),
-            ElevatedButton(
-              onPressed: () {
-                // Logic to handle reservation goes here
+            DropdownButton<String>(
+              value: selectedTime,
+              hint: const Text('Selecciona una hora'),
+              items: [
+                "09:00 - 10:00",
+                "10:00 - 11:00",
+                "11:00 - 12:00",
+                "12:00 - 13:00",
+                "13:00 - 14:00",
+                "14:00 - 15:00",
+                "15:00 - 16:00",
+                "16:00 - 17:00",
+                "17:00 - 18:00",
+                "18:00 - 19:00",
+                "19:00 - 20:00",
+                "20:00 - 21:00"
+              ]
+              .map((time) => DropdownMenuItem<String>(
+                    value: time,
+                    child: Text(time),
+                  ))
+              .toList(),
+              onChanged: (String? value) {
+                if (value != null) {
+                  setState(() {
+                    selectedTime = value;
+                  });
+                }
               },
+            ),
+            ElevatedButton(
+              onPressed: () {},
               child: const Text('Agregar Reserva'),
             ),
             const Divider(),
@@ -123,4 +131,5 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
       ),
     );
   }
+
 }
