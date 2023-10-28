@@ -1,4 +1,4 @@
-import 'package:fisio_seguro_app/screens/RegistroDePersona/egistratio_form_screen.dart';
+import 'package:fisio_seguro_app/screens/RegistroDePersona/Registratio_form_screen.dart';
 import 'package:fisio_seguro_app/screens/RegistroDePersona/RegistroDePersonas_Screen.dart';
 import 'package:fisio_seguro_app/screens/RegistroDePersona/lista_de_personas_screen.dart';
 import 'package:fisio_seguro_app/screens/RegistroDePersona/person_registry_screen.dart';
