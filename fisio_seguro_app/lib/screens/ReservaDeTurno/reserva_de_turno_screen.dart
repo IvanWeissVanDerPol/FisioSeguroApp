@@ -4,6 +4,7 @@ class ReservaDeTurnosScreen extends StatefulWidget {
   const ReservaDeTurnosScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ReservaDeTurnosScreenState createState() => _ReservaDeTurnosScreenState();
 }
 

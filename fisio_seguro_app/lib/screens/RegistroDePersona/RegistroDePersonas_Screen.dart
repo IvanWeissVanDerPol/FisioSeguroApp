@@ -2,7 +2,12 @@
 // ignore: file_names
 // ignore_for_file: file_names
 
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
 
 class RegistroDePersonasScreen extends StatefulWidget {
   const RegistroDePersonasScreen({super.key});
@@ -13,127 +18,103 @@ class RegistroDePersonasScreen extends StatefulWidget {
 }
 
 class _RegistroDePersonasScreenState extends State<RegistroDePersonasScreen> {
-  // Sample data for personas
-  List<Map<String, dynamic>> personas = [
-    // Add example data or fetch from an API
-  ];
-  Map<String, dynamic> newPersona = {
-    'nombre': '',
-    'apellido': '',
-    'telefono': '',
-    'email': '',
-    'cedula': '',
-    'flag_es_doctor': false,
-  };
+  List<Map<String, dynamic>> categories = [];
 
-  // Filter variables
-  String nombreFilter = '';
-  String apellidoFilter = '';
-  String tipoFilter = 'todos';
+  // Controllers for form inputs
+  late String filePath;
+  TextEditingController idController = TextEditingController();
+  TextEditingController descripcionController = TextEditingController();
 
-  void addPersona() {
-    // Logic to add a new persona
+  @override
+  void initState() {
+    super.initState();
+    _initializeFilePath();
+  }
+
+  Future<void> _saveCategories() async {
+    final File file = File(filePath);
+    final String data = json.encode(categories);
+    await file.writeAsString(data);
+  }
+
+  Future<void> _initializeFilePath() async {
+    final directory = await getApplicationDocumentsDirectory();
+    filePath = '${directory.path}/categories.json';
+
+    final File file = File(filePath);
+
+    if (!await file.exists()) {
+      final String jsonString = await rootBundle.loadString('assets/categories.json');
+      await file.writeAsString(jsonString);
+    }
+
+    _loadCategories();
+  }
+
+  Future<void> _loadCategories() async {
+    if (filePath.isEmpty) return;
+
+    final File file = File(filePath);
+    final data = await file.readAsString();
+    final List<Map<String, dynamic>> loadedCategories = List.from(json.decode(data));
+    loadedCategories.sort((a, b) => a['id'].compareTo(b['id']));
+
     setState(() {
-      personas.add({...newPersona});
+      categories = loadedCategories;
     });
   }
 
-  void applyFilters() {
-    // Logic to apply filters
-  }
-
-  // Other methods for edit, update, and delete can be added
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.all(20.0),
+      appBar: AppBar(title: const Text('Categoria de Consultas')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // Filter section
-            Column(
-              children: [
-                const Text('Filter Options', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
-                TextField(
-                  decoration: const InputDecoration(labelText: 'Nombre:'),
-                  onChanged: (value) {
-                    nombreFilter = value;
-                    applyFilters();
-                  },
-                ),
-                TextField(
-                  decoration: const InputDecoration(labelText: 'Apellido:'),
-                  onChanged: (value) {
-                    apellidoFilter = value;
-                    applyFilters();
-                  },
-                ),
-                DropdownButton<String>(
-                  value: tipoFilter,
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      tipoFilter = newValue!;
-                      applyFilters();
-                    });
-                  },
-                  items: <String>['todos', 'pacientes', 'doctores']
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                ),
-              ],
+            // Form for adding new category
+            TextField(
+              controller: idController,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                labelText: 'Id Categoría',
+              ),
             ),
-            const SizedBox(height: 20.0),
-            // Add persona form
-            Column(
-              children: [
-                const Text('Add Persona', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
-                TextField(
-                  decoration: const InputDecoration(labelText: 'Nombre:'),
-                  onChanged: (value) => newPersona['nombre'] = value,
-                ),
-                TextField(
-                  decoration: const InputDecoration(labelText: 'Apellido:'),
-                  onChanged: (value) => newPersona['apellido'] = value,
-                ),
-                TextField(
-                  decoration: const InputDecoration(labelText: 'Teléfono:'),
-                  onChanged: (value) => newPersona['telefono'] = value,
-                ),
-                TextField(
-                  decoration: const InputDecoration(labelText: 'Email:'),
-                  onChanged: (value) => newPersona['email'] = value,
-                ),
-                TextField(
-                  decoration: const InputDecoration(labelText: 'Cédula:'),
-                  onChanged: (value) => newPersona['cedula'] = value,
-                ),
-                CheckboxListTile(
-                  title: const Text('Es Doctor?'),
-                  value: newPersona['flag_es_doctor'],
-                  onChanged: (bool? value) {
-                    setState(() {
-                      newPersona['flag_es_doctor'] = value;
-                    });
-                  },
-                ),
-                ElevatedButton(onPressed: addPersona, child: const Text('Add')),
-              ],
+            const SizedBox(height: 10),
+            TextField(
+              controller: descripcionController,
+              decoration: const InputDecoration(
+                labelText: 'Descripción',
+              ),
             ),
-            const SizedBox(height: 20.0),
-            // Table for personas
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: _addCategory,
+              child: const Text('Agregar Categoria'),
+            ),
+            const SizedBox(height: 20),
+            // Table to display categories
             Expanded(
               child: ListView.builder(
-                itemCount: personas.length,
+                itemCount: categories.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text(personas[index]['nombre']),
-                    subtitle: Text(personas[index]['apellido']),
-                    // Add more details and action buttons as needed
+                    title: Text('Id: ${categories[index]['id']}'),
+                    subtitle: Text('Descripción: ${categories[index]['descripcion']}'),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.edit, color: Colors.blue),
+                          onPressed: () => _editCategory(index),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => _deleteCategory(index),
+                        ),
+                      ],
+                    ),
                   );
                 },
               ),
@@ -142,5 +123,98 @@ class _RegistroDePersonasScreenState extends State<RegistroDePersonasScreen> {
         ),
       ),
     );
+  }
+
+  void _addCategory() {
+    if (idController.text.isNotEmpty && descripcionController.text.isNotEmpty) {
+      int newId = int.parse(idController.text);
+      // Check if ID already exists
+      bool idExists = categories.any((category) => category['id'] == newId);
+
+      if (idExists) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('ID already exists!')));
+        return;
+      }
+
+      setState(() {
+        categories.add({'id': newId, 'descripcion': descripcionController.text});
+        categories.sort((a, b) => a['id'].compareTo(b['id']));
+
+        idController.clear();
+        descripcionController.clear();
+      });
+
+      _saveCategories(); // Save changes to file
+    }
+  }
+
+  void _editCategory(int index) {
+  final TextEditingController idEditController = TextEditingController(text: categories[index]['id'].toString());
+  final TextEditingController descripcionEditController = TextEditingController(text: categories[index]['descripcion']);
+
+  showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: const Text('Edit Category'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextField(
+            controller: idEditController,
+            keyboardType: TextInputType.number,
+            decoration: const InputDecoration(
+              labelText: 'Id Categoría',
+            ),
+          ),
+          TextField(
+            controller: descripcionEditController,
+            decoration: const InputDecoration(
+              labelText: 'Descripción',
+            ),
+          ),
+        ],
+      ),
+      actions: [
+        ElevatedButton(
+          onPressed: () {
+            final int newId = int.parse(idEditController.text);
+            final String newDescripcion = descripcionEditController.text;
+
+            // Check if updated ID is unique (excluding the current category being edited)
+            if (categories.where((category) => category['id'] == newId && categories.indexOf(category) != index).isNotEmpty) {
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('ID already exists!')));
+              return;
+            }
+
+            setState(() {
+              categories[index] = {
+                'id': newId,
+                'descripcion': newDescripcion,
+              };
+              categories.sort((a, b) => a['id'].compareTo(b['id']));
+            });
+
+            _saveCategories(); // Save changes to file
+            Navigator.of(context).pop();
+          },
+          child: const Text('Update'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text('Cancel'),
+        ),
+      ],
+    ),
+  );
+}
+
+
+  void _deleteCategory(int index) {
+    setState(() {
+      categories.removeAt(index);
+    });
+    _saveCategories(); // Save changes to file
   }
 }
