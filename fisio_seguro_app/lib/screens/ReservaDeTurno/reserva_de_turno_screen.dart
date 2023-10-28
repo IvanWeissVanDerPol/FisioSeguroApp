@@ -44,26 +44,24 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
 
   Future<void> _initializeFilePath() async {
     final directory = await getApplicationDocumentsDirectory();
-    filePath = '${directory.path}/persons.json';
+    filePath = '${directory.path}/reservas.json';
 
     final File file = File(filePath);
-    final String jsonString = await rootBundle.loadString('assets/persons.json');
+    final String jsonString = await rootBundle.loadString('assets/reservas.json');
     await file.writeAsString(jsonString);
-    if (!await file.exists()) {
-      final String jsonString = await rootBundle.loadString('assets/persons.json');
-      await file.writeAsString(jsonString);
-    }
 
-    _loadpersons();
+
+    _loadReservasHoy();
   }
 
-  Future<void> _loadpersons() async {
+  Future<void> _loadReservasHoy() async {
     if (filePath.isEmpty) return;
 
     final File file = File(filePath);
     final data = await file.readAsString();
-    final List<Map<String, dynamic>> loadedpersons = List.from(json.decode(data));
-    loadedpersons.sort((a, b) => a['idPersona'].compareTo(b['idPersona']));
+    List<Map<String, dynamic>> loadedpersons = List.from(json.decode(data));
+    loadedpersons.sort((a, b) => a['id'].compareTo(b['id']));
+
 
     setState(() {
       persons = loadedpersons;
@@ -114,7 +112,7 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
                   });
                 }
               },
-              controller: TextEditingController(text: selectedDate?.toLocal().toString().split(' ')[0]),
+              controller: TextEditingController(text: selectedDate.toLocal().toString().split(' ')[0]),
               readOnly: true,
             ),
             const SizedBox(height: 10),
@@ -161,7 +159,7 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
                   return ListTile(
                     title: Text('Paciente: ${persons[index]['nombre']} ${persons[index]['apellido']}'),
                     //subtitle = telefono, email, cedula
-                    subtitle: Text('Doctor: ${persons[index]['nombre']} ${persons[index]['apellido']}\nFecha: ${DateFormat('MM-dd-yyyy').format(selectedDate)}\nHora: ${selectedTime}'),
+                    subtitle: Text('Doctor: ${persons[index]['nombre']} ${persons[index]['apellido']}\nFecha: ${persons[index]['fecha']}\nHora: ${persons[index]['hora']}'),
                   );
                 },
               ),

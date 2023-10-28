@@ -1,0 +1,12 @@
+[
+  { "id": 1, "descripcion": "Cardiología", "isEditing": false },
+  { "id": 2, "descripcion": "Dermatología", "isEditing": false },
+  { "id": 3, "descripcion": "Gastroenterología", "isEditing": false },
+  { "id": 4, "descripcion": "Neurología", "isEditing": false },
+  { "id": 5, "descripcion": "Oftalmología", "isEditing": false },
+  { "id": 6, "descripcion": "Ortopedia", "isEditing": false },
+  { "id": 7, "descripcion": "Pediatría", "isEditing": false },
+  { "id": 8, "descripcion": "Psiquiatría", "isEditing": false },
+  { "id": 9, "descripcion": "Radiología", "isEditing": false },
+  { "id": 10, "descripcion": "Urología", "isEditing": false }
+]
