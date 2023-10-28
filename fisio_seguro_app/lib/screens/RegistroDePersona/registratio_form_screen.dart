@@ -44,7 +44,8 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
     filePath = '${directory.path}/persons.json';
 
     final File file = File(filePath);
-    
+    final String jsonString = await rootBundle.loadString('assets/persons.json');
+    await file.writeAsString(jsonString);
     if (!await file.exists()) {
       final String jsonString = await rootBundle.loadString('assets/persons.json');
       await file.writeAsString(jsonString);

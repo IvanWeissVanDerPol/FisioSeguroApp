@@ -41,6 +41,8 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
 
     final File file = File(filePath);
 
+      // final String jsonString = await rootBundle.loadString('assets/persons.json');
+      // await file.writeAsString(jsonString);
     if (!await file.exists()) {
       final String jsonString = await rootBundle.loadString('assets/persons.json');
       await file.writeAsString(jsonString);
