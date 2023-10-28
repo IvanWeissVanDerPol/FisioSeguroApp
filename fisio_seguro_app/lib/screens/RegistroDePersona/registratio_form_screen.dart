@@ -70,88 +70,89 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Categoria de Consultas')),
+      appBar: AppBar(title: const Text('registro de personas')),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            // Form for adding new persons (nombre, apellido, telefono, email, cedula, checkbox is doctor)
-            //make a form for the registration of a person
-            // start then the name, then the last name, then the phone number, then the email, then the cedula number, then the checkbox for if it is a doctor or not
-            TextField(
-              controller: nameController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: 'nombre',
-              ),
-            ),
-            const SizedBox(height: 10),
-            TextField(
-              controller: apellidoController,
-              decoration: const InputDecoration(
-                labelText: 'apellido',
-              ),
-            ),
-            const SizedBox(height: 10),
-            TextField(
-              controller: telefonoController,
-              decoration: const InputDecoration(
-                labelText: 'telefono',
-              ),
-            ),
-            const SizedBox(height: 10),
-            TextField(
-              controller: emailController,
-              decoration: const InputDecoration(
-                labelText: 'email',
-              ),
-            ),
-            const SizedBox(height: 10),
-            TextField(
-              controller: cedulaController,
-              decoration: const InputDecoration(
-                labelText: 'cedula',
-              ),
-            ),
-            const SizedBox(height: 10),
-            CheckboxListTile(
-              title: const Text('Is Doctor'),
-              value: isDoctorController.text.isNotEmpty ? isDoctorController.text == 'true' : false,
-              onChanged: (value) {
-                setState(() {
-                  isDoctorController.text = value.toString();
-                });
+          padding: const EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            //
+            child: Column(
+              children: [
+                // Form for adding new persons (nombre, apellido, telefono, email, cedula, checkbox is doctor)
+                //make a form for the registration of a person
+                // start then the name, then the last name, then the phone number, then the email, then the cedula number, then the checkbox for if it is a doctor or not
+                TextField(
+                  controller: nameController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
+                    labelText: 'nombre',
+                  ),
+                ),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: apellidoController,
+                  decoration: const InputDecoration(
+                    labelText: 'apellido',
+                  ),
+                ),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: telefonoController,
+                  decoration: const InputDecoration(
+                    labelText: 'telefono',
+                  ),
+                ),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: emailController,
+                  decoration: const InputDecoration(
+                    labelText: 'email',
+                  ),
+                ),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: cedulaController,
+                  decoration: const InputDecoration(
+                    labelText: 'cedula',
+                  ),
+                ),
+                const SizedBox(height: 10),
+                CheckboxListTile(
+                  title: const Text('Is Doctor'),
+                  value: isDoctorController.text.isNotEmpty ? isDoctorController.text == 'true' : false,
+                  onChanged: (value) {
+                    setState(() {
+                      isDoctorController.text = value.toString();
+                    });
+                  },
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: _addPerson,
+                  child: const Text('Agregar persona'),
+                ),
+                const SizedBox(height: 20),
+                // Table to display persons
+                ListView.builder(
+              itemCount: persons.length,
+              shrinkWrap: true, // <-- This makes the ListView only take up the space it needs
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text('nombre: ${persons[index]['nombre']} ${persons[index]['apellido']}'),
+                  subtitle: Text('telefono: ${persons[index]['telefono']} \nemail: ${persons[index]['email']} \ncedula: ${persons[index]['cedula']} \nisDoctor: ${persons[index]['isDoctor']}'),
+                );
               },
-            ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: _addCategory,
-              child: const Text('Agregar Categoria'),
-            ),
-            const SizedBox(height: 20),
-            // Table to display persons
-            Expanded(
-              child: ListView.builder(
-                itemCount: persons.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text('nombre: ${persons[index]['nombre']} ${persons[index]['apellido']}'),
-                    //subtitle = telefono, email, cedula
-                    subtitle: Text('telefono: ${persons[index]['telefono']} email: ${persons[index]['email']} cedula: ${persons[index]['cedula']}'),
-                  );
-                },
-              ),
             ),
           ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 
-  void _addCategory() {
-    if (nameController.text.isNotEmpty && apellidoController.text.isNotEmpty && telefonoController.text.isNotEmpty && emailController.text.isNotEmpty && cedulaController.text.isNotEmpty && isDoctorController.text.isNotEmpty) {
-      int newId =  persons.isNotEmpty ? persons.last['idPersona'] + 1 : 1;
-      
+
+  void _addPerson() {
+    if (nameController.text.isNotEmpty && apellidoController.text.isNotEmpty && telefonoController.text.isNotEmpty && emailController.text.isNotEmpty && cedulaController.text.isNotEmpty) {
+      int newId = persons.isNotEmpty ? persons.last['idPersona'] + 1 : 1;
 
       setState(() {
         persons.add({
@@ -163,7 +164,7 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
           'cedula': cedulaController.text,
           'isDoctor': isDoctorController.text == 'true',
         });
-        persons.sort((a, b) => a['idPersona'].compareTo(b['idPersona']));
+        persons.sort((a, b) => b['idPersona'].compareTo(a['idPersona']));
 
         idController.clear();
         descripcionController.clear();
@@ -173,14 +174,14 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
     }
   }
 
-  void _editCategory(int index) {
+  void _editPerson(int index) {
     final TextEditingController idEditController = TextEditingController(text: persons[index]['id'].toString());
     final TextEditingController descripcionEditController = TextEditingController(text: persons[index]['descripcion']);
 
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Edit Category'),
+        title: const Text('Edit Person'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -205,8 +206,8 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
               final int newId = int.parse(idEditController.text);
               final String newDescripcion = descripcionEditController.text;
 
-              // Check if updated ID is unique (excluding the current category being edited)
-              if (persons.where((category) => category['idPersona'] == newId && persons.indexOf(category) != index).isNotEmpty) {
+              // Check if updated ID is unique (excluding the current Person being edited)
+              if (persons.where((Person) => Person['idPersona'] == newId && persons.indexOf(Person) != index).isNotEmpty) {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('ID already exists!')));
                 return;
               }
@@ -235,7 +236,7 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
     );
   }
 
-  void _deleteCategory(int index) {
+  void _deletePerson(int index) {
     setState(() {
       persons.removeAt(index);
     });
