@@ -157,9 +157,9 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
                 itemCount: turnos.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text('Paciente: ${turnos[index]['nombre']} ${turnos[index]['apellido']}'),
-                    //subtitle = telefono, email, cedula
-                    subtitle: Text('Doctor: ${turnos[index]['nombre']} ${turnos[index]['apellido']}\nFecha: ${turnos[index]['fecha']}\nHora: ${turnos[index]['hora']}'),
+                    title: Text('Paciente: ${turnos[index]['paciente']['nombre']} ${turnos[index]['paciente']['apellido']}'),
+                    subtitle: Text('Doctor: ${turnos[index]['doctor']['nombre']} ${turnos[index]['doctor']['apellido']}\nFecha: ${
+                      DateFormat('dd-MM-yyyy').format(DateTime.parse(turnos[index]['fecha']))}\nHora: ${turnos[index]['hora']}'),
                   );
                 },
               ),
