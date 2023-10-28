@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(height: 20.0),
                   ActionCard(icon: Icons.app_registration, title: 'Registro De Personas', description: 'Accede al registro de personas donde se puede crear un nuevo persona o modificar uno ya existente, Tambien se le asigna si es doctor o paciente.', onTap: () { context.push('/PersonRegistryScreen'); },),
                   const SizedBox(height: 20.0),
-                  ActionCard(icon: Icons.mode_edit,title: 'Reserva de Turnos', description: 'Accede a la reserva de turnos para agregar o modificar un turno, tambien se puede indicar a que hora se tendra el turno.', onTap: () {context.push('/ConsultasScreen2');  },),
+                  ActionCard(icon: Icons.mode_edit,title: 'Reserva de Turnos', description: 'Accede a la reserva de turnos para agregar o modificar un turno, tambien se puede indicar a que hora se tendra el turno.', onTap: () {context.push('/ReservaDeTurnosScreen');  },),
                   const SizedBox(height: 20.0),
                   ActionCard(icon: Icons.view_list,title: 'Ficha Clinica', description: 'Accede a la ficha clinica para agregar o modificar la ficha, tambien se puede hacer un reporte en excel o pdf.', onTap: () {  },),
              ],

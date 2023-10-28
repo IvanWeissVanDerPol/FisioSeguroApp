@@ -2,9 +2,9 @@ import 'package:fisio_seguro_app/screens/RegistroDePersona/egistratio_form_scree
 import 'package:fisio_seguro_app/screens/RegistroDePersona/RegistroDePersonas_Screen.dart';
 import 'package:fisio_seguro_app/screens/RegistroDePersona/lista_de_personas_screen.dart';
 import 'package:fisio_seguro_app/screens/RegistroDePersona/person_registry_screen.dart';
+import 'package:fisio_seguro_app/screens/ReservaDeTurno/reserva_de_turno_screen.dart';
 import 'package:fisio_seguro_app/screens/auth/main_screen.dart';
 import 'package:fisio_seguro_app/screens/consulta/consulta_screen.dart';
-import 'package:fisio_seguro_app/screens/consulta/consulta_screen2.dart';
 import 'package:fisio_seguro_app/screens/home/home_screen.dart';
 
 import 'package:fisio_seguro_app/screens/home/log_out_screen.dart';
@@ -59,10 +59,10 @@ class AppRouter {
         path: '/RegisterPersonScreen',
         pageBuilder: (context, state) => const MaterialPage(child: RegistrationFormScreen()),
       ),
-      GoRoute(path: '/ConsultasScreen2',
-      pageBuilder: (context, state) =>  const MaterialPage(child: ConsultaScreen2()),
+      GoRoute(path: '/ReservaDeTurnosScreen',
+      pageBuilder: (context, state) =>  const MaterialPage(child: ReservaDeTurnosScreen()),
       ),
-      // GoRoute(path: '/PersonRegistryScreen',
+      // GoRoute(path: '/FichaClinicaScreen',
       // pageBuilder: (context, state) =>  const MaterialPage(child: PersonRegistryScreen()),
       // ),
     ],
