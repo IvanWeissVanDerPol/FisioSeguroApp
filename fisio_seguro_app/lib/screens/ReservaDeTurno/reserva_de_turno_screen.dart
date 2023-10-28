@@ -16,7 +16,7 @@ class ReservaDeTurnosScreen extends StatefulWidget {
 }
 
 class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
-  List<Map<String, dynamic>> persons = [];
+  List<Map<String, dynamic>> turnos = [];
   DateTime selectedDate = DateTime.now();
   String? selectedTime = null;
   // Controllers for form inputs
@@ -36,9 +36,9 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
     _initializeFilePath();
   }
 
-  Future<void> _savepersons() async {
+  Future<void> _saveturnos() async {
     final File file = File(filePath);
-    final String data = json.encode(persons);
+    final String data = json.encode(turnos);
     await file.writeAsString(data);
   }
 
@@ -59,12 +59,12 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
 
     final File file = File(filePath);
     final data = await file.readAsString();
-    List<Map<String, dynamic>> loadedpersons = List.from(json.decode(data));
-    loadedpersons.sort((a, b) => a['id'].compareTo(b['id']));
+    List<Map<String, dynamic>> loadedturnos = List.from(json.decode(data));
+    loadedturnos.sort((a, b) => a['id'].compareTo(b['id']));
 
 
     setState(() {
-      persons = loadedpersons;
+      turnos = loadedturnos;
     });
   }
 
@@ -76,7 +76,7 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // Form for adding new persons (nombre, apellido, telefono, email, cedula, checkbox is doctor)
+            // Form for adding new turnos (nombre, apellido, telefono, email, cedula, checkbox is doctor)
             //make a form for the registration of a person
             // start then the name, then the last name, then the phone number, then the email, then the cedula number, then the checkbox for if it is a doctor or not
             TextField(
@@ -151,15 +151,15 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
               child: const Text('Agendar Reserva'),
             ),
             const SizedBox(height: 20),
-            // Table to display persons
+            // Table to display turnos
             Expanded(
               child: ListView.builder(
-                itemCount: persons.length,
+                itemCount: turnos.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text('Paciente: ${persons[index]['nombre']} ${persons[index]['apellido']}'),
+                    title: Text('Paciente: ${turnos[index]['nombre']} ${turnos[index]['apellido']}'),
                     //subtitle = telefono, email, cedula
-                    subtitle: Text('Doctor: ${persons[index]['nombre']} ${persons[index]['apellido']}\nFecha: ${persons[index]['fecha']}\nHora: ${persons[index]['hora']}'),
+                    subtitle: Text('Doctor: ${turnos[index]['nombre']} ${turnos[index]['apellido']}\nFecha: ${turnos[index]['fecha']}\nHora: ${turnos[index]['hora']}'),
                   );
                 },
               ),
@@ -172,10 +172,10 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
 
   void _addCategory() {
     if (nameController.text.isNotEmpty && apellidoController.text.isNotEmpty && telefonoController.text.isNotEmpty && emailController.text.isNotEmpty && cedulaController.text.isNotEmpty && isDoctorController.text.isNotEmpty) {
-      int newId =  persons.isNotEmpty ? persons.last['idPersona'] + 1 : 1;
+      int newId =  turnos.isNotEmpty ? turnos.last['idPersona'] + 1 : 1;
       
       setState(() {
-        persons.add({
+        turnos.add({
           'idPersona': newId,
           'nombre': nameController.text,
           'apellido': apellidoController.text,
@@ -184,19 +184,19 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
           'cedula': cedulaController.text,
           'isDoctor': isDoctorController.text == 'true',
         });
-        persons.sort((a, b) => a['idPersona'].compareTo(b['idPersona']));
+        turnos.sort((a, b) => a['idPersona'].compareTo(b['idPersona']));
 
         idController.clear();
         descripcionController.clear();
       });
 
-      _savepersons(); // Save changes to file
+      _saveturnos(); // Save changes to file
     }
   }
 
   void _editCategory(int index) {
-    final TextEditingController idEditController = TextEditingController(text: persons[index]['id'].toString());
-    final TextEditingController descripcionEditController = TextEditingController(text: persons[index]['descripcion']);
+    final TextEditingController idEditController = TextEditingController(text: turnos[index]['id'].toString());
+    final TextEditingController descripcionEditController = TextEditingController(text: turnos[index]['descripcion']);
 
     showDialog(
       context: context,
@@ -227,20 +227,20 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
               final String newDescripcion = descripcionEditController.text;
 
               // Check if updated ID is unique (excluding the current category being edited)
-              if (persons.where((category) => category['idPersona'] == newId && persons.indexOf(category) != index).isNotEmpty) {
+              if (turnos.where((category) => category['idPersona'] == newId && turnos.indexOf(category) != index).isNotEmpty) {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('ID already exists!')));
                 return;
               }
 
               setState(() {
-                persons[index] = {
+                turnos[index] = {
                   'idPersona': newId,
                   'descripcion': newDescripcion,
                 };
-                persons.sort((a, b) => a['idPersona'].compareTo(b['idPersona']));
+                turnos.sort((a, b) => a['idPersona'].compareTo(b['idPersona']));
               });
 
-              _savepersons(); // Save changes to file
+              _saveturnos(); // Save changes to file
               Navigator.of(context).pop();
             },
             child: const Text('Update'),
@@ -258,8 +258,8 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
 
   void _deleteCategory(int index) {
     setState(() {
-      persons.removeAt(index);
+      turnos.removeAt(index);
     });
-    _savepersons(); // Save changes to file
+    _saveturnos(); // Save changes to file
   }
 }

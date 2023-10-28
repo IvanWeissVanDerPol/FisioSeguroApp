@@ -54,7 +54,11 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/persons.json
+    - assets/categorias.json
     - assets/categories.json
+    - assets/fichasClinicas.json
+    - assets/personas.json
+    - assets/persons.json
+    - assets/reservas.json
 
 
