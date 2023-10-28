@@ -6,7 +6,7 @@ import 'package:fisio_seguro_app/providers/physiotherapist_provider.dart';
 import 'package:fisio_seguro_app/routes/app_router.dart';
 import 'package:fisio_seguro_app/themes/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart'; 
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 

@@ -12,7 +12,7 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
   String? selectedDoctor = '';
   String? selectedPatient = '';
   DateTime? selectedDate;
-  String? selectedTime = null;
+  String? selectedTime;
 
   @override
   Widget build(BuildContext context) {

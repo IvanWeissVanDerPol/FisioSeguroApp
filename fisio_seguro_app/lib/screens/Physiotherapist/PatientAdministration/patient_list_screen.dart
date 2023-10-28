@@ -10,9 +10,9 @@
 //   final String telefono;
 //   final String email;
 //   final String cedula;
-//   final bool flag_es_doctor;
+//   final bool isDoctor;
 
-//   Patient(this.idPersona, this.nombre, this.apellido, this.telefono, this.email, this.cedula, this.flag_es_doctor);
+//   Patient(this.idPersona, this.nombre, this.apellido, this.telefono, this.email, this.cedula, this.isDoctor);
 // }
 
 // class PatientListScreen extends StatefulWidget {
@@ -101,7 +101,7 @@
 //                 DataCell(Text(patient.telefono)),
 //                 DataCell(Text(patient.email)),
 //                 DataCell(Text(patient.cedula)),
-//                 DataCell(Text(patient.flag_es_doctor.toString())),
+//                 DataCell(Text(patient.isDoctor.toString())),
 //               ],
 //             );
 //           }).toList(),
