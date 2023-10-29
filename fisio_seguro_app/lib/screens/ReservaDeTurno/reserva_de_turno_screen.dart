@@ -17,10 +17,16 @@ class ReservaDeTurnosScreen extends StatefulWidget {
 
 class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
   List<Map<String, dynamic>> turnos = [];
+  List<Map<String, dynamic>> personas = [];
   DateTime selectedDate = DateTime.now();
   String? selectedTime = null;
+  String? PacienteSeleccionado = null;
+  String? pacienteId = null;
+  List<String> pacientes = [];
+  List<String> doctores = [];
   // Controllers for form inputs
-  late String filePath;
+  late String filePathTurno;
+  late String filePathPersona;
   TextEditingController idController = TextEditingController();
   TextEditingController descripcionController = TextEditingController();
   TextEditingController nameController = TextEditingController();
@@ -33,20 +39,21 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
   @override
   void initState() {
     super.initState();
-    _initializeFilePath();
+    _initializefilePathPersona();
+    _initializefilePathTurno();
   }
 
   Future<void> _saveturnos() async {
-    final File file = File(filePath);
+    final File file = File(filePathTurno);
     final String data = json.encode(turnos);
     await file.writeAsString(data);
   }
 
-  Future<void> _initializeFilePath() async {
+  Future<void> _initializefilePathTurno() async {
     final directory = await getApplicationDocumentsDirectory();
-    filePath = '${directory.path}/reservas.json';
+    filePathTurno = '${directory.path}/reservas.json';
 
-    final File file = File(filePath);
+    final File file = File(filePathTurno);
     final String jsonString = await rootBundle.loadString('assets/reservas.json');
     await file.writeAsString(jsonString);
 
@@ -54,10 +61,38 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
     _loadReservasHoy();
   }
 
-  Future<void> _loadReservasHoy() async {
-    if (filePath.isEmpty) return;
+  Future<void> _initializefilePathPersona() async {
+    final directory = await getApplicationDocumentsDirectory();
+    filePathPersona = '${directory.path}/persons.json';
 
-    final File file = File(filePath);
+    final File file = File(filePathPersona);
+    final String jsonString = await rootBundle.loadString('assets/persons.json');
+    await file.writeAsString(jsonString);
+    if (!await file.exists()) {
+      final String jsonString = await rootBundle.loadString('assets/persons.json');
+      await file.writeAsString(jsonString);
+    }
+
+    _loadpersons();
+  }
+
+  Future<void> _loadpersons() async {
+    if (filePathPersona.isEmpty) return;
+
+    final File file = File(filePathPersona);
+    final data = await file.readAsString();
+    final List<Map<String, dynamic>> loadedpersons = List.from(json.decode(data));
+    loadedpersons.sort((a, b) => a['idPersona'].compareTo(b['idPersona']));
+
+    setState(() {
+      personas = loadedpersons;
+    });
+  }
+
+  Future<void> _loadReservasHoy() async {
+    if (filePathTurno.isEmpty) return;
+
+    final File file = File(filePathTurno);
     final data = await file.readAsString();
     List<Map<String, dynamic>> loadedturnos = List.from(json.decode(data));
     loadedturnos.sort((a, b) => a['id'].compareTo(b['id']));
@@ -68,6 +103,21 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
     });
   }
 
+  List<DropdownMenuItem<String>> _listaPacientes() {
+    List<DropdownMenuItem<String>> listaPacientes = turnos
+      .where((turno) => turno.containsKey('paciente'))
+      .map((turno) {
+        String nombre = turno['paciente']['nombre'];
+        String apellido = turno['paciente']['apellido'];
+        String nombreCompleto = '$nombre $apellido';
+        return DropdownMenuItem<String>(
+          value: turno['paciente']['idPersona'].toString(),
+          child: Text(nombreCompleto),
+        );
+      })
+      .toList();
+    return listaPacientes;
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,12 +129,16 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
             // Form for adding new turnos (nombre, apellido, telefono, email, cedula, checkbox is doctor)
             //make a form for the registration of a person
             // start then the name, then the last name, then the phone number, then the email, then the cedula number, then the checkbox for if it is a doctor or not
-            TextField(
-              controller: nameController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: 'Paciente',
-              ),
+            DropdownButton<String>(
+            value: PacienteSeleccionado, // El valor seleccionado (inicialmente null)
+            hint: const Text('Selecciona un paciente'), // Texto que se muestra cuando no se ha seleccionado nada
+            items: _listaPacientes(),//[_listaPacientes()],
+            onChanged: (String? newValue) {
+                        setState(() {
+                          pacienteId = newValue;
+                          _addCategory();
+                        });
+                      },
             ),
             const SizedBox(height: 10),
             TextField(
@@ -172,7 +226,7 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
 
   void _addCategory() {
     if (nameController.text.isNotEmpty && apellidoController.text.isNotEmpty && telefonoController.text.isNotEmpty && emailController.text.isNotEmpty && cedulaController.text.isNotEmpty && isDoctorController.text.isNotEmpty) {
-      int newId =  turnos.isNotEmpty ? turnos.last['idPersona'] + 1 : 1;
+      int newId =  turnos.isNotEmpty ? turnos.last['id'] + 1 : 1;
       
       setState(() {
         turnos.add({
