@@ -239,6 +239,9 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
                   'cedula': cedulaEditController.text,
                   'isDoctor': isDoctor,
                 };
+
+                // Actualizar la misma entrada en originalPersons
+                originalPersons[index] = persons[index];
               });
 
               _savePersons();
@@ -260,6 +263,7 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
   void _deletePerson(int index) {
     setState(() {
       persons.removeAt(index);
+      originalPersons.removeAt(index); // Eliminar también de originalPersons
     });
     _savePersons();
   }
