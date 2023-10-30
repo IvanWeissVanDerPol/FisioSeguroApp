@@ -120,7 +120,6 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
                         });
                       },
             ),
-            const SizedBox(height: 10),
             DropdownButton<String>(
             value: selectedDoctor, // El valor seleccionado (inicialmente null)
             hint: const Text('Selecciona un doctor'), // Texto que se muestra cuando no se ha seleccionado nada
@@ -133,7 +132,6 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
                         });
                       },
             ),
-            const SizedBox(height: 10),
             TextFormField(
               decoration: const InputDecoration(
                 hintText: 'Selecciona una fecha',
@@ -155,7 +153,6 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
               controller: TextEditingController(text: selectedDate.toLocal().toString().split(' ')[0]),
               readOnly: true,
             ),
-            const SizedBox(height: 10),
             DropdownButton<String>(
               value: selectedTime,
               hint: const Text('Selecciona una hora'),
@@ -198,7 +195,6 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
                         });
                       },
             ),
-            const SizedBox(height: 10),
             ElevatedButton(
               onPressed: _addCategory,
               child: const Text('Agendar Reserva'),
@@ -283,49 +279,142 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
   }
 
   void _editTurno(int index) {
-    final TextEditingController idEditController = TextEditingController(text: turnos[index]['id'].toString());
-    final TextEditingController descripcionEditController = TextEditingController(text: turnos[index]['descripcion']);
+    DateTime EditedDate = selectedDate;
+    String? EditedTime = selectedTime;
+    String? EditedPaciente = selectedPaciente;
+    String? EditedDoctor = selectedDoctor;
+    String? EditedCategory = selectedCategory;
 
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Edit Category'),
+        title: const Text('Edit Turno'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            TextField(
-              controller: idEditController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: 'Id Categoría',
-              ),
+            DropdownButton<String>(
+            value: EditedPaciente, // El valor seleccionado (inicialmente null)
+            hint: const Text('Selecciona un paciente'), // Texto que se muestra cuando no se ha seleccionado nada
+            items: _listaPersonas(false),
+            onChanged: (String? newValue) {
+                        setState(() {
+                          if(newValue != null) {
+                            EditedPaciente = newValue;
+                          }
+                        });
+                      },
             ),
-            TextField(
-              controller: descripcionEditController,
+            DropdownButton<String>(
+            value: EditedDoctor, // El valor seleccionado (inicialmente null)
+            hint: const Text('Selecciona un doctor'), // Texto que se muestra cuando no se ha seleccionado nada
+            items: _listaPersonas(true),
+            onChanged: (String? newValue) {
+                        setState(() {
+                          if(newValue != null) {
+                            EditedDoctor = newValue;
+                          }
+                        });
+                      },
+            ),
+            TextFormField(
               decoration: const InputDecoration(
-                labelText: 'Descripción',
+                hintText: 'Selecciona una fecha',
               ),
+              onTap: () async {
+                DateTime? pickedDate = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2000),
+                  lastDate: DateTime(2100),
+                );
+
+                if (pickedDate != null && pickedDate != EditedDate) {
+                  setState(() {
+                    EditedDate = pickedDate;
+                  });
+                }
+              },
+              controller: TextEditingController(text: EditedDate.toLocal().toString().split(' ')[0]),
+              readOnly: true,
+            ),
+            DropdownButton<String>(
+              value: EditedTime,
+              hint: const Text('Selecciona una hora'),
+              items: [
+                "09:00 - 10:00",
+                "10:00 - 11:00",
+                "11:00 - 12:00",
+                "12:00 - 13:00",
+                "13:00 - 14:00",
+                "14:00 - 15:00",
+                "15:00 - 16:00",
+                "16:00 - 17:00",
+                "17:00 - 18:00",
+                "18:00 - 19:00",
+                "19:00 - 20:00",
+                "20:00 - 21:00"
+              ]
+              .map((time) => DropdownMenuItem<String>(
+                    value: time,
+                    child: Text(time),
+                  ))
+              .toList(),
+              onChanged: (String? value) {
+                if (value != null) {
+                  setState(() {
+                    EditedTime = value;
+                  });
+                }
+              },
+            ),
+            DropdownButton<String>(
+            value: EditedCategory, // El valor seleccionado (inicialmente null)
+            hint: const Text('Selecciona una Categoria'), // Texto que se muestra cuando no se ha seleccionado nada
+            items: _listaCategorias(),
+            onChanged: (String? newValue) {
+                        setState(() {
+                          if(newValue != null) {
+                            EditedCategory = newValue;
+                          }
+                        });
+                      },
             ),
           ],
         ),
         actions: [
           ElevatedButton(
             onPressed: () {
-              final int newId = int.parse(idEditController.text);
-              final String newDescripcion = descripcionEditController.text;
-
-              // Check if updated ID is unique (excluding the current category being edited)
-              if (turnos.where((category) => category['idPersona'] == newId && turnos.indexOf(category) != index).isNotEmpty) {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('ID already exists!')));
-                return;
-              }
 
               setState(() {
                 turnos[index] = {
-                  'idPersona': newId,
-                  'descripcion': newDescripcion,
+                  'doctor': {
+                    'idPersona': personas[int.parse(EditedDoctor!) - 1]['idPersona'],
+                    'nombre': personas[int.parse(EditedDoctor!) - 1]['nombre'],
+                    'apellido': personas[int.parse(EditedDoctor!) - 1]['apellido'],
+                    'telefono': personas[int.parse(EditedDoctor!) - 1]['telefono'],
+                    'email': personas[int.parse(EditedDoctor!) - 1]['email'],
+                    'cedula': personas[int.parse(EditedDoctor!) - 1]['cedula'],
+                    'isDoctor': personas[int.parse(EditedDoctor!) - 1]['isDoctor'],
+                    'isEditing': false
+                  },
+                  'paciente': {
+                    'idPersona': personas[int.parse(EditedPaciente!) - 1]['idPersona'],
+                    'nombre': personas[int.parse(EditedPaciente!) - 1]['nombre'],
+                    'apellido': personas[int.parse(EditedPaciente!) - 1]['apellido'],
+                    'telefono': personas[int.parse(EditedPaciente!) - 1]['telefono'],
+                    'email': personas[int.parse(EditedPaciente!) - 1]['email'],
+                    'cedula': personas[int.parse(EditedPaciente!) - 1]['cedula'],
+                    'isDoctor': personas[int.parse(EditedPaciente!) - 1]['isDoctor'],
+                    'isEditing': false
+                  },
+                  // 'fecha' : selectedDate to string
+                  'fecha': EditedDate.toString(),
+                  'hora': EditedTime,
+                  'categoria': {
+                    'id': categorias[int.parse(EditedCategory!) - 1]['id'],
+                    'descripcion': categorias[int.parse(EditedCategory!) - 1]['descripcion'],
+                  }
                 };
-                turnos.sort((a, b) => a['idPersona'].compareTo(b['idPersona']));
               });
 
               _saveturnos(); // Save changes to file
