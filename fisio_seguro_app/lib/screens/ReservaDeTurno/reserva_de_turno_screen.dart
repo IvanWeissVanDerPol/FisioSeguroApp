@@ -18,15 +18,15 @@ class ReservaDeTurnosScreen extends StatefulWidget {
 class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
   List<Map<String, dynamic>> turnos = [];
   List<Map<String, dynamic>> personas = [];
+  List<Map<String, dynamic>> categorias = [];
   DateTime selectedDate = DateTime.now();
-  String? selectedTime = null;
-  String? PacienteSeleccionado = null;
-  String? pacienteId = null;
+  String? selectedTime;
+  String? pacienteSeleccionado;
+  String? doctorSeleccionado;
+  late String filePathTurno;
   List<String> pacientes = [];
   List<String> doctores = [];
   // Controllers for form inputs
-  late String filePathTurno;
-  late String filePathPersona;
   TextEditingController idController = TextEditingController();
   TextEditingController descripcionController = TextEditingController();
   TextEditingController nameController = TextEditingController();
@@ -39,8 +39,9 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
   @override
   void initState() {
     super.initState();
-    _initializefilePathPersona();
-    _initializefilePathTurno();
+    _initialize('categories');
+    _initialize('persons');
+    _initialize('turnos');
   }
 
   Future<void> _saveturnos() async {
@@ -49,75 +50,49 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
     await file.writeAsString(data);
   }
 
-  Future<void> _initializefilePathTurno() async {
+//si el archivo no existe, lo crea y lo llena con el contenido del archivo persons.json
+// si el archivo existe, lo carga
+  Future<void> _initialize(String objeto) async {
     final directory = await getApplicationDocumentsDirectory();
-    filePathTurno = '${directory.path}/reservas.json';
-
-    final File file = File(filePathTurno);
-    final String jsonString = await rootBundle.loadString('assets/reservas.json');
-    await file.writeAsString(jsonString);
-
-
-    _loadReservasHoy();
-  }
-
-  Future<void> _initializefilePathPersona() async {
-    final directory = await getApplicationDocumentsDirectory();
-    filePathPersona = '${directory.path}/persons.json';
-
-    final File file = File(filePathPersona);
-    final String jsonString = await rootBundle.loadString('assets/persons.json');
-    await file.writeAsString(jsonString);
+    String filePath = '${directory.path}/$objeto.json';
+    if (objeto == 'turnos') {
+      filePathTurno = filePath;
+    }
+    final File file = File(filePath);
     if (!await file.exists()) {
-      final String jsonString = await rootBundle.loadString('assets/persons.json');
+      final String jsonString = await rootBundle.loadString('assets/$objeto.json');
       await file.writeAsString(jsonString);
     }
-
-    _loadpersons();
-  }
-
-  Future<void> _loadpersons() async {
-    if (filePathPersona.isEmpty) return;
-
-    final File file = File(filePathPersona);
     final data = await file.readAsString();
-    final List<Map<String, dynamic>> loadedpersons = List.from(json.decode(data));
-    loadedpersons.sort((a, b) => a['idPersona'].compareTo(b['idPersona']));
-
+    final List<Map<String, dynamic>> loadedData = List.from(json.decode(data));
     setState(() {
-      personas = loadedpersons;
+      if (objeto == 'categories') {
+        categorias = loadedData;
+      } else if (objeto == 'persons') {
+        personas = loadedData;
+      } else if (objeto == 'turnos') {
+        turnos = loadedData;
+      }
     });
   }
 
-  Future<void> _loadReservasHoy() async {
-    if (filePathTurno.isEmpty) return;
-
-    final File file = File(filePathTurno);
-    final data = await file.readAsString();
-    List<Map<String, dynamic>> loadedturnos = List.from(json.decode(data));
-    loadedturnos.sort((a, b) => a['id'].compareTo(b['id']));
-
-
-    setState(() {
-      turnos = loadedturnos;
-    });
-  }
-
-  List<DropdownMenuItem<String>> _listaPacientes() {
-    List<DropdownMenuItem<String>> listaPacientes = turnos
-      .where((turno) => turno.containsKey('paciente'))
-      .map((turno) {
-        String nombre = turno['paciente']['nombre'];
-        String apellido = turno['paciente']['apellido'];
+  List<DropdownMenuItem<String>> _listaPersonas(bool isDoctor) {
+    List<DropdownMenuItem<String>> listaPacientes = personas
+      .where((persona) => persona['isDoctor'] == isDoctor)
+      .map((persona) {
+        String nombre = persona['nombre'];
+        String apellido = persona['apellido'];
+        String personaId = persona['idPersona'].toString();
         String nombreCompleto = '$nombre $apellido';
         return DropdownMenuItem<String>(
-          value: turno['paciente']['idPersona'].toString(),
+          value: personaId,
           child: Text(nombreCompleto),
         );
       })
       .toList();
     return listaPacientes;
-}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,22 +105,29 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
             //make a form for the registration of a person
             // start then the name, then the last name, then the phone number, then the email, then the cedula number, then the checkbox for if it is a doctor or not
             DropdownButton<String>(
-            value: PacienteSeleccionado, // El valor seleccionado (inicialmente null)
+            value: pacienteSeleccionado, // El valor seleccionado (inicialmente null)
             hint: const Text('Selecciona un paciente'), // Texto que se muestra cuando no se ha seleccionado nada
-            items: _listaPacientes(),//[_listaPacientes()],
+            items: _listaPersonas(false),
             onChanged: (String? newValue) {
                         setState(() {
-                          pacienteId = newValue;
-                          _addCategory();
+                          if(newValue != null) {
+                            pacienteSeleccionado = newValue;
+                          }
                         });
                       },
             ),
             const SizedBox(height: 10),
-            TextField(
-              controller: apellidoController,
-              decoration: const InputDecoration(
-                labelText: 'Doctor',
-              ),
+            DropdownButton<String>(
+            value: doctorSeleccionado, // El valor seleccionado (inicialmente null)
+            hint: const Text('Selecciona un doctor'), // Texto que se muestra cuando no se ha seleccionado nada
+            items: _listaPersonas(true),
+            onChanged: (String? newValue) {
+                        setState(() {
+                          if(newValue != null) {
+                            doctorSeleccionado = newValue;
+                          }
+                        });
+                      },
             ),
             const SizedBox(height: 10),
             TextFormField(
@@ -225,18 +207,36 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
   }
 
   void _addCategory() {
-    if (nameController.text.isNotEmpty && apellidoController.text.isNotEmpty && telefonoController.text.isNotEmpty && emailController.text.isNotEmpty && cedulaController.text.isNotEmpty && isDoctorController.text.isNotEmpty) {
+    if (pacienteSeleccionado != null && doctorSeleccionado != null && selectedTime != null) {
       int newId =  turnos.isNotEmpty ? turnos.last['id'] + 1 : 1;
       
       setState(() {
         turnos.add({
-          'idPersona': newId,
-          'nombre': nameController.text,
-          'apellido': apellidoController.text,
-          'telefono': telefonoController.text,
-          'email': emailController.text,
-          'cedula': cedulaController.text,
-          'isDoctor': isDoctorController.text == 'true',
+          'id': newId,
+          'doctor': {
+            'idPersona': personas[int.parse(doctorSeleccionado!)]['idPersona'],
+            'nombre': personas[int.parse(doctorSeleccionado!)]['nombre'],
+            'apellido': personas[int.parse(doctorSeleccionado!)]['apellido'],
+            'telefono': personas[int.parse(doctorSeleccionado!)]['telefono'],
+            'email': personas[int.parse(doctorSeleccionado!)]['email'],
+            'cedula': personas[int.parse(doctorSeleccionado!)]['cedula'],
+            'isDoctor': personas[int.parse(doctorSeleccionado!)]['isDoctor'],
+            'isEditing': false
+          },
+          'paciente': {
+            'idPersona': personas[int.parse(pacienteSeleccionado!)]['idPersona'],
+            'nombre': personas[int.parse(pacienteSeleccionado!)]['nombre'],
+            'apellido': personas[int.parse(pacienteSeleccionado!)]['apellido'],
+            'telefono': personas[int.parse(pacienteSeleccionado!)]['telefono'],
+            'email': personas[int.parse(pacienteSeleccionado!)]['email'],
+            'cedula': personas[int.parse(pacienteSeleccionado!)]['cedula'],
+            'isDoctor': personas[int.parse(pacienteSeleccionado!)]['isDoctor'],
+            'isEditing': false
+          },
+          'fecha': selectedDate,
+          'hora': selectedTime,
+
+          
         });
         turnos.sort((a, b) => a['idPersona'].compareTo(b['idPersona']));
 
