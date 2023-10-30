@@ -57,8 +57,7 @@ flutter:
     - assets/categorias.json
     - assets/categories.json
     - assets/fichasClinicas.json
-    - assets/personas.json
     - assets/persons.json
-    - assets/reservas.json
+    - assets/turnos.json
 
 

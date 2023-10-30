@@ -21,20 +21,10 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
   List<Map<String, dynamic>> categorias = [];
   DateTime selectedDate = DateTime.now();
   String? selectedTime;
-  String? pacienteSeleccionado;
-  String? doctorSeleccionado;
+  String? selectedPaciente;
+  String? selectedDoctor;
+  String? selectedCategory;
   late String filePathTurno;
-  List<String> pacientes = [];
-  List<String> doctores = [];
-  // Controllers for form inputs
-  TextEditingController idController = TextEditingController();
-  TextEditingController descripcionController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
-  TextEditingController apellidoController = TextEditingController();
-  TextEditingController telefonoController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController cedulaController = TextEditingController();
-  TextEditingController isDoctorController = TextEditingController();
 
   @override
   void initState() {
@@ -93,6 +83,20 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
     return listaPacientes;
   }
 
+  List<DropdownMenuItem<String>> _listaCategorias() {
+    List<DropdownMenuItem<String>> listaCategorias = categorias
+      .map((categoria) {
+        String nombre = categoria['descripcion'];
+        String categoriaId = categoria['id'].toString();
+        return DropdownMenuItem<String>(
+          value: categoriaId,
+          child: Text(nombre),
+        );
+      })
+      .toList();
+    return listaCategorias;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,26 +109,26 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
             //make a form for the registration of a person
             // start then the name, then the last name, then the phone number, then the email, then the cedula number, then the checkbox for if it is a doctor or not
             DropdownButton<String>(
-            value: pacienteSeleccionado, // El valor seleccionado (inicialmente null)
+            value: selectedPaciente, // El valor seleccionado (inicialmente null)
             hint: const Text('Selecciona un paciente'), // Texto que se muestra cuando no se ha seleccionado nada
             items: _listaPersonas(false),
             onChanged: (String? newValue) {
                         setState(() {
                           if(newValue != null) {
-                            pacienteSeleccionado = newValue;
+                            selectedPaciente = newValue;
                           }
                         });
                       },
             ),
             const SizedBox(height: 10),
             DropdownButton<String>(
-            value: doctorSeleccionado, // El valor seleccionado (inicialmente null)
+            value: selectedDoctor, // El valor seleccionado (inicialmente null)
             hint: const Text('Selecciona un doctor'), // Texto que se muestra cuando no se ha seleccionado nada
             items: _listaPersonas(true),
             onChanged: (String? newValue) {
                         setState(() {
                           if(newValue != null) {
-                            doctorSeleccionado = newValue;
+                            selectedDoctor = newValue;
                           }
                         });
                       },
@@ -182,6 +186,19 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
                 }
               },
             ),
+            DropdownButton<String>(
+            value: selectedCategory, // El valor seleccionado (inicialmente null)
+            hint: const Text('Selecciona una Categoria'), // Texto que se muestra cuando no se ha seleccionado nada
+            items: _listaCategorias(),
+            onChanged: (String? newValue) {
+                        setState(() {
+                          if(newValue != null) {
+                            selectedCategory = newValue;
+                          }
+                        });
+                      },
+            ),
+            const SizedBox(height: 10),
             ElevatedButton(
               onPressed: _addCategory,
               child: const Text('Agendar Reserva'),
@@ -195,7 +212,8 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
                   return ListTile(
                     title: Text('Paciente: ${turnos[index]['paciente']['nombre']} ${turnos[index]['paciente']['apellido']}'),
                     subtitle: Text('Doctor: ${turnos[index]['doctor']['nombre']} ${turnos[index]['doctor']['apellido']}\nFecha: ${
-                      DateFormat('dd-MM-yyyy').format(DateTime.parse(turnos[index]['fecha']))}\nHora: ${turnos[index]['hora']}'),
+                      DateFormat('dd-MM-yyyy').format(DateTime.parse(turnos[index]['fecha']))}\t${turnos[index]['hora']}\nCategoria: ${
+                        turnos[index]['categoria']['descripcion']}'),
                   );
                 },
               ),
@@ -207,41 +225,44 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
   }
 
   void _addCategory() {
-    if (pacienteSeleccionado != null && doctorSeleccionado != null && selectedTime != null) {
+    if (selectedPaciente != null && selectedDoctor != null && selectedTime != null) {
       int newId =  turnos.isNotEmpty ? turnos.last['id'] + 1 : 1;
+      int doctorIndex = int.parse(selectedDoctor!) - 1;
+      int pacienteIndex = int.parse(selectedPaciente!) - 1;
+      int categoriaIndex = int.parse(selectedCategory!) - 1;
       
       setState(() {
         turnos.add({
           'id': newId,
           'doctor': {
-            'idPersona': personas[int.parse(doctorSeleccionado!)]['idPersona'],
-            'nombre': personas[int.parse(doctorSeleccionado!)]['nombre'],
-            'apellido': personas[int.parse(doctorSeleccionado!)]['apellido'],
-            'telefono': personas[int.parse(doctorSeleccionado!)]['telefono'],
-            'email': personas[int.parse(doctorSeleccionado!)]['email'],
-            'cedula': personas[int.parse(doctorSeleccionado!)]['cedula'],
-            'isDoctor': personas[int.parse(doctorSeleccionado!)]['isDoctor'],
+            'idPersona': personas[doctorIndex]['idPersona'],
+            'nombre': personas[doctorIndex]['nombre'],
+            'apellido': personas[doctorIndex]['apellido'],
+            'telefono': personas[doctorIndex]['telefono'],
+            'email': personas[doctorIndex]['email'],
+            'cedula': personas[doctorIndex]['cedula'],
+            'isDoctor': personas[doctorIndex]['isDoctor'],
             'isEditing': false
           },
           'paciente': {
-            'idPersona': personas[int.parse(pacienteSeleccionado!)]['idPersona'],
-            'nombre': personas[int.parse(pacienteSeleccionado!)]['nombre'],
-            'apellido': personas[int.parse(pacienteSeleccionado!)]['apellido'],
-            'telefono': personas[int.parse(pacienteSeleccionado!)]['telefono'],
-            'email': personas[int.parse(pacienteSeleccionado!)]['email'],
-            'cedula': personas[int.parse(pacienteSeleccionado!)]['cedula'],
-            'isDoctor': personas[int.parse(pacienteSeleccionado!)]['isDoctor'],
+            'idPersona': personas[pacienteIndex]['idPersona'],
+            'nombre': personas[pacienteIndex]['nombre'],
+            'apellido': personas[pacienteIndex]['apellido'],
+            'telefono': personas[pacienteIndex]['telefono'],
+            'email': personas[pacienteIndex]['email'],
+            'cedula': personas[pacienteIndex]['cedula'],
+            'isDoctor': personas[pacienteIndex]['isDoctor'],
             'isEditing': false
           },
-          'fecha': selectedDate,
+          // 'fecha' : selectedDate to string
+          'fecha': selectedDate.toString(),
           'hora': selectedTime,
+          'categoria': {
+            'id': categorias[int.parse(selectedCategory!)]['id'],
+            'descripcion': categorias[categoriaIndex]['descripcion'],
+          }
 
-          
         });
-        turnos.sort((a, b) => a['idPersona'].compareTo(b['idPersona']));
-
-        idController.clear();
-        descripcionController.clear();
       });
 
       _saveturnos(); // Save changes to file
