@@ -6,22 +6,23 @@ import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
 class ListaDePersonasScreen extends StatefulWidget {
-  const ListaDePersonasScreen({super.key});
+  const ListaDePersonasScreen({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _ListaDePersonasScreenState createState() => _ListaDePersonasScreenState();
 }
 
 class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
   List<Map<String, dynamic>> persons = [];
-  List<Map<String, dynamic>> originalPersons = []; // New variable
+  List<Map<String, dynamic>> originalPersons = [];
 
-  // Controllers for form inputs
   late String filePath;
   TextEditingController nameController = TextEditingController();
   TextEditingController apellidoController = TextEditingController();
   TextEditingController isDoctorController = TextEditingController();
+
+  bool filterPaciente = false;
+  bool filterDoctor = false;
 
   @override
   void initState() {
@@ -29,7 +30,7 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
     _initializeFilePath();
   }
 
-  Future<void> _savepersons() async {
+  Future<void> _savePersons() async {
     final File file = File(filePath);
     final String data = json.encode(persons);
     await file.writeAsString(data);
@@ -41,80 +42,84 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
 
     final File file = File(filePath);
 
-      // final String jsonString = await rootBundle.loadString('assets/persons.json');
-      // await file.writeAsString(jsonString);
     if (!await file.exists()) {
       final String jsonString = await rootBundle.loadString('assets/persons.json');
       await file.writeAsString(jsonString);
     }
 
-    _loadpersons();
+    _loadPersons();
   }
 
-  Future<void> _loadpersons() async {
+  Future<void> _loadPersons() async {
     if (filePath.isEmpty) return;
 
     final File file = File(filePath);
     final data = await file.readAsString();
-    final List<Map<String, dynamic>> loadedpersons = List.from(json.decode(data));
-    loadedpersons.sort((a, b) => a['idPersona'].compareTo(b['idPersona']));
+    final List<Map<String, dynamic>> loadedPersons = List.from(json.decode(data));
+    loadedPersons.sort((a, b) => a['idPersona'].compareTo(b['idPersona']));
 
     setState(() {
-      persons = loadedpersons;
-      originalPersons = List.from(loadedpersons); // Update originalPersons here
+      persons = loadedPersons;
+      originalPersons = List.from(loadedPersons);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('registro de personas')),
+      appBar: AppBar(title: const Text('Registro de Personas')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
-          //
           child: Column(
             children: [
-              // Form for adding new persons (nombre, apellido, telefono, email, cedula, checkbox is doctor)
-              //make a form for the registration of a person
-              // start then the name, then the last name, then the phone number, then the email, then the cedula number, then the checkbox for if it is a doctor or not
               TextField(
                 controller: nameController,
-                keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
-                  labelText: 'nombre',
+                  labelText: 'Nombre',
                 ),
               ),
               const SizedBox(height: 10),
               TextField(
                 controller: apellidoController,
                 decoration: const InputDecoration(
-                  labelText: 'apellido',
+                  labelText: 'Apellido',
                 ),
               ),
               CheckboxListTile(
-                title: const Text('Is Doctor'),
-                value: isDoctorController.text.isNotEmpty ? isDoctorController.text == 'true' : false,
+                title: const Text('Paciente'),
+                value: filterPaciente,
                 onChanged: (value) {
                   setState(() {
-                    isDoctorController.text = value.toString();
+                    filterPaciente = value ?? false;
+                    _filter();
+                  });
+                },
+              ),
+              CheckboxListTile(
+                title: const Text('Doctor'),
+                value: filterDoctor,
+                onChanged: (value) {
+                  setState(() {
+                    filterDoctor = value ?? false;
+                    _filter();
                   });
                 },
               ),
               const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: _filter,
-                child: const Text('filter'),
+                child: const Text('Filtrar'),
               ),
               const SizedBox(height: 20),
-              // Table to display persons
               ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
                 itemCount: persons.length,
-                shrinkWrap: true, // <-- This makes the ListView only take up the space it needs
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text('nombre: ${persons[index]['nombre']} ${persons[index]['apellido']}'),
-                    subtitle: Text('telefono: ${persons[index]['telefono']} \nemail: ${persons[index]['email']} \ncedula: ${persons[index]['cedula']} \nisDoctor: ${persons[index]['isDoctor']}'),
+                    title: Text('Nombre: ${persons[index]['nombre']} ${persons[index]['apellido']}'),
+                    subtitle: Text('Teléfono: ${persons[index]['telefono']} \nEmail: ${persons[index]['email']} \nCédula: ${persons[index]['cedula']} \nIsDoctor: ${persons[index]['isDoctor']}'),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -139,29 +144,27 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
   }
 
   void _filter() {
-    List<Map<String, dynamic>> filteredList = List.from(originalPersons); // Start with the original list
+    List<Map<String, dynamic>> filteredList = List.from(originalPersons);
 
-    String filterName = nameController.text.trim();
-    String filterApellido = apellidoController.text.trim();
-    bool filterIsDoctor = isDoctorController.text == 'true';
+    String filterName = nameController.text.trim().toLowerCase();
+    String filterApellido = apellidoController.text.trim().toLowerCase();
 
-    // Filter by name if it's not empty
+    if (filterPaciente && !filterDoctor) {
+      filteredList = filteredList.where((person) => !person['isDoctor']).toList();
+    } else if (!filterPaciente && filterDoctor) {
+      filteredList = filteredList.where((person) => person['isDoctor']).toList();
+    }
+
     if (filterName.isNotEmpty) {
-      filteredList = filteredList.where((person) => person['nombre'].toLowerCase().contains(filterName.toLowerCase())).toList();
+      filteredList = filteredList.where((person) => person['nombre'].toLowerCase().contains(filterName)).toList();
     }
 
-    // Filter by apellido if it's not empty
     if (filterApellido.isNotEmpty) {
-      filteredList = filteredList.where((person) => person['apellido'].toLowerCase().contains(filterApellido.toLowerCase())).toList();
-    }
-
-    // Filter by 'Is Doctor' if the checkbox is checked
-    if (filterIsDoctor) {
-      filteredList = filteredList.where((person) => person['isDoctor'] == true).toList();
+      filteredList = filteredList.where((person) => person['apellido'].toLowerCase().contains(filterApellido)).toList();
     }
 
     setState(() {
-      persons = filteredList; // Update the persons list to the filtered list
+      persons = filteredList;
     });
   }
 
@@ -176,7 +179,7 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Edit Person'),
+        title: const Text('Editar Persona'),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -196,7 +199,7 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
               TextField(
                 controller: telefonoEditController,
                 decoration: const InputDecoration(
-                  labelText: 'Telefono',
+                  labelText: 'Teléfono',
                 ),
               ),
               TextField(
@@ -209,14 +212,16 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
                 controller: cedulaEditController,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
-                  labelText: 'Cedula',
+                  labelText: 'Cédula',
                 ),
               ),
               CheckboxListTile(
                 title: const Text('Is Doctor'),
                 value: isDoctor,
                 onChanged: (value) {
-                  isDoctor = value!;
+                  setState(() {
+                    isDoctor = value ?? false;
+                  });
                 },
               ),
             ],
@@ -234,18 +239,21 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
                   'cedula': cedulaEditController.text,
                   'isDoctor': isDoctor,
                 };
+
+                // Actualizar la misma entrada en originalPersons
+                originalPersons[index] = persons[index];
               });
 
-              _savepersons(); // Save changes to file
+              _savePersons();
               Navigator.of(context).pop();
             },
-            child: const Text('Update'),
+            child: const Text('Actualizar'),
           ),
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: const Text('Cancel'),
+            child: const Text('Cancelar'),
           ),
         ],
       ),
@@ -255,7 +263,8 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
   void _deletePerson(int index) {
     setState(() {
       persons.removeAt(index);
+      originalPersons.removeAt(index); // Eliminar también de originalPersons
     });
-    _savepersons(); // Save changes to file
+    _savePersons();
   }
 }
