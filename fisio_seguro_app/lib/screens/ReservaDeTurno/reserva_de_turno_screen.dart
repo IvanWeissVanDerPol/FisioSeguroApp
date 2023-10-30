@@ -214,6 +214,19 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
                     subtitle: Text('Doctor: ${turnos[index]['doctor']['nombre']} ${turnos[index]['doctor']['apellido']}\nFecha: ${
                       DateFormat('dd-MM-yyyy').format(DateTime.parse(turnos[index]['fecha']))}\t${turnos[index]['hora']}\nCategoria: ${
                         turnos[index]['categoria']['descripcion']}'),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.edit, color: Colors.blue),
+                          onPressed: () => _editTurno(index),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => _deleteTurno(index),
+                        ),
+                      ],
+                    ),
                   );
                 },
               ),
@@ -269,7 +282,7 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
     }
   }
 
-  void _editCategory(int index) {
+  void _editTurno(int index) {
     final TextEditingController idEditController = TextEditingController(text: turnos[index]['id'].toString());
     final TextEditingController descripcionEditController = TextEditingController(text: turnos[index]['descripcion']);
 
@@ -331,7 +344,7 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
     );
   }
 
-  void _deleteCategory(int index) {
+  void _deleteTurno(int index) {
     setState(() {
       turnos.removeAt(index);
     });
