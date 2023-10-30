@@ -272,6 +272,12 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
           }
 
         });
+
+        selectedPaciente = null;
+        selectedDoctor = null;
+        selectedDate = DateTime.now();
+        selectedTime = null;
+        selectedCategory = null;
       });
 
       _saveturnos(); // Save changes to file
