@@ -3,6 +3,7 @@ import 'package:fisio_seguro_app/screens/RegistroDePersona/RegistroDePersonas_Sc
 import 'package:fisio_seguro_app/screens/RegistroDePersona/lista_de_personas_screen.dart';
 import 'package:fisio_seguro_app/screens/RegistroDePersona/person_registry_screen.dart';
 import 'package:fisio_seguro_app/screens/ReservaDeTurno/form_screen.dart';
+import 'package:fisio_seguro_app/screens/ReservaDeTurno/list_screen.dart';
 import 'package:fisio_seguro_app/screens/ReservaDeTurno/menu_screen.dart';
 import 'package:fisio_seguro_app/screens/auth/main_screen.dart';
 import 'package:fisio_seguro_app/screens/consulta/consulta_screen.dart';
@@ -19,52 +20,71 @@ class AppRouter {
     routes: [
       GoRoute(
         path: '/',
-        pageBuilder: (context, state) => const MaterialPage(child: MainScreen()),
+        pageBuilder: (context, state) =>
+            const MaterialPage(child: MainScreen()),
       ),
       GoRoute(
         path: '/login',
-        pageBuilder: (context, state) => const MaterialPage(child: LoginScreen()),
+        pageBuilder: (context, state) =>
+            const MaterialPage(child: LoginScreen()),
       ),
       GoRoute(
         path: '/reset_password',
-        pageBuilder: (context, state) => const MaterialPage(child: ResetPassword()),
+        pageBuilder: (context, state) =>
+            const MaterialPage(child: ResetPassword()),
       ),
 
       GoRoute(
         path: '/LogOut',
-        pageBuilder: (context, state) => const MaterialPage(child: LogOutScreen()),
+        pageBuilder: (context, state) =>
+            const MaterialPage(child: LogOutScreen()),
       ),
 
       GoRoute(
         path: '/Home',
-        pageBuilder: (context, state) => const MaterialPage(child: HomeScreen()),
+        pageBuilder: (context, state) =>
+            const MaterialPage(child: HomeScreen()),
       ),
 
       GoRoute(
         path: '/RegistroDePersonasScreen',
-        pageBuilder: (context, state) => const MaterialPage(child: RegistroDePersonasScreen()),
+        pageBuilder: (context, state) =>
+            const MaterialPage(child: RegistroDePersonasScreen()),
       ),
       GoRoute(
         path: '/ConsultasScreen',
-        pageBuilder: (context, state) => const MaterialPage(child: ConsultaScreen()),
+        pageBuilder: (context, state) =>
+            const MaterialPage(child: ConsultaScreen()),
       ),
       GoRoute(
         path: '/PersonRegistryScreen',
-        pageBuilder: (context, state) => const MaterialPage(child: PersonRegistryScreen()),
+        pageBuilder: (context, state) =>
+            const MaterialPage(child: PersonRegistryScreen()),
       ),
       GoRoute(
         path: '/ListaDePersonasScreen',
-        pageBuilder: (context, state) => const MaterialPage(child: ListaDePersonasScreen()),
+        pageBuilder: (context, state) =>
+            const MaterialPage(child: ListaDePersonasScreen()),
       ),
       GoRoute(
         path: '/RegisterPersonScreen',
-        pageBuilder: (context, state) => const MaterialPage(child: RegistrationFormScreen()),
+        pageBuilder: (context, state) =>
+            const MaterialPage(child: RegistrationFormScreen()),
       ),
-      GoRoute(path: '/ReservaDeTurnosMenuScreen',
-      pageBuilder: (context, state) =>  const MaterialPage(child: TurnosMenu()),
+      GoRoute(
+        path: '/ReservaDeTurnosMenuScreen',
+        pageBuilder: (context, state) =>
+            const MaterialPage(child: TurnosMenu()),
       ),
-      GoRoute(path: '/ReservaDeTurnosScreen',
-      pageBuilder: (context, state) =>  const MaterialPage(child: ReservaDeTurnosScreen()),
+      GoRoute(
+        path: '/ReservaDeTurnosFormScreen',
+        pageBuilder: (context, state) =>
+            const MaterialPage(child: ReservaDeTurnosScreen()),
+      ),
+      GoRoute(
+        path: '/ReservaDeTurnosListScreen',
+        pageBuilder: (context, state) =>
+            const MaterialPage(child: ListaDeTurnosScreen()),
       ),
       // GoRoute(path: '/FichaClinicaScreen',
       // pageBuilder: (context, state) =>  const MaterialPage(child: PersonRegistryScreen()),
