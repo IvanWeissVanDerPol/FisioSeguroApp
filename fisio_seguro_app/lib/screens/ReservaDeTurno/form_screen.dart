@@ -196,7 +196,7 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
                       },
             ),
             ElevatedButton(
-              onPressed: _addCategory,
+              onPressed: _addTurno,
               child: const Text('Agendar Reserva'),
             ),
             const SizedBox(height: 20),
@@ -233,7 +233,7 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
     );
   }
 
-  void _addCategory() {
+  void _addTurno() {
     if (selectedPaciente != null && selectedDoctor != null && selectedTime != null) {
       int newId =  turnos.isNotEmpty ? turnos.last['id'] + 1 : 1;
       int doctorIndex = int.parse(selectedDoctor!) - 1;

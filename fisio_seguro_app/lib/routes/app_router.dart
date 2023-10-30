@@ -2,7 +2,8 @@ import 'package:fisio_seguro_app/screens/RegistroDePersona/registratio_form_scre
 import 'package:fisio_seguro_app/screens/RegistroDePersona/RegistroDePersonas_Screen.dart';
 import 'package:fisio_seguro_app/screens/RegistroDePersona/lista_de_personas_screen.dart';
 import 'package:fisio_seguro_app/screens/RegistroDePersona/person_registry_screen.dart';
-import 'package:fisio_seguro_app/screens/ReservaDeTurno/reserva_de_turno_screen.dart';
+import 'package:fisio_seguro_app/screens/ReservaDeTurno/form_screen.dart';
+import 'package:fisio_seguro_app/screens/ReservaDeTurno/menu_screen.dart';
 import 'package:fisio_seguro_app/screens/auth/main_screen.dart';
 import 'package:fisio_seguro_app/screens/consulta/consulta_screen.dart';
 import 'package:fisio_seguro_app/screens/home/home_screen.dart';
@@ -58,6 +59,9 @@ class AppRouter {
       GoRoute(
         path: '/RegisterPersonScreen',
         pageBuilder: (context, state) => const MaterialPage(child: RegistrationFormScreen()),
+      ),
+      GoRoute(path: '/ReservaDeTurnosMenuScreen',
+      pageBuilder: (context, state) =>  const MaterialPage(child: TurnosMenu()),
       ),
       GoRoute(path: '/ReservaDeTurnosScreen',
       pageBuilder: (context, state) =>  const MaterialPage(child: ReservaDeTurnosScreen()),

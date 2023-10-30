@@ -1,5 +1,3 @@
-// ignore: file_names
-// ignore_for_file: library_private_types_in_public_api
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fisio_seguro_app/reusable_widgets/reusable_widget.dart';
@@ -7,14 +5,15 @@ import 'package:fisio_seguro_app/screens/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class TurnosMenu extends StatefulWidget {
+  const TurnosMenu({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  // ignore: library_private_types_in_public_api
+  _TurnosMenu createState() => _TurnosMenu();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _TurnosMenu extends State<TurnosMenu> {
 
   @override
   Widget build(BuildContext context) {
@@ -44,14 +43,11 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                  ActionCard(icon: Icons.auto_stories,title: 'Categoria de Consultas', description: 'Se puede agregar, modificar o eliminar la categoria de las consultas.', onTap: () { context.push('/ConsultasScreen'); },),
-                  const SizedBox(height: 5.0),
-                  ActionCard(icon: Icons.app_registration, title: 'Registro De Personas', description: 'Accede al registro de personas donde se puede crear un nuevo persona o modificar uno ya existente, Tambien se le asigna si es doctor o paciente.', onTap: () { context.push('/PersonRegistryScreen'); },),
-                  const SizedBox(height: 5.0),
-                  ActionCard(icon: Icons.mode_edit,title: 'Reserva de Turnos', description: 'Accede a la reserva de turnos para agregar o modificar un turno, tambien se puede indicar a que hora se tendra el turno.', onTap: () {context.push('/ReservaDeTurnosMenuScreen');  },),
-                  const SizedBox(height: 5.0),
-                  ActionCard(icon: Icons.view_list,title: 'Ficha Clinica', description: 'Accede a la ficha clinica para agregar o modificar la ficha, tambien se puede hacer un reporte en excel o pdf.', onTap: () {  },),
-             ],
+                  ActionCard(icon: Icons.auto_stories,title: 'Registro de Turnos', description: '', onTap: () { context.push('/ReservaDeTurnosScreen'); },),
+                  const SizedBox(height: 20.0),
+                  ActionCard(icon: Icons.auto_stories,title: 'Lista De Turnos', description: '', onTap: () { context.push(''); },),
+                  const SizedBox(height: 20.0),
+                  ],
               ),
             ),
           ),
