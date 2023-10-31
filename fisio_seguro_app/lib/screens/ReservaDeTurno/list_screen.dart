@@ -43,10 +43,10 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
     List<Map<String, dynamic>> filteredList = originalTurnos;
 
     if (selectedDoctor != null) {
-      filteredList = filteredList.where((turno) => turno['doctor']['idPersona'] == selectedDoctor!).toList();
+      filteredList = filteredList.where((turno) => turno['doctor']['idPersona'] == int.parse(selectedDoctor!)).toList();
     }
     if (selectedPaciente != null) {
-      filteredList = filteredList.where((turno) => turno['paciente']['idPersona'] == selectedPaciente!).toList();
+      filteredList = filteredList.where((turno) => turno['paciente']['idPersona'] == int.parse(selectedPaciente!)).toList();
     }
 
     DateTime selectedDateEndFilter = DateTime(selectedDateEnd.year, selectedDateEnd.month, selectedDateEnd.day);
@@ -72,6 +72,8 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
       filePathTurno = filePath;
     }
     final File file = File(filePath);
+    final String jsonString = await rootBundle.loadString('assets/$objeto.json');
+      await file.writeAsString(jsonString);
     if (!await file.exists()) {
       final String jsonString = await rootBundle.loadString('assets/$objeto.json');
       await file.writeAsString(jsonString);
