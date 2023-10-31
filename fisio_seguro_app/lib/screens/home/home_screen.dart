@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(height: 5.0),
                   ActionCard(icon: Icons.mode_edit,title: 'Reserva de Turnos', description: 'Accede a la reserva de turnos para agregar o modificar un turno, tambien se puede indicar a que hora se tendra el turno.', onTap: () {context.push('/ReservaDeTurnosMenuScreen');  },),
                   const SizedBox(height: 5.0),
-                  ActionCard(icon: Icons.view_list,title: 'Ficha Clinica', description: 'Accede a la ficha clinica para agregar o modificar la ficha, tambien se puede hacer un reporte en excel o pdf.', onTap: () {  },),
+                  ActionCard(icon: Icons.view_list,title: 'Ficha Clinica', description: 'Accede a la ficha clinica para agregar o modificar la ficha, tambien se puede hacer un reporte en excel o pdf.', onTap: () {context.push('/FichaClinicaMenuScreen');},),
              ],
               ),
             ),

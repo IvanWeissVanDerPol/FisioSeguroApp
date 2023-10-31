@@ -7,6 +7,9 @@ import 'package:fisio_seguro_app/screens/ReservaDeTurno/list_screen.dart';
 import 'package:fisio_seguro_app/screens/ReservaDeTurno/menu_screen.dart';
 import 'package:fisio_seguro_app/screens/auth/main_screen.dart';
 import 'package:fisio_seguro_app/screens/consulta/consulta_screen.dart';
+import 'package:fisio_seguro_app/screens/ficha_clinica/form_screen.dart';
+import 'package:fisio_seguro_app/screens/ficha_clinica/list_screen.dart';
+import 'package:fisio_seguro_app/screens/ficha_clinica/menu_screen.dart';
 import 'package:fisio_seguro_app/screens/home/home_screen.dart';
 
 import 'package:fisio_seguro_app/screens/home/log_out_screen.dart';
@@ -86,9 +89,15 @@ class AppRouter {
         pageBuilder: (context, state) =>
             const MaterialPage(child: ListaDeTurnosScreen()),
       ),
-      // GoRoute(path: '/FichaClinicaScreen',
-      // pageBuilder: (context, state) =>  const MaterialPage(child: PersonRegistryScreen()),
-      // ),
+      GoRoute(path: '/FichaClinicaMenuScreen',
+      pageBuilder: (context, state) =>  const MaterialPage(child: FichasMenu()),
+      ),
+      GoRoute(path: '/FichaClinicaFormScreen',
+      pageBuilder: (context, state) =>  const MaterialPage(child: FichaClinicaFormScreen()),
+      ),
+      GoRoute(path: '/FichaClinicaListScreen',
+      pageBuilder: (context, state) =>  const MaterialPage(child: ListaDeFichasClinicasScreen()),
+      ),
     ],
   );
 }
