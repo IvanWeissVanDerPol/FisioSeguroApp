@@ -1,1 +1,1656 @@
-[{"id":1,"paciente":{"idPersona":11,"nombre":"David","apellido":"Wilson","telefono":"555-876-5432","email":"davidwilson@example.com","cedula":"E12345","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":1,"nombre":"John","apellido":"Doe","telefono":"123-456-7890","email":"john.doe@example.com","cedula":"A12345","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Dolor de cabeza","diagnostico":"Migraña","fecha":"2023-10-27T03:00:00.000Z","reserva":{"id":43,"doctor":{"idPersona":1,"nombre":"John","apellido":"Doe","telefono":"123-456-7890","email":"john.doe@example.com","cedula":"A12345","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":20,"nombre":"Mia","apellido":"Foster","telefono":"555-432-1098","email":"miafoster@example.com","cedula":"N12345","flag_es_doctor":false,"isEditing":false},"fecha":"2023-10-27T03:00:00.000Z","hora":"12:30 - 13:00","categoria":{"id":3,"descripcion":"Gastroenterología","isEditing":false}},"categoria":{"id":6,"descripcion":"Ortopedia","isEditing":false}},{"id":2,"paciente":{"idPersona":12,"nombre":"Emily","apellido":"Jones","telefono":"555-345-6789","email":"emilyjones@example.com","cedula":"F98765","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":2,"nombre":"Jane","apellido":"Smith","telefono":"987-654-3210","email":"jane.smith@example.com","cedula":"B67890","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Fiebre","diagnostico":"Resfriado común","fecha":"2023-10-26T03:00:00.000Z","reserva":{"id":109,"doctor":{"idPersona":5,"nombre":"Rebecka","apellido":"Piper","telefono":"292-552-6705","email":"rpiper0@storify.com","cedula":"8049789","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":14,"nombre":"Olivia","apellido":"Miller","telefono":"555-432-1098","email":"oliviamiller@example.com","cedula":"H12345","flag_es_doctor":false,"isEditing":false},"fecha":"2023-10-26T03:00:00.000Z","hora":"10:30 - 11:00","categoria":{"id":9,"descripcion":"Radiología","isEditing":false}},"categoria":{"id":9,"descripcion":"Radiología","isEditing":false}},{"id":3,"paciente":{"idPersona":13,"nombre":"James","apellido":"Davis","telefono":"555-654-3210","email":"jamesdavis@example.com","cedula":"G54321","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":3,"nombre":"Dr. Robert","apellido":"Johnson","telefono":"555-555-5555","email":"dr.robert@example.com","cedula":"C54321","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Dolor abdominal","diagnostico":"Apendicitis","fecha":"2023-10-25T03:00:00.000Z","reserva":{"id":55,"doctor":{"idPersona":5,"nombre":"Rebecka","apellido":"Piper","telefono":"292-552-6705","email":"rpiper0@storify.com","cedula":"8049789","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":13,"nombre":"James","apellido":"Davis","telefono":"555-654-3210","email":"jamesdavis@example.com","cedula":"G54321","flag_es_doctor":false,"isEditing":false},"fecha":"2023-10-25T03:00:00.000Z","hora":"14:30 - 15:00","categoria":{"id":5,"descripcion":"Oftalmología","isEditing":false}},"categoria":{"id":3,"descripcion":"Gastroenterología","isEditing":false}},{"id":4,"paciente":{"idPersona":14,"nombre":"Olivia","apellido":"Miller","telefono":"555-432-1098","email":"oliviamiller@example.com","cedula":"H12345","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":4,"nombre":"Dr. Sarah","apellido":"Brown","telefono":"444-444-4444","email":"dr.sarah@example.com","cedula":"D98765","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Fatiga","diagnostico":"Anemia","fecha":"2023-10-22T03:00:00.000Z","reserva":{"id":93,"doctor":{"idPersona":7,"nombre":"John","apellido":"Doe","telefono":"555-123-4567","email":"johndoe@example.com","cedula":"A12345","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":17,"nombre":"Ethan","apellido":"Clark","telefono":"555-876-5432","email":"ethanclark@example.com","cedula":"K12345","flag_es_doctor":false,"isEditing":false},"fecha":"2023-10-22T03:00:00.000Z","hora":"16:00 - 16:30","categoria":{"id":3,"descripcion":"Gastroenterología","isEditing":false}},"categoria":{"id":8,"descripcion":"Psiquiatría","isEditing":false}},{"id":5,"paciente":{"idPersona":15,"nombre":"William","apellido":"Anderson","telefono":"555-987-6543","email":"williamanderson@example.com","cedula":"I98765","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":5,"nombre":"Rebecka","apellido":"Piper","telefono":"292-552-6705","email":"rpiper0@storify.com","cedula":"8049789","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Dolor en el pecho","diagnostico":"Infarto de miocardio","fecha":"2023-09-15T04:00:00.000Z","reserva":{"id":155,"doctor":{"idPersona":6,"nombre":"Wilburt","apellido":"Garric","telefono":"303-550-9242","email":"wgarric0@networkadvertising.org","cedula":"D98765","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":24,"nombre":"Emma","apellido":"King","telefono":"555-876-5432","email":"emmaking@example.com","cedula":"R98765","flag_es_doctor":false,"isEditing":false},"fecha":"2023-09-15T04:00:00.000Z","hora":"18:30 - 19:00","categoria":{"id":5,"descripcion":"Oftalmología","isEditing":false}},"categoria":{"id":2,"descripcion":"Dermatología","isEditing":false}},{"id":6,"paciente":{"idPersona":16,"nombre":"Sophia","apellido":"Brown","telefono":"555-234-5678","email":"sophiabrown@example.com","cedula":"J54321","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":6,"nombre":"Wilburt","apellido":"Garric","telefono":"303-550-9242","email":"wgarric0@networkadvertising.org","cedula":"D98765","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Náuseas","diagnostico":"Gastritis","fecha":"2023-08-30T04:00:00.000Z","reserva":{"id":67,"doctor":{"idPersona":3,"nombre":"Dr. Robert","apellido":"Johnson","telefono":"555-555-5555","email":"dr.robert@example.com","cedula":"C54321","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":23,"nombre":"Olivia","apellido":"Jackson","telefono":"555-234-5678","email":"oliviajackson@example.com","cedula":"Q12345","flag_es_doctor":false,"isEditing":false},"fecha":"2023-08-30T04:00:00.000Z","hora":"12:00 - 12:30","categoria":{"id":7,"descripcion":"Pediatría","isEditing":false}},"categoria":{"id":7,"descripcion":"Pediatría","isEditing":false}},{"id":7,"paciente":{"idPersona":17,"nombre":"Ethan","apellido":"Clark","telefono":"555-876-5432","email":"ethanclark@example.com","cedula":"K12345","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":7,"nombre":"John","apellido":"Doe","telefono":"555-123-4567","email":"johndoe@example.com","cedula":"A12345","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Problemas respiratorios","diagnostico":"Asma","fecha":"2023-09-20T04:00:00.000Z","reserva":{"id":38,"doctor":{"idPersona":2,"nombre":"Jane","apellido":"Smith","telefono":"987-654-3210","email":"jane.smith@example.com","cedula":"B67890","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":16,"nombre":"Sophia","apellido":"Brown","telefono":"555-234-5678","email":"sophiabrown@example.com","cedula":"J54321","flag_es_doctor":false,"isEditing":false},"fecha":"2023-09-20T04:00:00.000Z","hora":"09:00 - 09:30","categoria":{"id":8,"descripcion":"Psiquiatría","isEditing":false}},"categoria":{"id":5,"descripcion":"Oftalmología","isEditing":false}},{"id":8,"paciente":{"idPersona":18,"nombre":"Ava","apellido":"Davis","telefono":"555-345-6789","email":"avadavis@example.com","cedula":"L98765","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":8,"nombre":"Jane","apellido":"Smith","telefono":"555-987-6543","email":"janesmith@example.com","cedula":"B54321","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Dolor de espalda","diagnostico":"Hernia de disco","fecha":"2023-10-16T03:00:00.000Z","reserva":{"id":175,"doctor":{"idPersona":3,"nombre":"Dr. Robert","apellido":"Johnson","telefono":"555-555-5555","email":"dr.robert@example.com","cedula":"C54321","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":20,"nombre":"Mia","apellido":"Foster","telefono":"555-432-1098","email":"miafoster@example.com","cedula":"N12345","flag_es_doctor":false,"isEditing":false},"fecha":"2023-10-16T03:00:00.000Z","hora":"16:00 - 16:30","categoria":{"id":5,"descripcion":"Oftalmología","isEditing":false}},"categoria":{"id":4,"descripcion":"Neurología","isEditing":false}},{"id":9,"paciente":{"idPersona":19,"nombre":"Logan","apellido":"Evans","telefono":"555-654-3210","email":"loganevans@example.com","cedula":"M54321","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":9,"nombre":"Michael","apellido":"Johnson","telefono":"555-789-1234","email":"michaeljohnson@example.com","cedula":"C98765","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Dolor de garganta","diagnostico":"Amigdalitis","fecha":"2023-09-17T04:00:00.000Z","reserva":{"id":51,"doctor":{"idPersona":9,"nombre":"Michael","apellido":"Johnson","telefono":"555-789-1234","email":"michaeljohnson@example.com","cedula":"C98765","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":14,"nombre":"Olivia","apellido":"Miller","telefono":"555-432-1098","email":"oliviamiller@example.com","cedula":"H12345","flag_es_doctor":false,"isEditing":false},"fecha":"2023-09-17T04:00:00.000Z","hora":"16:30 - 17:00","categoria":{"id":1,"descripcion":"Cardiología","isEditing":false}},"categoria":{"id":10,"descripcion":"Urología","isEditing":false}},{"id":10,"paciente":{"idPersona":20,"nombre":"Mia","apellido":"Foster","telefono":"555-432-1098","email":"miafoster@example.com","cedula":"N12345","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":10,"nombre":"Sarah","apellido":"Brown","telefono":"555-234-5678","email":"sarahbrown@example.com","cedula":"D54321","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Mareos","diagnostico":"Vértigo","fecha":"2023-09-06T04:00:00.000Z","reserva":{"id":125,"doctor":{"idPersona":10,"nombre":"Sarah","apellido":"Brown","telefono":"555-234-5678","email":"sarahbrown@example.com","cedula":"D54321","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":23,"nombre":"Olivia","apellido":"Jackson","telefono":"555-234-5678","email":"oliviajackson@example.com","cedula":"Q12345","flag_es_doctor":false,"isEditing":false},"fecha":"2023-09-06T04:00:00.000Z","hora":"10:00 - 10:30","categoria":{"id":5,"descripcion":"Oftalmología","isEditing":false}},"categoria":{"id":1,"descripcion":"Cardiología","isEditing":false}},{"id":11,"paciente":{"idPersona":21,"nombre":"Noah","apellido":"Garcia","telefono":"555-789-1234","email":"noahgarcia@example.com","cedula":"O98765","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":1,"nombre":"John","apellido":"Doe","telefono":"123-456-7890","email":"john.doe@example.com","cedula":"A12345","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Dolor de cabeza","diagnostico":"Migraña","fecha":"2023-10-09T03:00:00.000Z","reserva":{"id":34,"doctor":{"idPersona":9,"nombre":"Michael","apellido":"Johnson","telefono":"555-789-1234","email":"michaeljohnson@example.com","cedula":"C98765","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":17,"nombre":"Ethan","apellido":"Clark","telefono":"555-876-5432","email":"ethanclark@example.com","cedula":"K12345","flag_es_doctor":false,"isEditing":false},"fecha":"2023-10-09T03:00:00.000Z","hora":"08:00 - 08:30","categoria":{"id":4,"descripcion":"Neurología","isEditing":false}},"categoria":{"id":8,"descripcion":"Psiquiatría","isEditing":false}},{"id":12,"paciente":{"idPersona":22,"nombre":"Liam","apellido":"Harris","telefono":"555-987-6543","email":"liamharris@example.com","cedula":"P54321","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":2,"nombre":"Jane","apellido":"Smith","telefono":"987-654-3210","email":"jane.smith@example.com","cedula":"B67890","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Fiebre","diagnostico":"Resfriado común","fecha":"2023-09-11T04:00:00.000Z","reserva":{"id":173,"doctor":{"idPersona":10,"nombre":"Sarah","apellido":"Brown","telefono":"555-234-5678","email":"sarahbrown@example.com","cedula":"D54321","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":22,"nombre":"Liam","apellido":"Harris","telefono":"555-987-6543","email":"liamharris@example.com","cedula":"P54321","flag_es_doctor":false,"isEditing":false},"fecha":"2023-09-11T04:00:00.000Z","hora":"09:00 - 09:30","categoria":{"id":3,"descripcion":"Gastroenterología","isEditing":false}},"categoria":{"id":3,"descripcion":"Gastroenterología","isEditing":false}},{"id":13,"paciente":{"idPersona":23,"nombre":"Olivia","apellido":"Jackson","telefono":"555-234-5678","email":"oliviajackson@example.com","cedula":"Q12345","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":3,"nombre":"Dr. Robert","apellido":"Johnson","telefono":"555-555-5555","email":"dr.robert@example.com","cedula":"C54321","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Dolor abdominal","diagnostico":"Apendicitis","fecha":"2023-09-18T04:00:00.000Z","reserva":{"id":44,"doctor":{"idPersona":1,"nombre":"John","apellido":"Doe","telefono":"123-456-7890","email":"john.doe@example.com","cedula":"A12345","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":24,"nombre":"Emma","apellido":"King","telefono":"555-876-5432","email":"emmaking@example.com","cedula":"R98765","flag_es_doctor":false,"isEditing":false},"fecha":"2023-09-18T04:00:00.000Z","hora":"08:00 - 08:30","categoria":{"id":4,"descripcion":"Neurología","isEditing":false}},"categoria":{"id":6,"descripcion":"Ortopedia","isEditing":false}},{"id":14,"paciente":{"idPersona":24,"nombre":"Emma","apellido":"King","telefono":"555-876-5432","email":"emmaking@example.com","cedula":"R98765","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":4,"nombre":"Dr. Sarah","apellido":"Brown","telefono":"444-444-4444","email":"dr.sarah@example.com","cedula":"D98765","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Fatiga","diagnostico":"Anemia","fecha":"2023-08-25T04:00:00.000Z","reserva":{"id":94,"doctor":{"idPersona":15,"nombre":"William","apellido":"Anderson","telefono":"555-987-6543","email":"williamanderson@example.com","cedula":"I98765","flag_es_doctor":false,"isEditing":false},"paciente":{"idPersona":23,"nombre":"Olivia","apellido":"Jackson","telefono":"555-234-5678","email":"oliviajackson@example.com","cedula":"Q12345","flag_es_doctor":false,"isEditing":false},"fecha":"2023-08-25T04:00:00.000Z","hora":"13:00 - 13:30","categoria":{"id":4,"descripcion":"Neurología","isEditing":false}},"categoria":{"id":9,"descripcion":"Radiología","isEditing":false}},{"id":15,"paciente":{"idPersona":11,"nombre":"David","apellido":"Wilson","telefono":"555-876-5432","email":"davidwilson@example.com","cedula":"E12345","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":5,"nombre":"Rebecka","apellido":"Piper","telefono":"292-552-6705","email":"rpiper0@storify.com","cedula":"8049789","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Dolor en el pecho","diagnostico":"Infarto de miocardio","fecha":"2023-08-04T04:00:00.000Z","reserva":{"id":115,"doctor":{"idPersona":10,"nombre":"Sarah","apellido":"Brown","telefono":"555-234-5678","email":"sarahbrown@example.com","cedula":"D54321","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":24,"nombre":"Emma","apellido":"King","telefono":"555-876-5432","email":"emmaking@example.com","cedula":"R98765","flag_es_doctor":false,"isEditing":false},"fecha":"2023-08-04T04:00:00.000Z","hora":"19:30 - 20:00","categoria":{"id":5,"descripcion":"Oftalmología","isEditing":false}},"categoria":{"id":5,"descripcion":"Oftalmología","isEditing":false}},{"id":16,"paciente":{"idPersona":12,"nombre":"Emily","apellido":"Jones","telefono":"555-345-6789","email":"emilyjones@example.com","cedula":"F98765","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":6,"nombre":"Wilburt","apellido":"Garric","telefono":"303-550-9242","email":"wgarric0@networkadvertising.org","cedula":"D98765","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Náuseas","diagnostico":"Gastritis","fecha":"2023-08-26T04:00:00.000Z","reserva":{"id":89,"doctor":{"idPersona":8,"nombre":"Jane","apellido":"Smith","telefono":"555-987-6543","email":"janesmith@example.com","cedula":"B54321","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":15,"nombre":"William","apellido":"Anderson","telefono":"555-987-6543","email":"williamanderson@example.com","cedula":"I98765","flag_es_doctor":false,"isEditing":false},"fecha":"2023-08-26T04:00:00.000Z","hora":"14:00 - 14:30","categoria":{"id":9,"descripcion":"Radiología","isEditing":false}},"categoria":{"id":2,"descripcion":"Dermatología","isEditing":false}},{"id":17,"paciente":{"idPersona":13,"nombre":"James","apellido":"Davis","telefono":"555-654-3210","email":"jamesdavis@example.com","cedula":"G54321","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":7,"nombre":"John","apellido":"Doe","telefono":"555-123-4567","email":"johndoe@example.com","cedula":"A12345","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Problemas respiratorios","diagnostico":"Asma","fecha":"2023-08-01T04:00:00.000Z","reserva":{"id":1,"doctor":{"idPersona":3,"nombre":"Dr. Robert","apellido":"Johnson","telefono":"555-555-5555","email":"dr.robert@example.com","cedula":"C54321","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":14,"nombre":"Olivia","apellido":"Miller","telefono":"555-432-1098","email":"oliviamiller@example.com","cedula":"H12345","flag_es_doctor":false,"isEditing":false},"fecha":"2023-08-01T04:00:00.000Z","hora":"08:00 - 08:30","categoria":{"id":1,"descripcion":"Cardiología","isEditing":false}},"categoria":{"id":4,"descripcion":"Neurología","isEditing":false}},{"id":18,"paciente":{"idPersona":14,"nombre":"Olivia","apellido":"Miller","telefono":"555-432-1098","email":"oliviamiller@example.com","cedula":"H12345","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":8,"nombre":"Jane","apellido":"Smith","telefono":"555-987-6543","email":"janesmith@example.com","cedula":"B54321","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Dolor de espalda","diagnostico":"Hernia de disco","fecha":"2023-08-14T04:00:00.000Z","reserva":{"id":143,"doctor":{"idPersona":3,"nombre":"Dr. Robert","apellido":"Johnson","telefono":"555-555-5555","email":"dr.robert@example.com","cedula":"C54321","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":22,"nombre":"Liam","apellido":"Harris","telefono":"555-987-6543","email":"liamharris@example.com","cedula":"P54321","flag_es_doctor":false,"isEditing":false},"fecha":"2023-08-14T04:00:00.000Z","hora":"18:00 - 18:30","categoria":{"id":3,"descripcion":"Gastroenterología","isEditing":false}},"categoria":{"id":7,"descripcion":"Pediatría","isEditing":false}},{"id":19,"paciente":{"idPersona":15,"nombre":"William","apellido":"Anderson","telefono":"555-987-6543","email":"williamanderson@example.com","cedula":"I98765","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":9,"nombre":"Michael","apellido":"Johnson","telefono":"555-789-1234","email":"michaeljohnson@example.com","cedula":"C98765","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Dolor de garganta","diagnostico":"Amigdalitis","fecha":"2023-10-07T03:00:00.000Z","reserva":{"id":117,"doctor":{"idPersona":8,"nombre":"Jane","apellido":"Smith","telefono":"555-987-6543","email":"janesmith@example.com","cedula":"B54321","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":20,"nombre":"Mia","apellido":"Foster","telefono":"555-432-1098","email":"miafoster@example.com","cedula":"N12345","flag_es_doctor":false,"isEditing":false},"fecha":"2023-10-07T03:00:00.000Z","hora":"15:30 - 16:00","categoria":{"id":7,"descripcion":"Pediatría","isEditing":false}},"categoria":{"id":10,"descripcion":"Urología","isEditing":false}},{"id":20,"paciente":{"idPersona":16,"nombre":"Sophia","apellido":"Brown","telefono":"555-234-5678","email":"sophiabrown@example.com","cedula":"J54321","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":10,"nombre":"Sarah","apellido":"Brown","telefono":"555-234-5678","email":"sarahbrown@example.com","cedula":"D54321","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Mareos","diagnostico":"Vértigo","fecha":"2023-08-16T04:00:00.000Z","reserva":{"id":103,"doctor":{"idPersona":6,"nombre":"Wilburt","apellido":"Garric","telefono":"303-550-9242","email":"wgarric0@networkadvertising.org","cedula":"D98765","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":20,"nombre":"Mia","apellido":"Foster","telefono":"555-432-1098","email":"miafoster@example.com","cedula":"N12345","flag_es_doctor":false,"isEditing":false},"fecha":"2023-08-16T04:00:00.000Z","hora":"16:30 - 17:00","categoria":{"id":3,"descripcion":"Gastroenterología","isEditing":false}},"categoria":{"id":1,"descripcion":"Cardiología","isEditing":false}},{"id":21,"paciente":{"idPersona":17,"nombre":"Ethan","apellido":"Clark","telefono":"555-876-5432","email":"ethanclark@example.com","cedula":"K12345","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":1,"nombre":"John","apellido":"Doe","telefono":"123-456-7890","email":"john.doe@example.com","cedula":"A12345","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Dolor de cabeza","diagnostico":"Migraña","fecha":"2023-10-08T03:00:00.000Z","reserva":{"id":130,"doctor":{"idPersona":5,"nombre":"Rebecka","apellido":"Piper","telefono":"292-552-6705","email":"rpiper0@storify.com","cedula":"8049789","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":22,"nombre":"Liam","apellido":"Harris","telefono":"555-987-6543","email":"liamharris@example.com","cedula":"P54321","flag_es_doctor":false,"isEditing":false},"fecha":"2023-10-08T03:00:00.000Z","hora":"13:00 - 13:30","categoria":{"id":10,"descripcion":"Urología","isEditing":false}},"categoria":{"id":5,"descripcion":"Oftalmología","isEditing":false}},{"id":22,"paciente":{"idPersona":18,"nombre":"Ava","apellido":"Davis","telefono":"555-345-6789","email":"avadavis@example.com","cedula":"L98765","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":2,"nombre":"Jane","apellido":"Smith","telefono":"987-654-3210","email":"jane.smith@example.com","cedula":"B67890","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Fiebre","diagnostico":"Resfriado común","fecha":"2023-08-16T04:00:00.000Z","reserva":{"id":50,"doctor":{"idPersona":1,"nombre":"John","apellido":"Doe","telefono":"123-456-7890","email":"john.doe@example.com","cedula":"A12345","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":15,"nombre":"William","apellido":"Anderson","telefono":"555-987-6543","email":"williamanderson@example.com","cedula":"I98765","flag_es_doctor":false,"isEditing":false},"fecha":"2023-08-16T04:00:00.000Z","hora":"08:30 - 09:00","categoria":{"id":10,"descripcion":"Urología","isEditing":false}},"categoria":{"id":3,"descripcion":"Gastroenterología","isEditing":false}},{"id":23,"paciente":{"idPersona":19,"nombre":"Logan","apellido":"Evans","telefono":"555-654-3210","email":"loganevans@example.com","cedula":"M54321","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":3,"nombre":"Dr. Robert","apellido":"Johnson","telefono":"555-555-5555","email":"dr.robert@example.com","cedula":"C54321","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Dolor abdominal","diagnostico":"Apendicitis","fecha":"2023-08-14T04:00:00.000Z","reserva":{"id":30,"doctor":{"idPersona":3,"nombre":"Dr. Robert","apellido":"Johnson","telefono":"555-555-5555","email":"dr.robert@example.com","cedula":"C54321","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":22,"nombre":"Liam","apellido":"Harris","telefono":"555-987-6543","email":"liamharris@example.com","cedula":"P54321","flag_es_doctor":false,"isEditing":false},"fecha":"2023-08-25T04:00:00.000Z","hora":"12:00 - 12:30","categoria":{"id":10,"descripcion":"Urología","isEditing":false}},"categoria":{"id":9,"descripcion":"Radiología","isEditing":false}},{"id":24,"paciente":{"idPersona":20,"nombre":"Mia","apellido":"Foster","telefono":"555-432-1098","email":"miafoster@example.com","cedula":"N12345","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":4,"nombre":"Dr. Sarah","apellido":"Brown","telefono":"444-444-4444","email":"dr.sarah@example.com","cedula":"D98765","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Fatiga","diagnostico":"Anemia","fecha":"2023-08-11T04:00:00.000Z","reserva":{"id":146,"doctor":{"idPersona":10,"nombre":"Sarah","apellido":"Brown","telefono":"555-234-5678","email":"sarahbrown@example.com","cedula":"D54321","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":24,"nombre":"Emma","apellido":"King","telefono":"555-876-5432","email":"emmaking@example.com","cedula":"R98765","flag_es_doctor":false,"isEditing":false},"fecha":"2023-08-11T04:00:00.000Z","hora":"14:30 - 15:00","categoria":{"id":6,"descripcion":"Ortopedia","isEditing":false}},"categoria":{"id":8,"descripcion":"Psiquiatría","isEditing":false}},{"id":25,"paciente":{"idPersona":21,"nombre":"Noah","apellido":"Garcia","telefono":"555-789-1234","email":"noahgarcia@example.com","cedula":"O98765","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":5,"nombre":"Rebecka","apellido":"Piper","telefono":"292-552-6705","email":"rpiper0@storify.com","cedula":"8049789","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Dolor en el pecho","diagnostico":"Infarto de miocardio","fecha":"2023-08-08T04:00:00.000Z","reserva":{"id":196,"doctor":{"idPersona":3,"nombre":"Dr. Robert","apellido":"Johnson","telefono":"555-555-5555","email":"dr.robert@example.com","cedula":"C54321","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":24,"nombre":"Emma","apellido":"King","telefono":"555-876-5432","email":"emmaking@example.com","cedula":"R98765","flag_es_doctor":false,"isEditing":false},"fecha":"2023-08-08T04:00:00.000Z","hora":"19:00 - 19:30","categoria":{"id":6,"descripcion":"Ortopedia","isEditing":false}},"categoria":{"id":4,"descripcion":"Neurología","isEditing":false}},{"id":26,"paciente":{"idPersona":22,"nombre":"Liam","apellido":"Harris","telefono":"555-987-6543","email":"liamharris@example.com","cedula":"P54321","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":6,"nombre":"Wilburt","apellido":"Garric","telefono":"303-550-9242","email":"wgarric0@networkadvertising.org","cedula":"D98765","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Náuseas","diagnostico":"Gastritis","fecha":"2023-08-01T04:00:00.000Z","reserva":{"id":153,"doctor":{"idPersona":7,"nombre":"John","apellido":"Doe","telefono":"555-123-4567","email":"johndoe@example.com","cedula":"A12345","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":16,"nombre":"Sophia","apellido":"Brown","telefono":"555-234-5678","email":"sophiabrown@example.com","cedula":"J54321","flag_es_doctor":false,"isEditing":false},"fecha":"2023-08-01T04:00:00.000Z","hora":"20:30 - 21:00","categoria":{"id":3,"descripcion":"Gastroenterología","isEditing":false}},"categoria":{"id":10,"descripcion":"Urología","isEditing":false}},{"id":27,"paciente":{"idPersona":23,"nombre":"Olivia","apellido":"Jackson","telefono":"555-234-5678","email":"oliviajackson@example.com","cedula":"Q12345","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":7,"nombre":"John","apellido":"Doe","telefono":"555-123-4567","email":"johndoe@example.com","cedula":"A12345","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Problemas respiratorios","diagnostico":"Asma","fecha":"2023-08-23T04:00:00.000Z","reserva":{"id":169,"doctor":{"idPersona":3,"nombre":"Dr. Robert","apellido":"Johnson","telefono":"555-555-5555","email":"dr.robert@example.com","cedula":"C54321","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":18,"nombre":"Ava","apellido":"Davis","telefono":"555-345-6789","email":"avadavis@example.com","cedula":"L98765","flag_es_doctor":false,"isEditing":false},"fecha":"2023-09-04T04:00:00.000Z","hora":"17:00 - 17:30","categoria":{"id":9,"descripcion":"Radiología","isEditing":false}},"categoria":{"id":6,"descripcion":"Ortopedia","isEditing":false}},{"id":28,"paciente":{"idPersona":24,"nombre":"Emma","apellido":"King","telefono":"555-876-5432","email":"emmaking@example.com","cedula":"R98765","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":8,"nombre":"Jane","apellido":"Smith","telefono":"555-987-6543","email":"janesmith@example.com","cedula":"B54321","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Dolor de espalda","diagnostico":"Hernia de disco","fecha":"2023-09-03T04:00:00.000Z","reserva":{"id":25,"doctor":{"idPersona":8,"nombre":"Jane","apellido":"Smith","telefono":"555-987-6543","email":"janesmith@example.com","cedula":"B54321","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":14,"nombre":"Olivia","apellido":"Miller","telefono":"555-432-1098","email":"oliviamiller@example.com","cedula":"H12345","flag_es_doctor":false,"isEditing":false},"fecha":"2023-09-14T04:00:00.000Z","hora":"10:00 - 10:30","categoria":{"id":5,"descripcion":"Oftalmología","isEditing":false}},"categoria":{"id":7,"descripcion":"Pediatría","isEditing":false}},{"id":29,"paciente":{"idPersona":11,"nombre":"David","apellido":"Wilson","telefono":"555-876-5432","email":"davidwilson@example.com","cedula":"E12345","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":9,"nombre":"Michael","apellido":"Johnson","telefono":"555-789-1234","email":"michaeljohnson@example.com","cedula":"C98765","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Dolor de garganta","diagnostico":"Amigdalitis","fecha":"2023-08-13T04:00:00.000Z","reserva":{"id":166,"doctor":{"idPersona":3,"nombre":"Dr. Robert","apellido":"Johnson","telefono":"555-555-5555","email":"dr.robert@example.com","cedula":"C54321","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":19,"nombre":"Logan","apellido":"Evans","telefono":"555-654-3210","email":"loganevans@example.com","cedula":"M54321","flag_es_doctor":false,"isEditing":false},"fecha":"2023-08-13T04:00:00.000Z","hora":"11:30 - 12:00","categoria":{"id":6,"descripcion":"Ortopedia","isEditing":false}},"categoria":{"id":2,"descripcion":"Dermatología","isEditing":false}},{"id":30,"paciente":{"idPersona":12,"nombre":"Emily","apellido":"Jones","telefono":"555-345-6789","email":"emilyjones@example.com","cedula":"F98765","flag_es_doctor":false,"isEditing":false},"doctor":{"idPersona":10,"nombre":"Sarah","apellido":"Brown","telefono":"555-234-5678","email":"sarahbrown@example.com","cedula":"D54321","flag_es_doctor":true,"isEditing":false},"motivoConsulta":"Mareos","diagnostico":"Vértigo","fecha":"2023-08-19T04:00:00.000Z","reserva":{"id":35,"doctor":{"idPersona":5,"nombre":"Rebecka","apellido":"Piper","telefono":"292-552-6705","email":"rpiper0@storify.com","cedula":"8049789","flag_es_doctor":true,"isEditing":false},"paciente":{"idPersona":20,"nombre":"Mia","apellido":"Foster","telefono":"555-432-1098","email":"miafoster@example.com","cedula":"N12345","flag_es_doctor":false,"isEditing":false},"fecha":"2023-08-19T04:00:00.000Z","hora":"20:00 - 20:30","categoria":{"id":5,"descripcion":"Oftalmología","isEditing":false}},"categoria":{"id":1,"descripcion":"Cardiología","isEditing":false}}]
+[
+  {
+    "id": 1,
+    "paciente": {
+      "idPersona": 11,
+      "nombre": "David",
+      "apellido": "Wilson",
+      "telefono": "555-876-5432",
+      "email": "davidwilson@example.com",
+      "cedula": "E12345",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 1,
+      "nombre": "John",
+      "apellido": "Doe",
+      "telefono": "123-456-7890",
+      "email": "john.doe@example.com",
+      "cedula": "A12345",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Dolor de cabeza",
+    "diagnostico": "Migraña",
+    "fecha": "2023-10-27T03:00:00.000Z",
+    "reserva": {
+      "id": 43,
+      "doctor": {
+        "idPersona": 1,
+        "nombre": "John",
+        "apellido": "Doe",
+        "telefono": "123-456-7890",
+        "email": "john.doe@example.com",
+        "cedula": "A12345",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 20,
+        "nombre": "Mia",
+        "apellido": "Foster",
+        "telefono": "555-432-1098",
+        "email": "miafoster@example.com",
+        "cedula": "N12345",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-10-27T03:00:00.000Z",
+      "hora": "12:30 - 13:00",
+      "categoria": {
+        "id": 3,
+        "descripcion": "Gastroenterología",
+        "isEditing": false
+      }
+    },
+    "categoria": { "id": 6, "descripcion": "Ortopedia", "isEditing": false }
+  },
+  {
+    "id": 2,
+    "paciente": {
+      "idPersona": 12,
+      "nombre": "Emily",
+      "apellido": "Jones",
+      "telefono": "555-345-6789",
+      "email": "emilyjones@example.com",
+      "cedula": "F98765",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 2,
+      "nombre": "Jane",
+      "apellido": "Smith",
+      "telefono": "987-654-3210",
+      "email": "jane.smith@example.com",
+      "cedula": "B67890",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Fiebre",
+    "diagnostico": "Resfriado común",
+    "fecha": "2023-10-26T03:00:00.000Z",
+    "reserva": {
+      "id": 109,
+      "doctor": {
+        "idPersona": 5,
+        "nombre": "Rebecka",
+        "apellido": "Piper",
+        "telefono": "292-552-6705",
+        "email": "rpiper0@storify.com",
+        "cedula": "8049789",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 14,
+        "nombre": "Olivia",
+        "apellido": "Miller",
+        "telefono": "555-432-1098",
+        "email": "oliviamiller@example.com",
+        "cedula": "H12345",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-10-26T03:00:00.000Z",
+      "hora": "10:30 - 11:00",
+      "categoria": { "id": 9, "descripcion": "Radiología", "isEditing": false }
+    },
+    "categoria": { "id": 9, "descripcion": "Radiología", "isEditing": false }
+  },
+  {
+    "id": 3,
+    "paciente": {
+      "idPersona": 13,
+      "nombre": "James",
+      "apellido": "Davis",
+      "telefono": "555-654-3210",
+      "email": "jamesdavis@example.com",
+      "cedula": "G54321",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 3,
+      "nombre": "Dr. Robert",
+      "apellido": "Johnson",
+      "telefono": "555-555-5555",
+      "email": "dr.robert@example.com",
+      "cedula": "C54321",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Dolor abdominal",
+    "diagnostico": "Apendicitis",
+    "fecha": "2023-10-25T03:00:00.000Z",
+    "reserva": {
+      "id": 55,
+      "doctor": {
+        "idPersona": 5,
+        "nombre": "Rebecka",
+        "apellido": "Piper",
+        "telefono": "292-552-6705",
+        "email": "rpiper0@storify.com",
+        "cedula": "8049789",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 13,
+        "nombre": "James",
+        "apellido": "Davis",
+        "telefono": "555-654-3210",
+        "email": "jamesdavis@example.com",
+        "cedula": "G54321",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-10-25T03:00:00.000Z",
+      "hora": "14:30 - 15:00",
+      "categoria": {
+        "id": 5,
+        "descripcion": "Oftalmología",
+        "isEditing": false
+      }
+    },
+    "categoria": {
+      "id": 3,
+      "descripcion": "Gastroenterología",
+      "isEditing": false
+    }
+  },
+  {
+    "id": 4,
+    "paciente": {
+      "idPersona": 14,
+      "nombre": "Olivia",
+      "apellido": "Miller",
+      "telefono": "555-432-1098",
+      "email": "oliviamiller@example.com",
+      "cedula": "H12345",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 4,
+      "nombre": "Dr. Sarah",
+      "apellido": "Brown",
+      "telefono": "444-444-4444",
+      "email": "dr.sarah@example.com",
+      "cedula": "D98765",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Fatiga",
+    "diagnostico": "Anemia",
+    "fecha": "2023-10-22T03:00:00.000Z",
+    "reserva": {
+      "id": 93,
+      "doctor": {
+        "idPersona": 7,
+        "nombre": "Emilio",
+        "apellido": "Ginzo",
+        "telefono": "555-123-4956",
+        "email": "emilioginzo@example.com",
+        "cedula": "A12123",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 17,
+        "nombre": "Ethan",
+        "apellido": "Clark",
+        "telefono": "555-876-5432",
+        "email": "ethanclark@example.com",
+        "cedula": "K12345",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-10-22T03:00:00.000Z",
+      "hora": "16:00 - 16:30",
+      "categoria": {
+        "id": 3,
+        "descripcion": "Gastroenterología",
+        "isEditing": false
+      }
+    },
+    "categoria": { "id": 8, "descripcion": "Psiquiatría", "isEditing": false }
+  },
+  {
+    "id": 5,
+    "paciente": {
+      "idPersona": 15,
+      "nombre": "William",
+      "apellido": "Anderson",
+      "telefono": "555-987-6543",
+      "email": "williamanderson@example.com",
+      "cedula": "I98765",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 5,
+      "nombre": "Rebecka",
+      "apellido": "Piper",
+      "telefono": "292-552-6705",
+      "email": "rpiper0@storify.com",
+      "cedula": "8049789",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Dolor en el pecho",
+    "diagnostico": "Infarto de miocardio",
+    "fecha": "2023-09-15T04:00:00.000Z",
+    "reserva": {
+      "id": 155,
+      "doctor": {
+        "idPersona": 6,
+        "nombre": "Wilburt",
+        "apellido": "Garric",
+        "telefono": "303-550-9242",
+        "email": "wgarric0@networkadvertising.org",
+        "cedula": "D98765",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 24,
+        "nombre": "Emma",
+        "apellido": "King",
+        "telefono": "555-876-5432",
+        "email": "emmaking@example.com",
+        "cedula": "R98765",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-09-15T04:00:00.000Z",
+      "hora": "18:30 - 19:00",
+      "categoria": {
+        "id": 5,
+        "descripcion": "Oftalmología",
+        "isEditing": false
+      }
+    },
+    "categoria": { "id": 2, "descripcion": "Dermatología", "isEditing": false }
+  },
+  {
+    "id": 6,
+    "paciente": {
+      "idPersona": 16,
+      "nombre": "Sophia",
+      "apellido": "Brown",
+      "telefono": "555-234-5678",
+      "email": "sophiabrown@example.com",
+      "cedula": "J54321",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 6,
+      "nombre": "Wilburt",
+      "apellido": "Garric",
+      "telefono": "303-550-9242",
+      "email": "wgarric0@networkadvertising.org",
+      "cedula": "D98765",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Náuseas",
+    "diagnostico": "Gastritis",
+    "fecha": "2023-08-30T04:00:00.000Z",
+    "reserva": {
+      "id": 67,
+      "doctor": {
+        "idPersona": 3,
+        "nombre": "Dr. Robert",
+        "apellido": "Johnson",
+        "telefono": "555-555-5555",
+        "email": "dr.robert@example.com",
+        "cedula": "C54321",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 23,
+        "nombre": "Olivia",
+        "apellido": "Jackson",
+        "telefono": "555-234-5678",
+        "email": "oliviajackson@example.com",
+        "cedula": "Q12345",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-08-30T04:00:00.000Z",
+      "hora": "12:00 - 12:30",
+      "categoria": { "id": 7, "descripcion": "Pediatría", "isEditing": false }
+    },
+    "categoria": { "id": 7, "descripcion": "Pediatría", "isEditing": false }
+  },
+  {
+    "id": 7,
+    "paciente": {
+      "idPersona": 17,
+      "nombre": "Ethan",
+      "apellido": "Clark",
+      "telefono": "555-876-5432",
+      "email": "ethanclark@example.com",
+      "cedula": "K12345",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 7,
+      "nombre": "Emilio",
+      "apellido": "Ginzo",
+      "telefono": "555-123-4956",
+      "email": "emilioginzo@example.com",
+      "cedula": "A12123",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Problemas respiratorios",
+    "diagnostico": "Asma",
+    "fecha": "2023-09-20T04:00:00.000Z",
+    "reserva": {
+      "id": 38,
+      "doctor": {
+        "idPersona": 2,
+        "nombre": "Jane",
+        "apellido": "Smith",
+        "telefono": "987-654-3210",
+        "email": "jane.smith@example.com",
+        "cedula": "B67890",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 16,
+        "nombre": "Sophia",
+        "apellido": "Brown",
+        "telefono": "555-234-5678",
+        "email": "sophiabrown@example.com",
+        "cedula": "J54321",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-09-20T04:00:00.000Z",
+      "hora": "09:00 - 09:30",
+      "categoria": { "id": 8, "descripcion": "Psiquiatría", "isEditing": false }
+    },
+    "categoria": { "id": 5, "descripcion": "Oftalmología", "isEditing": false }
+  },
+  {
+    "id": 8,
+    "paciente": {
+      "idPersona": 18,
+      "nombre": "Ava",
+      "apellido": "Davis",
+      "telefono": "555-345-6789",
+      "email": "avadavis@example.com",
+      "cedula": "L98765",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 8,
+      "nombre": "Ivan",
+      "apellido": "Weiss",
+      "telefono": "555-987-6723",
+      "email": "ivanweiss@example.com",
+      "cedula": "B54947",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Dolor de espalda",
+    "diagnostico": "Hernia de disco",
+    "fecha": "2023-10-16T03:00:00.000Z",
+    "reserva": {
+      "id": 175,
+      "doctor": {
+        "idPersona": 3,
+        "nombre": "Dr. Robert",
+        "apellido": "Johnson",
+        "telefono": "555-555-5555",
+        "email": "dr.robert@example.com",
+        "cedula": "C54321",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 20,
+        "nombre": "Mia",
+        "apellido": "Foster",
+        "telefono": "555-432-1098",
+        "email": "miafoster@example.com",
+        "cedula": "N12345",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-10-16T03:00:00.000Z",
+      "hora": "16:00 - 16:30",
+      "categoria": {
+        "id": 5,
+        "descripcion": "Oftalmología",
+        "isEditing": false
+      }
+    },
+    "categoria": { "id": 4, "descripcion": "Neurología", "isEditing": false }
+  },
+  {
+    "id": 9,
+    "paciente": {
+      "idPersona": 19,
+      "nombre": "Logan",
+      "apellido": "Evans",
+      "telefono": "555-654-3210",
+      "email": "loganevans@example.com",
+      "cedula": "M54321",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 9,
+      "nombre": "Michael",
+      "apellido": "Johnson",
+      "telefono": "555-789-1234",
+      "email": "michaeljohnson@example.com",
+      "cedula": "C98765",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Dolor de garganta",
+    "diagnostico": "Amigdalitis",
+    "fecha": "2023-09-17T04:00:00.000Z",
+    "reserva": {
+      "id": 51,
+      "doctor": {
+        "idPersona": 9,
+        "nombre": "Michael",
+        "apellido": "Johnson",
+        "telefono": "555-789-1234",
+        "email": "michaeljohnson@example.com",
+        "cedula": "C98765",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 14,
+        "nombre": "Olivia",
+        "apellido": "Miller",
+        "telefono": "555-432-1098",
+        "email": "oliviamiller@example.com",
+        "cedula": "H12345",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-09-17T04:00:00.000Z",
+      "hora": "16:30 - 17:00",
+      "categoria": { "id": 1, "descripcion": "Cardiología", "isEditing": false }
+    },
+    "categoria": { "id": 10, "descripcion": "Urología", "isEditing": false }
+  },
+  {
+    "id": 10,
+    "paciente": {
+      "idPersona": 20,
+      "nombre": "Mia",
+      "apellido": "Foster",
+      "telefono": "555-432-1098",
+      "email": "miafoster@example.com",
+      "cedula": "N12345",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 10,
+      "nombre": "Sarah",
+      "apellido": "Brown",
+      "telefono": "555-234-5678",
+      "email": "sarahbrown@example.com",
+      "cedula": "D54321",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Mareos",
+    "diagnostico": "Vértigo",
+    "fecha": "2023-09-06T04:00:00.000Z",
+    "reserva": {
+      "id": 125,
+      "doctor": {
+        "idPersona": 10,
+        "nombre": "Sarah",
+        "apellido": "Brown",
+        "telefono": "555-234-5678",
+        "email": "sarahbrown@example.com",
+        "cedula": "D54321",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 23,
+        "nombre": "Olivia",
+        "apellido": "Jackson",
+        "telefono": "555-234-5678",
+        "email": "oliviajackson@example.com",
+        "cedula": "Q12345",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-09-06T04:00:00.000Z",
+      "hora": "10:00 - 10:30",
+      "categoria": {
+        "id": 5,
+        "descripcion": "Oftalmología",
+        "isEditing": false
+      }
+    },
+    "categoria": { "id": 1, "descripcion": "Cardiología", "isEditing": false }
+  },
+  {
+    "id": 11,
+    "paciente": {
+      "idPersona": 21,
+      "nombre": "Noah",
+      "apellido": "Garcia",
+      "telefono": "555-789-1234",
+      "email": "noahgarcia@example.com",
+      "cedula": "O98765",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 1,
+      "nombre": "John",
+      "apellido": "Doe",
+      "telefono": "123-456-7890",
+      "email": "john.doe@example.com",
+      "cedula": "A12345",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Dolor de cabeza",
+    "diagnostico": "Migraña",
+    "fecha": "2023-10-09T03:00:00.000Z",
+    "reserva": {
+      "id": 34,
+      "doctor": {
+        "idPersona": 9,
+        "nombre": "Michael",
+        "apellido": "Johnson",
+        "telefono": "555-789-1234",
+        "email": "michaeljohnson@example.com",
+        "cedula": "C98765",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 17,
+        "nombre": "Ethan",
+        "apellido": "Clark",
+        "telefono": "555-876-5432",
+        "email": "ethanclark@example.com",
+        "cedula": "K12345",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-10-09T03:00:00.000Z",
+      "hora": "08:00 - 08:30",
+      "categoria": { "id": 4, "descripcion": "Neurología", "isEditing": false }
+    },
+    "categoria": { "id": 8, "descripcion": "Psiquiatría", "isEditing": false }
+  },
+  {
+    "id": 12,
+    "paciente": {
+      "idPersona": 22,
+      "nombre": "Liam",
+      "apellido": "Harris",
+      "telefono": "555-987-6543",
+      "email": "liamharris@example.com",
+      "cedula": "P54321",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 2,
+      "nombre": "Jane",
+      "apellido": "Smith",
+      "telefono": "987-654-3210",
+      "email": "jane.smith@example.com",
+      "cedula": "B67890",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Fiebre",
+    "diagnostico": "Resfriado común",
+    "fecha": "2023-09-11T04:00:00.000Z",
+    "reserva": {
+      "id": 173,
+      "doctor": {
+        "idPersona": 10,
+        "nombre": "Sarah",
+        "apellido": "Brown",
+        "telefono": "555-234-5678",
+        "email": "sarahbrown@example.com",
+        "cedula": "D54321",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 22,
+        "nombre": "Liam",
+        "apellido": "Harris",
+        "telefono": "555-987-6543",
+        "email": "liamharris@example.com",
+        "cedula": "P54321",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-09-11T04:00:00.000Z",
+      "hora": "09:00 - 09:30",
+      "categoria": {
+        "id": 3,
+        "descripcion": "Gastroenterología",
+        "isEditing": false
+      }
+    },
+    "categoria": {
+      "id": 3,
+      "descripcion": "Gastroenterología",
+      "isEditing": false
+    }
+  },
+  {
+    "id": 13,
+    "paciente": {
+      "idPersona": 23,
+      "nombre": "Olivia",
+      "apellido": "Jackson",
+      "telefono": "555-234-5678",
+      "email": "oliviajackson@example.com",
+      "cedula": "Q12345",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 3,
+      "nombre": "Dr. Robert",
+      "apellido": "Johnson",
+      "telefono": "555-555-5555",
+      "email": "dr.robert@example.com",
+      "cedula": "C54321",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Dolor abdominal",
+    "diagnostico": "Apendicitis",
+    "fecha": "2023-09-18T04:00:00.000Z",
+    "reserva": {
+      "id": 44,
+      "doctor": {
+        "idPersona": 1,
+        "nombre": "John",
+        "apellido": "Doe",
+        "telefono": "123-456-7890",
+        "email": "john.doe@example.com",
+        "cedula": "A12345",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 24,
+        "nombre": "Emma",
+        "apellido": "King",
+        "telefono": "555-876-5432",
+        "email": "emmaking@example.com",
+        "cedula": "R98765",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-09-18T04:00:00.000Z",
+      "hora": "08:00 - 08:30",
+      "categoria": { "id": 4, "descripcion": "Neurología", "isEditing": false }
+    },
+    "categoria": { "id": 6, "descripcion": "Ortopedia", "isEditing": false }
+  },
+  {
+    "id": 14,
+    "paciente": {
+      "idPersona": 24,
+      "nombre": "Emma",
+      "apellido": "King",
+      "telefono": "555-876-5432",
+      "email": "emmaking@example.com",
+      "cedula": "R98765",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 4,
+      "nombre": "Dr. Sarah",
+      "apellido": "Brown",
+      "telefono": "444-444-4444",
+      "email": "dr.sarah@example.com",
+      "cedula": "D98765",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Fatiga",
+    "diagnostico": "Anemia",
+    "fecha": "2023-08-25T04:00:00.000Z",
+    "reserva": {
+      "id": 94,
+      "doctor": {
+        "idPersona": 15,
+        "nombre": "William",
+        "apellido": "Anderson",
+        "telefono": "555-987-6543",
+        "email": "williamanderson@example.com",
+        "cedula": "I98765",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 23,
+        "nombre": "Olivia",
+        "apellido": "Jackson",
+        "telefono": "555-234-5678",
+        "email": "oliviajackson@example.com",
+        "cedula": "Q12345",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-08-25T04:00:00.000Z",
+      "hora": "13:00 - 13:30",
+      "categoria": { "id": 4, "descripcion": "Neurología", "isEditing": false }
+    },
+    "categoria": { "id": 9, "descripcion": "Radiología", "isEditing": false }
+  },
+  {
+    "id": 15,
+    "paciente": {
+      "idPersona": 11,
+      "nombre": "David",
+      "apellido": "Wilson",
+      "telefono": "555-876-5432",
+      "email": "davidwilson@example.com",
+      "cedula": "E12345",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 5,
+      "nombre": "Rebecka",
+      "apellido": "Piper",
+      "telefono": "292-552-6705",
+      "email": "rpiper0@storify.com",
+      "cedula": "8049789",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Dolor en el pecho",
+    "diagnostico": "Infarto de miocardio",
+    "fecha": "2023-08-04T04:00:00.000Z",
+    "reserva": {
+      "id": 115,
+      "doctor": {
+        "idPersona": 10,
+        "nombre": "Sarah",
+        "apellido": "Brown",
+        "telefono": "555-234-5678",
+        "email": "sarahbrown@example.com",
+        "cedula": "D54321",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 24,
+        "nombre": "Emma",
+        "apellido": "King",
+        "telefono": "555-876-5432",
+        "email": "emmaking@example.com",
+        "cedula": "R98765",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-08-04T04:00:00.000Z",
+      "hora": "19:30 - 20:00",
+      "categoria": {
+        "id": 5,
+        "descripcion": "Oftalmología",
+        "isEditing": false
+      }
+    },
+    "categoria": { "id": 5, "descripcion": "Oftalmología", "isEditing": false }
+  },
+  {
+    "id": 16,
+    "paciente": {
+      "idPersona": 12,
+      "nombre": "Emily",
+      "apellido": "Jones",
+      "telefono": "555-345-6789",
+      "email": "emilyjones@example.com",
+      "cedula": "F98765",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 6,
+      "nombre": "Wilburt",
+      "apellido": "Garric",
+      "telefono": "303-550-9242",
+      "email": "wgarric0@networkadvertising.org",
+      "cedula": "D98765",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Náuseas",
+    "diagnostico": "Gastritis",
+    "fecha": "2023-08-26T04:00:00.000Z",
+    "reserva": {
+      "id": 89,
+      "doctor": {
+        "idPersona": 8,
+        "nombre": "Ivan",
+        "apellido": "Weiss",
+        "telefono": "555-987-6723",
+        "email": "ivanweiss@example.com",
+        "cedula": "B54947",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 15,
+        "nombre": "William",
+        "apellido": "Anderson",
+        "telefono": "555-987-6543",
+        "email": "williamanderson@example.com",
+        "cedula": "I98765",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-08-26T04:00:00.000Z",
+      "hora": "14:00 - 14:30",
+      "categoria": { "id": 9, "descripcion": "Radiología", "isEditing": false }
+    },
+    "categoria": { "id": 2, "descripcion": "Dermatología", "isEditing": false }
+  },
+  {
+    "id": 17,
+    "paciente": {
+      "idPersona": 13,
+      "nombre": "James",
+      "apellido": "Davis",
+      "telefono": "555-654-3210",
+      "email": "jamesdavis@example.com",
+      "cedula": "G54321",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 7,
+      "nombre": "Emilio",
+      "apellido": "Ginzo",
+      "telefono": "555-123-4956",
+      "email": "emilioginzo@example.com",
+      "cedula": "A12123",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Problemas respiratorios",
+    "diagnostico": "Asma",
+    "fecha": "2023-08-01T04:00:00.000Z",
+    "reserva": {
+      "id": 1,
+      "doctor": {
+        "idPersona": 3,
+        "nombre": "Dr. Robert",
+        "apellido": "Johnson",
+        "telefono": "555-555-5555",
+        "email": "dr.robert@example.com",
+        "cedula": "C54321",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 14,
+        "nombre": "Olivia",
+        "apellido": "Miller",
+        "telefono": "555-432-1098",
+        "email": "oliviamiller@example.com",
+        "cedula": "H12345",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-08-01T04:00:00.000Z",
+      "hora": "08:00 - 08:30",
+      "categoria": { "id": 1, "descripcion": "Cardiología", "isEditing": false }
+    },
+    "categoria": { "id": 4, "descripcion": "Neurología", "isEditing": false }
+  },
+  {
+    "id": 18,
+    "paciente": {
+      "idPersona": 14,
+      "nombre": "Olivia",
+      "apellido": "Miller",
+      "telefono": "555-432-1098",
+      "email": "oliviamiller@example.com",
+      "cedula": "H12345",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 8,
+      "nombre": "Ivan",
+      "apellido": "Weiss",
+      "telefono": "555-987-6723",
+      "email": "ivanweiss@example.com",
+      "cedula": "B54947",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Dolor de espalda",
+    "diagnostico": "Hernia de disco",
+    "fecha": "2023-08-14T04:00:00.000Z",
+    "reserva": {
+      "id": 143,
+      "doctor": {
+        "idPersona": 3,
+        "nombre": "Dr. Robert",
+        "apellido": "Johnson",
+        "telefono": "555-555-5555",
+        "email": "dr.robert@example.com",
+        "cedula": "C54321",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 22,
+        "nombre": "Liam",
+        "apellido": "Harris",
+        "telefono": "555-987-6543",
+        "email": "liamharris@example.com",
+        "cedula": "P54321",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-08-14T04:00:00.000Z",
+      "hora": "18:00 - 18:30",
+      "categoria": {
+        "id": 3,
+        "descripcion": "Gastroenterología",
+        "isEditing": false
+      }
+    },
+    "categoria": { "id": 7, "descripcion": "Pediatría", "isEditing": false }
+  },
+  {
+    "id": 19,
+    "paciente": {
+      "idPersona": 15,
+      "nombre": "William",
+      "apellido": "Anderson",
+      "telefono": "555-987-6543",
+      "email": "williamanderson@example.com",
+      "cedula": "I98765",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 9,
+      "nombre": "Michael",
+      "apellido": "Johnson",
+      "telefono": "555-789-1234",
+      "email": "michaeljohnson@example.com",
+      "cedula": "C98765",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Dolor de garganta",
+    "diagnostico": "Amigdalitis",
+    "fecha": "2023-10-07T03:00:00.000Z",
+    "reserva": {
+      "id": 117,
+      "doctor": {
+        "idPersona": 8,
+        "nombre": "Ivan",
+        "apellido": "Weiss",
+        "telefono": "555-987-6723",
+        "email": "ivanweiss@example.com",
+        "cedula": "B54947",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 20,
+        "nombre": "Mia",
+        "apellido": "Foster",
+        "telefono": "555-432-1098",
+        "email": "miafoster@example.com",
+        "cedula": "N12345",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-10-07T03:00:00.000Z",
+      "hora": "15:30 - 16:00",
+      "categoria": { "id": 7, "descripcion": "Pediatría", "isEditing": false }
+    },
+    "categoria": { "id": 10, "descripcion": "Urología", "isEditing": false }
+  },
+  {
+    "id": 20,
+    "paciente": {
+      "idPersona": 16,
+      "nombre": "Sophia",
+      "apellido": "Brown",
+      "telefono": "555-234-5678",
+      "email": "sophiabrown@example.com",
+      "cedula": "J54321",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 10,
+      "nombre": "Sarah",
+      "apellido": "Brown",
+      "telefono": "555-234-5678",
+      "email": "sarahbrown@example.com",
+      "cedula": "D54321",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Mareos",
+    "diagnostico": "Vértigo",
+    "fecha": "2023-08-16T04:00:00.000Z",
+    "reserva": {
+      "id": 103,
+      "doctor": {
+        "idPersona": 6,
+        "nombre": "Wilburt",
+        "apellido": "Garric",
+        "telefono": "303-550-9242",
+        "email": "wgarric0@networkadvertising.org",
+        "cedula": "D98765",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 20,
+        "nombre": "Mia",
+        "apellido": "Foster",
+        "telefono": "555-432-1098",
+        "email": "miafoster@example.com",
+        "cedula": "N12345",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-08-16T04:00:00.000Z",
+      "hora": "16:30 - 17:00",
+      "categoria": {
+        "id": 3,
+        "descripcion": "Gastroenterología",
+        "isEditing": false
+      }
+    },
+    "categoria": { "id": 1, "descripcion": "Cardiología", "isEditing": false }
+  },
+  {
+    "id": 21,
+    "paciente": {
+      "idPersona": 17,
+      "nombre": "Ethan",
+      "apellido": "Clark",
+      "telefono": "555-876-5432",
+      "email": "ethanclark@example.com",
+      "cedula": "K12345",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 1,
+      "nombre": "John",
+      "apellido": "Doe",
+      "telefono": "123-456-7890",
+      "email": "john.doe@example.com",
+      "cedula": "A12345",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Dolor de cabeza",
+    "diagnostico": "Migraña",
+    "fecha": "2023-10-08T03:00:00.000Z",
+    "reserva": {
+      "id": 130,
+      "doctor": {
+        "idPersona": 5,
+        "nombre": "Rebecka",
+        "apellido": "Piper",
+        "telefono": "292-552-6705",
+        "email": "rpiper0@storify.com",
+        "cedula": "8049789",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 22,
+        "nombre": "Liam",
+        "apellido": "Harris",
+        "telefono": "555-987-6543",
+        "email": "liamharris@example.com",
+        "cedula": "P54321",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-10-08T03:00:00.000Z",
+      "hora": "13:00 - 13:30",
+      "categoria": { "id": 10, "descripcion": "Urología", "isEditing": false }
+    },
+    "categoria": { "id": 5, "descripcion": "Oftalmología", "isEditing": false }
+  },
+  {
+    "id": 22,
+    "paciente": {
+      "idPersona": 18,
+      "nombre": "Ava",
+      "apellido": "Davis",
+      "telefono": "555-345-6789",
+      "email": "avadavis@example.com",
+      "cedula": "L98765",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 2,
+      "nombre": "Jane",
+      "apellido": "Smith",
+      "telefono": "987-654-3210",
+      "email": "jane.smith@example.com",
+      "cedula": "B67890",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Fiebre",
+    "diagnostico": "Resfriado común",
+    "fecha": "2023-08-16T04:00:00.000Z",
+    "reserva": {
+      "id": 50,
+      "doctor": {
+        "idPersona": 1,
+        "nombre": "John",
+        "apellido": "Doe",
+        "telefono": "123-456-7890",
+        "email": "john.doe@example.com",
+        "cedula": "A12345",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 15,
+        "nombre": "William",
+        "apellido": "Anderson",
+        "telefono": "555-987-6543",
+        "email": "williamanderson@example.com",
+        "cedula": "I98765",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-08-16T04:00:00.000Z",
+      "hora": "08:30 - 09:00",
+      "categoria": { "id": 10, "descripcion": "Urología", "isEditing": false }
+    },
+    "categoria": {
+      "id": 3,
+      "descripcion": "Gastroenterología",
+      "isEditing": false
+    }
+  },
+  {
+    "id": 23,
+    "paciente": {
+      "idPersona": 19,
+      "nombre": "Logan",
+      "apellido": "Evans",
+      "telefono": "555-654-3210",
+      "email": "loganevans@example.com",
+      "cedula": "M54321",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 3,
+      "nombre": "Dr. Robert",
+      "apellido": "Johnson",
+      "telefono": "555-555-5555",
+      "email": "dr.robert@example.com",
+      "cedula": "C54321",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Dolor abdominal",
+    "diagnostico": "Apendicitis",
+    "fecha": "2023-08-14T04:00:00.000Z",
+    "reserva": {
+      "id": 30,
+      "doctor": {
+        "idPersona": 3,
+        "nombre": "Dr. Robert",
+        "apellido": "Johnson",
+        "telefono": "555-555-5555",
+        "email": "dr.robert@example.com",
+        "cedula": "C54321",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 22,
+        "nombre": "Liam",
+        "apellido": "Harris",
+        "telefono": "555-987-6543",
+        "email": "liamharris@example.com",
+        "cedula": "P54321",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-08-25T04:00:00.000Z",
+      "hora": "12:00 - 12:30",
+      "categoria": { "id": 10, "descripcion": "Urología", "isEditing": false }
+    },
+    "categoria": { "id": 9, "descripcion": "Radiología", "isEditing": false }
+  },
+  {
+    "id": 24,
+    "paciente": {
+      "idPersona": 20,
+      "nombre": "Mia",
+      "apellido": "Foster",
+      "telefono": "555-432-1098",
+      "email": "miafoster@example.com",
+      "cedula": "N12345",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 4,
+      "nombre": "Dr. Sarah",
+      "apellido": "Brown",
+      "telefono": "444-444-4444",
+      "email": "dr.sarah@example.com",
+      "cedula": "D98765",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Fatiga",
+    "diagnostico": "Anemia",
+    "fecha": "2023-08-11T04:00:00.000Z",
+    "reserva": {
+      "id": 146,
+      "doctor": {
+        "idPersona": 10,
+        "nombre": "Sarah",
+        "apellido": "Brown",
+        "telefono": "555-234-5678",
+        "email": "sarahbrown@example.com",
+        "cedula": "D54321",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 24,
+        "nombre": "Emma",
+        "apellido": "King",
+        "telefono": "555-876-5432",
+        "email": "emmaking@example.com",
+        "cedula": "R98765",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-08-11T04:00:00.000Z",
+      "hora": "14:30 - 15:00",
+      "categoria": { "id": 6, "descripcion": "Ortopedia", "isEditing": false }
+    },
+    "categoria": { "id": 8, "descripcion": "Psiquiatría", "isEditing": false }
+  },
+  {
+    "id": 25,
+    "paciente": {
+      "idPersona": 21,
+      "nombre": "Noah",
+      "apellido": "Garcia",
+      "telefono": "555-789-1234",
+      "email": "noahgarcia@example.com",
+      "cedula": "O98765",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 5,
+      "nombre": "Rebecka",
+      "apellido": "Piper",
+      "telefono": "292-552-6705",
+      "email": "rpiper0@storify.com",
+      "cedula": "8049789",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Dolor en el pecho",
+    "diagnostico": "Infarto de miocardio",
+    "fecha": "2023-08-08T04:00:00.000Z",
+    "reserva": {
+      "id": 196,
+      "doctor": {
+        "idPersona": 3,
+        "nombre": "Dr. Robert",
+        "apellido": "Johnson",
+        "telefono": "555-555-5555",
+        "email": "dr.robert@example.com",
+        "cedula": "C54321",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 24,
+        "nombre": "Emma",
+        "apellido": "King",
+        "telefono": "555-876-5432",
+        "email": "emmaking@example.com",
+        "cedula": "R98765",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-08-08T04:00:00.000Z",
+      "hora": "19:00 - 19:30",
+      "categoria": { "id": 6, "descripcion": "Ortopedia", "isEditing": false }
+    },
+    "categoria": { "id": 4, "descripcion": "Neurología", "isEditing": false }
+  },
+  {
+    "id": 26,
+    "paciente": {
+      "idPersona": 22,
+      "nombre": "Liam",
+      "apellido": "Harris",
+      "telefono": "555-987-6543",
+      "email": "liamharris@example.com",
+      "cedula": "P54321",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 6,
+      "nombre": "Wilburt",
+      "apellido": "Garric",
+      "telefono": "303-550-9242",
+      "email": "wgarric0@networkadvertising.org",
+      "cedula": "D98765",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Náuseas",
+    "diagnostico": "Gastritis",
+    "fecha": "2023-08-01T04:00:00.000Z",
+    "reserva": {
+      "id": 153,
+      "doctor": {
+        "idPersona": 7,
+        "nombre": "Emilio",
+        "apellido": "Ginzo",
+        "telefono": "555-123-4956",
+        "email": "emilioginzo@example.com",
+        "cedula": "A12123",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 16,
+        "nombre": "Sophia",
+        "apellido": "Brown",
+        "telefono": "555-234-5678",
+        "email": "sophiabrown@example.com",
+        "cedula": "J54321",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-08-01T04:00:00.000Z",
+      "hora": "20:30 - 21:00",
+      "categoria": {
+        "id": 3,
+        "descripcion": "Gastroenterología",
+        "isEditing": false
+      }
+    },
+    "categoria": { "id": 10, "descripcion": "Urología", "isEditing": false }
+  },
+  {
+    "id": 27,
+    "paciente": {
+      "idPersona": 23,
+      "nombre": "Olivia",
+      "apellido": "Jackson",
+      "telefono": "555-234-5678",
+      "email": "oliviajackson@example.com",
+      "cedula": "Q12345",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 7,
+      "nombre": "Emilio",
+      "apellido": "Ginzo",
+      "telefono": "555-123-4956",
+      "email": "emilioginzo@example.com",
+      "cedula": "A12123",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Problemas respiratorios",
+    "diagnostico": "Asma",
+    "fecha": "2023-08-23T04:00:00.000Z",
+    "reserva": {
+      "id": 169,
+      "doctor": {
+        "idPersona": 3,
+        "nombre": "Dr. Robert",
+        "apellido": "Johnson",
+        "telefono": "555-555-5555",
+        "email": "dr.robert@example.com",
+        "cedula": "C54321",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 18,
+        "nombre": "Ava",
+        "apellido": "Davis",
+        "telefono": "555-345-6789",
+        "email": "avadavis@example.com",
+        "cedula": "L98765",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-09-04T04:00:00.000Z",
+      "hora": "17:00 - 17:30",
+      "categoria": { "id": 9, "descripcion": "Radiología", "isEditing": false }
+    },
+    "categoria": { "id": 6, "descripcion": "Ortopedia", "isEditing": false }
+  },
+  {
+    "id": 28,
+    "paciente": {
+      "idPersona": 24,
+      "nombre": "Emma",
+      "apellido": "King",
+      "telefono": "555-876-5432",
+      "email": "emmaking@example.com",
+      "cedula": "R98765",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 8,
+      "nombre": "Ivan",
+      "apellido": "Weiss",
+      "telefono": "555-987-6723",
+      "email": "ivanweiss@example.com",
+      "cedula": "B54947",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Dolor de espalda",
+    "diagnostico": "Hernia de disco",
+    "fecha": "2023-09-03T04:00:00.000Z",
+    "reserva": {
+      "id": 25,
+      "doctor": {
+        "idPersona": 8,
+        "nombre": "Ivan",
+        "apellido": "Weiss",
+        "telefono": "555-987-6723",
+        "email": "ivanweiss@example.com",
+        "cedula": "B54947",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 14,
+        "nombre": "Olivia",
+        "apellido": "Miller",
+        "telefono": "555-432-1098",
+        "email": "oliviamiller@example.com",
+        "cedula": "H12345",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-09-14T04:00:00.000Z",
+      "hora": "10:00 - 10:30",
+      "categoria": {
+        "id": 5,
+        "descripcion": "Oftalmología",
+        "isEditing": false
+      }
+    },
+    "categoria": { "id": 7, "descripcion": "Pediatría", "isEditing": false }
+  },
+  {
+    "id": 29,
+    "paciente": {
+      "idPersona": 11,
+      "nombre": "David",
+      "apellido": "Wilson",
+      "telefono": "555-876-5432",
+      "email": "davidwilson@example.com",
+      "cedula": "E12345",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 9,
+      "nombre": "Michael",
+      "apellido": "Johnson",
+      "telefono": "555-789-1234",
+      "email": "michaeljohnson@example.com",
+      "cedula": "C98765",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Dolor de garganta",
+    "diagnostico": "Amigdalitis",
+    "fecha": "2023-08-13T04:00:00.000Z",
+    "reserva": {
+      "id": 166,
+      "doctor": {
+        "idPersona": 3,
+        "nombre": "Dr. Robert",
+        "apellido": "Johnson",
+        "telefono": "555-555-5555",
+        "email": "dr.robert@example.com",
+        "cedula": "C54321",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 19,
+        "nombre": "Logan",
+        "apellido": "Evans",
+        "telefono": "555-654-3210",
+        "email": "loganevans@example.com",
+        "cedula": "M54321",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-08-13T04:00:00.000Z",
+      "hora": "11:30 - 12:00",
+      "categoria": { "id": 6, "descripcion": "Ortopedia", "isEditing": false }
+    },
+    "categoria": { "id": 2, "descripcion": "Dermatología", "isEditing": false }
+  },
+  {
+    "id": 30,
+    "paciente": {
+      "idPersona": 12,
+      "nombre": "Emily",
+      "apellido": "Jones",
+      "telefono": "555-345-6789",
+      "email": "emilyjones@example.com",
+      "cedula": "F98765",
+      "flag_es_doctor": false,
+      "isEditing": false
+    },
+    "doctor": {
+      "idPersona": 10,
+      "nombre": "Sarah",
+      "apellido": "Brown",
+      "telefono": "555-234-5678",
+      "email": "sarahbrown@example.com",
+      "cedula": "D54321",
+      "flag_es_doctor": true,
+      "isEditing": false
+    },
+    "motivoConsulta": "Mareos",
+    "diagnostico": "Vértigo",
+    "fecha": "2023-08-19T04:00:00.000Z",
+    "reserva": {
+      "id": 35,
+      "doctor": {
+        "idPersona": 5,
+        "nombre": "Rebecka",
+        "apellido": "Piper",
+        "telefono": "292-552-6705",
+        "email": "rpiper0@storify.com",
+        "cedula": "8049789",
+        "flag_es_doctor": true,
+        "isEditing": false
+      },
+      "paciente": {
+        "idPersona": 20,
+        "nombre": "Mia",
+        "apellido": "Foster",
+        "telefono": "555-432-1098",
+        "email": "miafoster@example.com",
+        "cedula": "N12345",
+        "flag_es_doctor": false,
+        "isEditing": false
+      },
+      "fecha": "2023-08-19T04:00:00.000Z",
+      "hora": "20:00 - 20:30",
+      "categoria": {
+        "id": 5,
+        "descripcion": "Oftalmología",
+        "isEditing": false
+      }
+    },
+    "categoria": { "id": 1, "descripcion": "Cardiología", "isEditing": false }
+  }
+]
