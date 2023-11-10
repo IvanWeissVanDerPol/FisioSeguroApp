@@ -10,3 +10,7 @@ path_provider_android=/home/ant/.pub-cache/hosted/pub.dev/path_provider_android-
 path_provider_foundation=/home/ant/.pub-cache/hosted/pub.dev/path_provider_foundation-2.3.1/
 path_provider_linux=/home/ant/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
 path_provider_windows=/home/ant/.pub-cache/hosted/pub.dev/path_provider_windows-2.2.1/
+permission_handler=/home/ant/.pub-cache/hosted/pub.dev/permission_handler-11.0.1/
+permission_handler_android=/home/ant/.pub-cache/hosted/pub.dev/permission_handler_android-11.1.0/
+permission_handler_apple=/home/ant/.pub-cache/hosted/pub.dev/permission_handler_apple-9.1.4/
+permission_handler_windows=/home/ant/.pub-cache/hosted/pub.dev/permission_handler_windows-0.1.3/
