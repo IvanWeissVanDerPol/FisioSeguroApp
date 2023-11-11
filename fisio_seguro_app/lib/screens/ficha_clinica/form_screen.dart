@@ -106,7 +106,7 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Reserva de turnos')),
+      appBar: AppBar(title: const Text('Reserva de fichas')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

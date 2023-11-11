@@ -43,9 +43,9 @@ class _FichasMenu extends State<FichasMenu> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                  ActionCard(icon: Icons.auto_stories,title: 'Registro de Fichas', description: '', onTap: () { context.push('/ReservaDeTurnosFormScreen'); },),
+                  ActionCard(icon: Icons.auto_stories,title: 'Registro de Fichas', description: '', onTap: () { context.push('/FichaClinicaFormScreen'); },),
                   const SizedBox(height: 20.0),
-                  ActionCard(icon: Icons.auto_stories,title: 'Lista De Fichas', description: '', onTap: () { context.push('/ReservaDeTurnosListScreen'); },),
+                  ActionCard(icon: Icons.auto_stories,title: 'Lista De Fichas', description: '', onTap: () { context.push('/FichaClinicaListScreen'); },),
                   const SizedBox(height: 20.0),
                   ],
               ),
