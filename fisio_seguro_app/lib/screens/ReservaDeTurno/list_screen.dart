@@ -5,11 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:intl/intl.dart';
-import 'package:pdf/widgets.dart' as pw;
-import 'package:pdf/pdf.dart';
-import 'package:excel/excel.dart';
-import 'dart:io';
-import 'package:permission_handler/permission_handler.dart';
 
 class ListaDeTurnosScreen extends StatefulWidget {
   const ListaDeTurnosScreen({Key? key}) : super(key: key);
@@ -254,87 +249,11 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
                   );
                 },
               ),
-              ElevatedButton(
-                onPressed: _exportToPDF,
-                child: const Text('PDF'),
-              ),
-              ElevatedButton(
-                onPressed: _exportToExcel,
-                child: const Text('Excel'),
-              ),
             ],
           ),
         ),
       ),
     );
-  }
-
-  Future<void> _exportToPDF() async {
-    print("entre");
-    await requestStoragePermission();
-    final pdf = pw.Document();
-    pdf.addPage(
-      pw.Page(
-        build: (pw.Context context) {
-          return pw.ListView.builder(
-            itemCount: turnos.length,
-            itemBuilder: (context, index) {
-              final turno = turnos[index];
-              return pw.Text(
-                  'Paciente: ${turno['paciente']['nombre']} ${turno['paciente']['apellido']}');
-              // Agrega más detalles según sea necesario
-            },
-          );
-        },
-      ),
-    );
-    final directory =
-        await getExternalStorageDirectory(); // Obtiene la carpeta de descargas
-    final path =
-        directory?.path ?? (await getApplicationDocumentsDirectory()).path;
-    final file = File('$path/turnos.pdf');
-    //final directory = await getApplicationDocumentsDirectory();
-    //final file = File('${directory.path}/turnos.pdf');
-    print(file.path);
-    await file.writeAsBytes(await pdf.save());
-  }
-
-  Future<void> _exportToExcel() async {
-    print("entre");
-    await requestStoragePermission();
-    var excel = Excel.createExcel();
-    Sheet sheetObject = excel['Sheet1'];
-
-    for (var i = 0; i < turnos.length; i++) {
-      var turno = turnos[i];
-      sheetObject.cell(CellIndex.indexByString("A${i + 1}")).value =
-          '${turno['paciente']['nombre']} ${turno['paciente']['apellido']}';
-      // Agrega más celdas según sea necesario
-    }
-
-    //final directory = await getApplicationDocumentsDirectory();
-    //final file = File('${directory.path}/turnos.xlsx');
-    final directory =
-        await getExternalStorageDirectory(); // Obtiene la carpeta de descargas
-    final path =
-        directory?.path ?? (await getApplicationDocumentsDirectory()).path;
-    final file = File('$path/turnos.xlsx');
-    //await file.writeAsBytes(excel.save());
-    // Asegúrate de que el resultado de save() no sea nulo
-    final bytes = await excel.save();
-    if (bytes != null) {
-      await file.writeAsBytes(bytes);
-    } else {
-      // Manejar el caso en que bytes es nulo
-      print("No se pudo generar el archivo Excel");
-    }
-  }
-
-  Future<void> requestStoragePermission() async {
-    var status = await Permission.storage.status;
-    if (!status.isGranted) {
-      await Permission.storage.request();
-    }
   }
 
   void _editTurno(int index) {
