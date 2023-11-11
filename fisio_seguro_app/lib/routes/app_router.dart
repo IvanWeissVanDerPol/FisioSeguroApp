@@ -8,6 +8,8 @@ import 'package:fisio_seguro_app/screens/ReservaDeTurno/menu_screen.dart';
 import 'package:fisio_seguro_app/screens/auth/main_screen.dart';
 import 'package:fisio_seguro_app/screens/Consulta/consulta_screen.dart';
 import 'package:fisio_seguro_app/screens/ficha_clinica/form_screen.dart';
+import 'package:fisio_seguro_app/screens/ficha_clinica/form_screen_con_reserva.dart';
+import 'package:fisio_seguro_app/screens/ficha_clinica/form_screen_sin_reserva.dart';
 import 'package:fisio_seguro_app/screens/ficha_clinica/list_screen.dart';
 import 'package:fisio_seguro_app/screens/ficha_clinica/menu_screen.dart';
 import 'package:fisio_seguro_app/screens/home/home_screen.dart';
@@ -94,7 +96,17 @@ class AppRouter {
       GoRoute(
         path: '/FichaClinicaFormScreen',
         pageBuilder: (context, state) =>
-            const MaterialPage(child: FichaClinicaFormScreen()),
+            const MaterialPage(child: CrearFichasMenu()),
+      ),
+      GoRoute(
+        path: '/FichaClinicaFormScreenConReserva',
+        pageBuilder: (context, state) => 
+          const MaterialPage(child: FichaClinicaFormScreenConReserva()),
+      ),
+      GoRoute(
+        path: '/FichaClinicaFormScreenSinReserva',
+        pageBuilder: (context, state) => 
+          const MaterialPage(child: FichaClinicaFormScreenSinReserva()),
       ),
       GoRoute(
         path: '/FichaClinicaListScreen',
