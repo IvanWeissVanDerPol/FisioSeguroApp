@@ -25,6 +25,7 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
   String? selectedPaciente;
   String? selectedDoctor;
   String? selectedCategory;
+  String? selectedTurnos;
   TextEditingController selectedMotivo = TextEditingController();
   TextEditingController selectedDiagnostico = TextEditingController();
   late String filePathFichas;
@@ -72,6 +73,28 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
     });
   }
 
+  List<DropdownMenuItem<String>> _listaTurnos() {
+    print('Longitud de la lista de turnos: ${turnos.length}');//para revisar cuantos turnos hay
+    List<DropdownMenuItem<String>> listaTurnos = turnos
+      .map((turnos) {
+        String nombreDoctor = turnos['doctor']['nombre'];
+        String nombrePaciente = turnos['paciente']['nombre'];
+        String fecha = DateTime.parse(turnos['fecha']).toLocal().toString().split(' ')[0];
+        String hora = turnos['hora'];
+        String categoria = turnos['categoria']['descripcion'];
+
+        String displayText = '$nombreDoctor, $nombrePaciente, $fecha, $hora, $categoria';
+
+        return DropdownMenuItem<String>(
+          value: turnos['id'].toString(),
+          child: Text(displayText),
+        );
+      })
+      .toList();
+    return listaTurnos;
+  }
+
+
   List<DropdownMenuItem<String>> _listaPersonas(bool isDoctor) {
     List<DropdownMenuItem<String>> listaPacientes = personas
       .where((persona) => persona['isDoctor'] == isDoctor)
@@ -114,6 +137,23 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
             // Form for adding new turnos (nombre, apellido, telefono, email, cedula, checkbox is doctor)
             //make a form for the registration of a person
             // start then the name, then the last name, then the phone number, then the email, then the cedula number, then the checkbox for if it is a doctor or not
+           Container(
+              width: double.infinity,
+              child: DropdownButton<String>(
+                isExpanded: true,
+                value: selectedTurnos,
+                hint: const Text('Selecciona un turno'),
+                items: _listaTurnos(),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    if (newValue != null) {
+                      selectedTurnos = newValue;
+                    }
+                  });
+                },
+              ),
+            ),
+
             DropdownButton<String>(
             value: selectedPaciente, // El valor seleccionado (inicialmente null)
             hint: const Text('Selecciona un paciente'), // Texto que se muestra cuando no se ha seleccionado nada

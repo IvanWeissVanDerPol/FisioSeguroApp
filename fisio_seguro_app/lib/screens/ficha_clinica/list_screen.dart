@@ -128,7 +128,7 @@ class _ListaDeFichasClinicasScreen extends State<ListaDeFichasClinicasScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Reserva de turnos')),
+      appBar: AppBar(title: const Text('Ficha Clínicas')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
