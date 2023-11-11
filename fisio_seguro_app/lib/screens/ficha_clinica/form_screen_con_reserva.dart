@@ -11,7 +11,6 @@ class FichaClinicaFormScreenConReserva extends StatefulWidget {
   const FichaClinicaFormScreenConReserva({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _FichaClinicaFormScreenConReserva createState() => _FichaClinicaFormScreenConReserva();
 }
 
@@ -45,8 +44,8 @@ class _FichaClinicaFormScreenConReserva extends State<FichaClinicaFormScreenConR
     await file.writeAsString(data);
   }
 
-//si el archivo no existe, lo crea y lo llena con el contenido del archivo persons.json
-// si el archivo existe, lo carga
+  //si el archivo no existe, lo crea y lo llena con el contenido del archivo persons.json
+  // si el archivo existe, lo carga
   Future<void> _initialize(String objeto) async {
     final directory = await getApplicationDocumentsDirectory();
     String filePath = '${directory.path}/$objeto.json';
@@ -74,7 +73,6 @@ class _FichaClinicaFormScreenConReserva extends State<FichaClinicaFormScreenConR
   }
 
 List<DropdownMenuItem<String>> _listaTurnos() {
-  print('Longitud de la lista de turnos: ${turnos.length}'); // para revisar cuantos turnos hay
   List<DropdownMenuItem<String>> listaTurnos = turnos
     .map((turno) {
       String nombreDoctor = turno['doctor']['nombre'];
@@ -94,38 +92,6 @@ List<DropdownMenuItem<String>> _listaTurnos() {
   return listaTurnos;
 }
 
-
-  List<DropdownMenuItem<String>> _listaPersonas(bool isDoctor) {
-    List<DropdownMenuItem<String>> listaPacientes = personas
-      .where((persona) => persona['isDoctor'] == isDoctor)
-      .map((persona) {
-        String nombre = persona['nombre'];
-        String apellido = persona['apellido'];
-        String personaId = persona['idPersona'].toString();
-        String nombreCompleto = '$nombre $apellido';
-        return DropdownMenuItem<String>(
-          value: personaId,
-          child: Text(nombreCompleto),
-        );
-      })
-      .toList();
-    return listaPacientes;
-  }
-
-  List<DropdownMenuItem<String>> _listaCategorias() {
-    List<DropdownMenuItem<String>> listaCategorias = categorias
-      .map((categoria) {
-        String nombre = categoria['descripcion'];
-        String categoriaId = categoria['id'].toString();
-        return DropdownMenuItem<String>(
-          value: categoriaId,
-          child: Text(nombre),
-        );
-      })
-      .toList();
-    return listaCategorias;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,113 +100,28 @@ List<DropdownMenuItem<String>> _listaTurnos() {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // Form for adding new turnos (nombre, apellido, telefono, email, cedula, checkbox is doctor)
-            //make a form for the registration of a person
-            // start then the name, then the last name, then the phone number, then the email, then the cedula number, then the checkbox for if it is a doctor or not
+            // Para añadir una nueva ficha
            Container(
               width: double.infinity,
               child: DropdownButton<String>(
                 isExpanded: true,
                 value: selectedTurnos,
-                hint: const Text('Selecciona una reserva de'),
+                hint: const Text('Selecciona una reserva de turno'),
                 items: _listaTurnos(),
                 onChanged: (String? newValue) {
                   setState(() {
                     if (newValue != null) {
                       selectedTurnos = newValue;
+                      selectedPaciente = turnos[int.parse(selectedTurnos!) - 1]['paciente']['idPersona'].toString();
+                      selectedDoctor = turnos[int.parse(selectedTurnos!) - 1]['doctor']['idPersona'].toString();
+                      selectedCategory = turnos[int.parse(selectedTurnos!) - 1]['categoria']['id'].toString();
+                      selectedDate = DateTime.parse(turnos[int.parse(selectedTurnos!) - 1]['fecha']);
+                      selectedTime = turnos[int.parse(selectedTurnos!) - 1]['hora'];
                     }
                   });
                 },
               ),
             ),
-
-            // DropdownButton<String>(
-            // value: selectedPaciente, // El valor seleccionado (inicialmente null)
-            // hint: const Text('Selecciona un paciente'), // Texto que se muestra cuando no se ha seleccionado nada
-            // items: _listaPersonas(false),
-            // onChanged: (String? newValue) {
-            //             setState(() {
-            //               if(newValue != null) {
-            //                 selectedPaciente = newValue;
-            //               }
-            //             });
-            //           },
-            // ),
-            // DropdownButton<String>(
-            // value: selectedDoctor, // El valor seleccionado (inicialmente null)
-            // hint: const Text('Selecciona un doctor'), // Texto que se muestra cuando no se ha seleccionado nada
-            // items: _listaPersonas(true),
-            // onChanged: (String? newValue) {
-            //             setState(() {
-            //               if(newValue != null) {
-            //                 selectedDoctor = newValue;
-            //               }
-            //             });
-            //           },
-            // ),
-            // TextFormField(
-            //   decoration: const InputDecoration(
-            //     hintText: 'Selecciona una fecha',
-            //   ),
-            //   onTap: () async {
-            //     DateTime? pickedDate = await showDatePicker(
-            //       context: context,
-            //       initialDate: DateTime.now(),
-            //       firstDate: DateTime(2000),
-            //       lastDate: DateTime(2100),
-            //     );
-
-            //     if (pickedDate != null && pickedDate != selectedDate) {
-            //       setState(() {
-            //         selectedDate = pickedDate;
-            //       });
-            //     }
-            //   },
-            //   controller: TextEditingController(text: selectedDate.toLocal().toString().split(' ')[0]),
-            //   readOnly: true,
-            // ),
-            // DropdownButton<String>(
-            //   value: selectedTime,
-            //   hint: const Text('Selecciona una hora'),
-            //   items: [
-            //     "09:00 - 10:00",
-            //     "10:00 - 11:00",
-            //     "11:00 - 12:00",
-            //     "12:00 - 13:00",
-            //     "13:00 - 14:00",
-            //     "14:00 - 15:00",
-            //     "15:00 - 16:00",
-            //     "16:00 - 17:00",
-            //     "17:00 - 18:00",
-            //     "18:00 - 19:00",
-            //     "19:00 - 20:00",
-            //     "20:00 - 21:00"
-            //   ]
-            //   .map((time) => DropdownMenuItem<String>(
-            //         value: time,
-            //         child: Text(time),
-            //       ))
-            //   .toList(),
-            //   onChanged: (String? value) {
-            //     if (value != null) {
-            //       setState(() {
-            //         selectedTime = value;
-            //       });
-            //     }
-            //   },
-            // ),
-            // DropdownButton<String>(
-            // value: selectedCategory, // El valor seleccionado (inicialmente null)
-            // hint: const Text('Selecciona una Categoria'), // Texto que se muestra cuando no se ha seleccionado nada
-            // items: _listaCategorias(),
-            // onChanged: (String? newValue) {
-            //             setState(() {
-            //               if(newValue != null) {
-            //                 selectedCategory = newValue;
-            //               }
-            //             });
-            //           },
-            // ),
             TextField(
               controller: selectedMotivo,
               decoration: const InputDecoration(
@@ -271,10 +152,10 @@ List<DropdownMenuItem<String>> _listaTurnos() {
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        IconButton(
+/*                         IconButton(
                           icon: const Icon(Icons.edit, color: Colors.blue),
                           onPressed: () => _editTurno(index),
-                        ),
+                        ), */
                         IconButton(
                           icon: const Icon(Icons.delete, color: Colors.red),
                           onPressed: () => _deleteFicha(index),
@@ -299,38 +180,36 @@ void _addFicha() {
       selectedMotivo.text.isNotEmpty &&
       selectedDiagnostico.text.isNotEmpty) {
     int newId = fichas.isNotEmpty ? fichas.last['id'] + 1 : 1;
-    int doctorIndex = int.parse(selectedDoctor!) - 1;
-    int pacienteIndex = int.parse(selectedPaciente!) - 1;
-    int categoriaIndex = int.parse(selectedCategory!) - 1;
 
     setState(() {
       fichas.add({
         'id': newId,
         'doctor': {
-          'idPersona': personas[doctorIndex]['idPersona'],
-          'nombre': personas[doctorIndex]['nombre'],
-          'apellido': personas[doctorIndex]['apellido'],
-          'telefono': personas[doctorIndex]['telefono'],
-          'email': personas[doctorIndex]['email'],
-          'cedula': personas[doctorIndex]['cedula'],
-          'isDoctor': personas[doctorIndex]['isDoctor'],
+          'idPersona': turnos[int.parse(selectedTurnos!) - 1]['doctor']['idPersona'],
+          'nombre': turnos[int.parse(selectedTurnos!) - 1]['doctor']['nombre'],
+          'apellido': turnos[int.parse(selectedTurnos!) - 1]['doctor']['apellido'],
+          'telefono': turnos[int.parse(selectedTurnos!) - 1]['doctor']['telefono'],
+          'email': turnos[int.parse(selectedTurnos!) - 1]['doctor']['email'],
+          'cedula': turnos[int.parse(selectedTurnos!) - 1]['doctor']['cedula'],
+          'isDoctor': turnos[int.parse(selectedTurnos!) - 1]['doctor']['isDoctor'],
           'isEditing': false
         },
         'paciente': {
-          'idPersona': personas[pacienteIndex]['idPersona'],
-          'nombre': personas[pacienteIndex]['nombre'],
-          'apellido': personas[pacienteIndex]['apellido'],
-          'telefono': personas[pacienteIndex]['telefono'],
-          'email': personas[pacienteIndex]['email'],
-          'cedula': personas[pacienteIndex]['cedula'],
-          'isDoctor': personas[pacienteIndex]['isDoctor'],
+          'idPersona': turnos[int.parse(selectedTurnos!) - 1]['paciente']['idPersona'],
+          'nombre': turnos[int.parse(selectedTurnos!) - 1]['paciente']['nombre'],
+          'apellido': turnos[int.parse(selectedTurnos!) - 1]['paciente']['apellido'],
+          'telefono': turnos[int.parse(selectedTurnos!) - 1]['paciente']['telefono'],
+          'email': turnos[int.parse(selectedTurnos!) - 1]['paciente']['email'],
+          'cedula': turnos[int.parse(selectedTurnos!) - 1]['paciente']['cedula'],
+          'isDoctor': turnos[int.parse(selectedTurnos!) - 1]['paciente']['isDoctor'],
           'isEditing': false
         },
-        'fecha': DateFormat('yyyy-MM-dd').format(selectedDate), // Format the date
+        // 'fecha': DateFormat('yyyy-MM-dd').format(selectedDate),
+        'fecha': DateFormat('yyyy-MM-dd').format(selectedDate),
         'hora': selectedTime,
         'categoria': {
           'id': categorias[int.parse(selectedCategory!) - 1]['id'],
-          'descripcion': categorias[categoriaIndex]['descripcion'],
+          'descripcion': categorias[int.parse(selectedCategory!) - 1]['descripcion'], 
         },
         "motivoConsulta": selectedMotivo.text,
         "diagnostico": selectedDiagnostico.text,
@@ -350,7 +229,7 @@ void _addFicha() {
 }
 
 
-  void _editTurno(int index) {
+/*   void _editTurno(int index) {
     DateTime EditedDate = selectedDate;
     String? EditedTime = selectedTime;
     String? EditedPaciente = selectedPaciente;
@@ -524,7 +403,7 @@ void _addFicha() {
         ],
       ),
     );
-  }
+  } */
 
   void _deleteFicha(int index) {
     setState(() {
