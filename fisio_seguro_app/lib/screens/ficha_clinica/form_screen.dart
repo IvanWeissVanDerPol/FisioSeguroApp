@@ -73,26 +73,26 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
     });
   }
 
-  List<DropdownMenuItem<String>> _listaTurnos() {
-    print('Longitud de la lista de turnos: ${turnos.length}');//para revisar cuantos turnos hay
-    List<DropdownMenuItem<String>> listaTurnos = turnos
-      .map((turnos) {
-        String nombreDoctor = turnos['doctor']['nombre'];
-        String nombrePaciente = turnos['paciente']['nombre'];
-        String fecha = DateTime.parse(turnos['fecha']).toLocal().toString().split(' ')[0];
-        String hora = turnos['hora'];
-        String categoria = turnos['categoria']['descripcion'];
+List<DropdownMenuItem<String>> _listaTurnos() {
+  print('Longitud de la lista de turnos: ${turnos.length}'); // para revisar cuantos turnos hay
+  List<DropdownMenuItem<String>> listaTurnos = turnos
+    .map((turno) {
+      String nombreDoctor = turno['doctor']['nombre'];
+      String nombrePaciente = turno['paciente']['nombre'];
+      String fecha = DateTime.parse(turno['fecha']).toLocal().toString().split(' ')[0];
+      String hora = turno['hora'];
+      String categoria = turno['categoria']['descripcion'];
 
-        String displayText = '$nombreDoctor, $nombrePaciente, $fecha, $hora, $categoria';
+      String displayText = '$nombreDoctor, $nombrePaciente, $fecha, $hora, $categoria';
 
-        return DropdownMenuItem<String>(
-          value: turnos['id'].toString(),
-          child: Text(displayText),
-        );
-      })
-      .toList();
-    return listaTurnos;
-  }
+      return DropdownMenuItem<String>(
+        value: turno['id'].toString(),
+        child: Text(displayText),
+      );
+    })
+    .toList();
+  return listaTurnos;
+}
 
 
   List<DropdownMenuItem<String>> _listaPersonas(bool isDoctor) {
@@ -291,60 +291,64 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
     );
   }
 
-  void _addFicha() {
-    if (selectedPaciente != null && selectedDoctor != null && selectedCategory != null && selectedTime != null && selectedMotivo.text.isNotEmpty && selectedDiagnostico.text.isNotEmpty) {
-      int newId =  fichas.isNotEmpty ? fichas.last['id'] + 1 : 1;
-      int doctorIndex = int.parse(selectedDoctor!) - 1;
-      int pacienteIndex = int.parse(selectedPaciente!) - 1;
-      int categoriaIndex = int.parse(selectedCategory!) - 1;
-      
-      setState(() {
-        fichas.add({
-          'id': newId,
-          'doctor': {
-            'idPersona': personas[doctorIndex]['idPersona'],
-            'nombre': personas[doctorIndex]['nombre'],
-            'apellido': personas[doctorIndex]['apellido'],
-            'telefono': personas[doctorIndex]['telefono'],
-            'email': personas[doctorIndex]['email'],
-            'cedula': personas[doctorIndex]['cedula'],
-            'isDoctor': personas[doctorIndex]['isDoctor'],
-            'isEditing': false
-          },
-          'paciente': {
-            'idPersona': personas[pacienteIndex]['idPersona'],
-            'nombre': personas[pacienteIndex]['nombre'],
-            'apellido': personas[pacienteIndex]['apellido'],
-            'telefono': personas[pacienteIndex]['telefono'],
-            'email': personas[pacienteIndex]['email'],
-            'cedula': personas[pacienteIndex]['cedula'],
-            'isDoctor': personas[pacienteIndex]['isDoctor'],
-            'isEditing': false
-          },
-          // 'fecha' : selectedDate to string
-          'fecha': selectedDate.toString(),
-          'hora': selectedTime,
-          'categoria': {
-            'id': categorias[int.parse(selectedCategory!)]['id'],
-            'descripcion': categorias[categoriaIndex]['descripcion'],
-          },
-          "motivoConsulta": selectedMotivo.text,
-          "diagnostico": selectedDiagnostico.text,
+void _addFicha() {
+  if (selectedPaciente != null &&
+      selectedDoctor != null &&
+      selectedCategory != null &&
+      selectedTime != null &&
+      selectedMotivo.text.isNotEmpty &&
+      selectedDiagnostico.text.isNotEmpty) {
+    int newId = fichas.isNotEmpty ? fichas.last['id'] + 1 : 1;
+    int doctorIndex = int.parse(selectedDoctor!) - 1;
+    int pacienteIndex = int.parse(selectedPaciente!) - 1;
+    int categoriaIndex = int.parse(selectedCategory!) - 1;
 
-        });
-
-        selectedPaciente = null;
-        selectedDoctor = null;
-        selectedDate = DateTime.now();
-        selectedTime = null;
-        selectedCategory = null;
-        selectedMotivo.clear();
-        selectedDiagnostico.clear();
+    setState(() {
+      fichas.add({
+        'id': newId,
+        'doctor': {
+          'idPersona': personas[doctorIndex]['idPersona'],
+          'nombre': personas[doctorIndex]['nombre'],
+          'apellido': personas[doctorIndex]['apellido'],
+          'telefono': personas[doctorIndex]['telefono'],
+          'email': personas[doctorIndex]['email'],
+          'cedula': personas[doctorIndex]['cedula'],
+          'isDoctor': personas[doctorIndex]['isDoctor'],
+          'isEditing': false
+        },
+        'paciente': {
+          'idPersona': personas[pacienteIndex]['idPersona'],
+          'nombre': personas[pacienteIndex]['nombre'],
+          'apellido': personas[pacienteIndex]['apellido'],
+          'telefono': personas[pacienteIndex]['telefono'],
+          'email': personas[pacienteIndex]['email'],
+          'cedula': personas[pacienteIndex]['cedula'],
+          'isDoctor': personas[pacienteIndex]['isDoctor'],
+          'isEditing': false
+        },
+        'fecha': DateFormat('yyyy-MM-dd').format(selectedDate), // Format the date
+        'hora': selectedTime,
+        'categoria': {
+          'id': categorias[int.parse(selectedCategory!) - 1]['id'],
+          'descripcion': categorias[categoriaIndex]['descripcion'],
+        },
+        "motivoConsulta": selectedMotivo.text,
+        "diagnostico": selectedDiagnostico.text,
       });
 
-      _savefichas(); // Save changes to file
-    }
+      selectedPaciente = null;
+      selectedDoctor = null;
+      selectedDate = DateTime.now();
+      selectedTime = null;
+      selectedCategory = null;
+      selectedMotivo.clear();
+      selectedDiagnostico.clear();
+    });
+
+    _savefichas(); // Save changes to file
   }
+}
+
 
   void _editTurno(int index) {
     DateTime EditedDate = selectedDate;
