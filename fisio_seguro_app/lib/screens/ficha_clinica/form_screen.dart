@@ -19,12 +19,15 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
   List<Map<String, dynamic>> turnos = [];
   List<Map<String, dynamic>> personas = [];
   List<Map<String, dynamic>> categorias = [];
+  List<Map<String, dynamic>> fichas = [];
   DateTime selectedDate = DateTime.now();
   String? selectedTime;
   String? selectedPaciente;
   String? selectedDoctor;
   String? selectedCategory;
-  late String filePathTurno;
+  TextEditingController selectedMotivo = TextEditingController();
+  TextEditingController selectedDiagnostico = TextEditingController();
+  late String filePathFichas;
 
   @override
   void initState() {
@@ -32,11 +35,12 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
     _initialize('categories');
     _initialize('persons');
     _initialize('turnos');
+    _initialize('fichasClinicas');
   }
 
-  Future<void> _saveturnos() async {
-    final File file = File(filePathTurno);
-    final String data = json.encode(turnos);
+  Future<void> _savefichas() async {
+    final File file = File(filePathFichas);
+    final String data = json.encode(fichas);
     await file.writeAsString(data);
   }
 
@@ -45,8 +49,8 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
   Future<void> _initialize(String objeto) async {
     final directory = await getApplicationDocumentsDirectory();
     String filePath = '${directory.path}/$objeto.json';
-    if (objeto == 'turnos') {
-      filePathTurno = filePath;
+    if (objeto == 'fichasClinicas') {
+      filePathFichas = filePath;
     }
     final File file = File(filePath);
     if (!await file.exists()) {
@@ -62,6 +66,8 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
         personas = loadedData;
       } else if (objeto == 'turnos') {
         turnos = loadedData;
+      } else if (objeto == 'fichasClinicas') {
+        fichas = loadedData;
       }
     });
   }
@@ -195,21 +201,33 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
                         });
                       },
             ),
+            TextField(
+              controller: selectedMotivo,
+              decoration: const InputDecoration(
+                labelText: 'Motivo de la consulta',
+              ),
+            ),
+            TextField(
+              controller: selectedDiagnostico,
+              decoration: const InputDecoration(
+                labelText: 'Diagnostico',
+              ),
+            ),
             ElevatedButton(
-              onPressed: _addTurno,
-              child: const Text('Agendar Reserva'),
+              onPressed: _addFicha,
+              child: const Text('Agendar Ficha Clinica'),
             ),
             const SizedBox(height: 20),
-            // Table to display turnos
+            // Table to display fichas
             Expanded(
               child: ListView.builder(
-                itemCount: turnos.length,
+                itemCount: fichas.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text('Paciente: ${turnos[index]['paciente']['nombre']} ${turnos[index]['paciente']['apellido']}'),
-                    subtitle: Text('Doctor: ${turnos[index]['doctor']['nombre']} ${turnos[index]['doctor']['apellido']}\nFecha: ${
-                      DateFormat('dd-MM-yyyy').format(DateTime.parse(turnos[index]['fecha']))}\t${turnos[index]['hora']}\nCategoria: ${
-                        turnos[index]['categoria']['descripcion']}'),
+                    title: Text('Paciente: ${fichas[index]['paciente']['nombre']} ${fichas[index]['paciente']['apellido']}'),
+                    subtitle: Text('Doctor: ${fichas[index]['doctor']['nombre']} ${fichas[index]['doctor']['apellido']}\nFecha: ${
+                      DateFormat('dd-MM-yyyy').format(DateTime.parse(fichas[index]['fecha']))}\t${fichas[index]['hora']}\nCategoria: ${
+                        fichas[index]['categoria']['descripcion']}\nMotivo: ${fichas[index]['motivoConsulta']}\nDiagnostico: ${fichas[index]['diagnostico']}'),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -219,7 +237,7 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
                         ),
                         IconButton(
                           icon: const Icon(Icons.delete, color: Colors.red),
-                          onPressed: () => _deleteTurno(index),
+                          onPressed: () => _deleteFicha(index),
                         ),
                       ],
                     ),
@@ -233,15 +251,15 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
     );
   }
 
-  void _addTurno() {
-    if (selectedPaciente != null && selectedDoctor != null && selectedTime != null) {
-      int newId =  turnos.isNotEmpty ? turnos.last['id'] + 1 : 1;
+  void _addFicha() {
+    if (selectedPaciente != null && selectedDoctor != null && selectedCategory != null && selectedTime != null && selectedMotivo.text.isNotEmpty && selectedDiagnostico.text.isNotEmpty) {
+      int newId =  fichas.isNotEmpty ? fichas.last['id'] + 1 : 1;
       int doctorIndex = int.parse(selectedDoctor!) - 1;
       int pacienteIndex = int.parse(selectedPaciente!) - 1;
       int categoriaIndex = int.parse(selectedCategory!) - 1;
       
       setState(() {
-        turnos.add({
+        fichas.add({
           'id': newId,
           'doctor': {
             'idPersona': personas[doctorIndex]['idPersona'],
@@ -269,7 +287,9 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
           'categoria': {
             'id': categorias[int.parse(selectedCategory!)]['id'],
             'descripcion': categorias[categoriaIndex]['descripcion'],
-          }
+          },
+          "motivoConsulta": selectedMotivo.text,
+          "diagnostico": selectedDiagnostico.text,
 
         });
 
@@ -278,9 +298,11 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
         selectedDate = DateTime.now();
         selectedTime = null;
         selectedCategory = null;
+        selectedMotivo.clear();
+        selectedDiagnostico.clear();
       });
 
-      _saveturnos(); // Save changes to file
+      _savefichas(); // Save changes to file
     }
   }
 
@@ -290,6 +312,8 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
     String? EditedPaciente = selectedPaciente;
     String? EditedDoctor = selectedDoctor;
     String? EditedCategory = selectedCategory;
+    TextEditingController EditedMotivo = TextEditingController(text: selectedMotivo.text);
+    TextEditingController EditedDiagnostico = TextEditingController(text: selectedDiagnostico.text);
 
     showDialog(
       context: context,
@@ -385,11 +409,28 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
                         });
                       },
             ),
+            TextField(
+              controller: EditedMotivo,
+              decoration: const InputDecoration(
+                labelText: 'Motivo de la consulta',
+              ),
+            ),
+            TextField(
+              controller: EditedDiagnostico,
+              decoration: const InputDecoration(
+                labelText: 'Diagnostico',
+              ),
+            ),
           ],
         ),
         actions: [
           ElevatedButton(
             onPressed: () {
+
+              EditedTime ??= selectedTime;
+              EditedPaciente ??= selectedPaciente;
+              EditedDoctor ??= selectedDoctor;
+              EditedCategory ??= selectedCategory;
 
               setState(() {
                 turnos[index] = {
@@ -419,11 +460,13 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
                   'categoria': {
                     'id': categorias[int.parse(EditedCategory!) - 1]['id'],
                     'descripcion': categorias[int.parse(EditedCategory!) - 1]['descripcion'],
-                  }
+                  },
+                  "motivoConsulta": EditedMotivo.text,
+                  "diagnostico": EditedDiagnostico.text,
                 };
               });
 
-              _saveturnos(); // Save changes to file
+              _savefichas(); // Save changes to file
               Navigator.of(context).pop();
             },
             child: const Text('Update'),
@@ -439,10 +482,10 @@ class _FichaClinicaFormScreen extends State<FichaClinicaFormScreen> {
     );
   }
 
-  void _deleteTurno(int index) {
+  void _deleteFicha(int index) {
     setState(() {
-      turnos.removeAt(index);
+      fichas.removeAt(index);
     });
-    _saveturnos(); // Save changes to file
+    _savefichas(); // Save changes to file
   }
 }
