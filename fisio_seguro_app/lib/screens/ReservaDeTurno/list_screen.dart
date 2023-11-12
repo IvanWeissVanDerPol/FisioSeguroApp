@@ -55,20 +55,18 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
     }
 
     DateTime selectedDateEndFilter = DateTime(
-        selectedDateEnd.year, selectedDateEnd.month, selectedDateEnd.day);
+        selectedDateEnd.year, selectedDateEnd.month, selectedDateEnd.day,23, 59, 59);
     DateTime selectedDateStartFilter = DateTime(
         selectedDateStart.year, selectedDateStart.month, selectedDateStart.day);
     filteredList = filteredList
         .where((turno) =>
             DateTime.parse(turno['fecha']).isAfter(selectedDateStartFilter) ||
-            DateTime.parse(turno['fecha'])
-                .isAtSameMomentAs(selectedDateStartFilter))
+            DateTime.parse(turno['fecha']).isAtSameMomentAs(selectedDateStartFilter))
         .toList();
     filteredList = filteredList
         .where((turno) =>
             DateTime.parse(turno['fecha']).isBefore(selectedDateEndFilter) ||
-            DateTime.parse(turno['fecha'])
-                .isAtSameMomentAs(selectedDateEndFilter))
+            DateTime.parse(turno['fecha']).isAtSameMomentAs(selectedDateEndFilter))
         .toList();
 
     setState(() {
@@ -85,14 +83,17 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
       filePathTurno = filePath;
     }
     final File file = File(filePath);
-    final String jsonString =
+
+/*     final String jsonString =
         await rootBundle.loadString('assets/$objeto.json');
-    await file.writeAsString(jsonString);
+    await file.writeAsString(jsonString); */
+
     if (!await file.exists()) {
       final String jsonString =
           await rootBundle.loadString('assets/$objeto.json');
       await file.writeAsString(jsonString);
     }
+
     final data = await file.readAsString();
     final List<Map<String, dynamic>> loadedData = List.from(json.decode(data));
     setState(() {
@@ -266,7 +267,7 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Edit Turno'),
+        title: const Text('Editar Turno'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
