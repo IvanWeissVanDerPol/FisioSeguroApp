@@ -13,12 +13,10 @@ class ListaDeFichasClinicasScreen extends StatefulWidget {
   const ListaDeFichasClinicasScreen({Key? key}) : super(key: key);
 
   @override
-  _ListaDeFichasClinicasScreenState createState() =>
-      _ListaDeFichasClinicasScreenState();
+  _ListaDeFichasClinicasScreenState createState() =>_ListaDeFichasClinicasScreenState();
 }
 
-class _ListaDeFichasClinicasScreenState
-    extends State<ListaDeFichasClinicasScreen> {
+class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScreen> {
   List<Map<String, dynamic>> turnos = [];
   List<Map<String, dynamic>> personas = [];
   List<Map<String, dynamic>> categorias = [];
@@ -51,14 +49,14 @@ class _ListaDeFichasClinicasScreenState
 
     if (selectedDoctor != null) {
       filteredList = filteredList
-          .where((fichasClinicas) =>
-              fichasClinicas['doctor']['idPersona'] == int.parse(selectedDoctor!))
+          .where((fichaClinica) =>
+              fichaClinica['doctor']['idPersona'] == int.parse(selectedDoctor!))
           .toList();
     }
     if (selectedPaciente != null) {
       filteredList = filteredList
-          .where((fichasClinicas) =>
-              fichasClinicas['paciente']['idPersona'] == int.parse(selectedPaciente!))
+          .where((fichaClinica) =>
+              fichaClinica['paciente']['idPersona'] == int.parse(selectedPaciente!))
           .toList();
     }
 
@@ -67,14 +65,14 @@ class _ListaDeFichasClinicasScreenState
     DateTime selectedDateStartFilter = DateTime(
         selectedDateStart.year, selectedDateStart.month, selectedDateStart.day);
     filteredList = filteredList
-        .where((fichasClinicas) =>
-            DateTime.parse(fichasClinicas['fecha']).isAfter(selectedDateStartFilter) ||
-            DateTime.parse(fichasClinicas['fecha']).isAtSameMomentAs(selectedDateStartFilter))
+        .where((fichaClinica) =>
+            DateTime.parse(fichaClinica['fecha']).isAfter(selectedDateStartFilter) ||
+            DateTime.parse(fichaClinica['fecha']).isAtSameMomentAs(selectedDateStartFilter))
         .toList();
     filteredList = filteredList
-        .where((fichasClinicas) =>
-            DateTime.parse(fichasClinicas['fecha']).isBefore(selectedDateEndFilter) ||
-            DateTime.parse(fichasClinicas['fecha']).isAtSameMomentAs(selectedDateEndFilter))
+        .where((fichaClinica) =>
+            DateTime.parse(fichaClinica['fecha']).isBefore(selectedDateEndFilter) ||
+            DateTime.parse(fichaClinica['fecha']).isAtSameMomentAs(selectedDateEndFilter))
         .toList();
 
     setState(() {
@@ -233,13 +231,13 @@ class _ListaDeFichasClinicasScreenState
               ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: turnos.length,
+                itemCount: fichasClinicas.length,
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text(
-                        'Paciente: ${turnos[index]['paciente']['nombre']} ${turnos[index]['paciente']['apellido']}'),
+                        'Paciente: ${fichasClinicas[index]['paciente']['nombre']} ${fichasClinicas[index]['paciente']['apellido']}'),
                     subtitle: Text(
-                        'Doctor: ${turnos[index]['doctor']['nombre']} ${turnos[index]['doctor']['apellido']}\nFecha: ${DateFormat('dd-MM-yyyy').format(DateTime.parse(turnos[index]['fecha']))}\t${turnos[index]['hora']}\nCategoria: ${turnos[index]['categoria']['descripcion']}'),
+                        'Doctor: ${fichasClinicas[index]['doctor']['nombre']} ${fichasClinicas[index]['doctor']['apellido']}\nFecha: ${DateFormat('dd-MM-yyyy').format(DateTime.parse(fichasClinicas[index]['fecha']))}\t${fichasClinicas[index]['hora']}\nCategoria: ${fichasClinicas[index]['categoria']['descripcion']}'),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -438,7 +436,6 @@ class _ListaDeFichasClinicasScreenState
         actions: [
           ElevatedButton(
             onPressed: () {
-
               setState(() {
                 fichasClinicas[index] = {
                   'doctor': {
