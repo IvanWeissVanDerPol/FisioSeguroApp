@@ -7,7 +7,9 @@ import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
+
 
 class ListaDeFichasClinicasScreen extends StatefulWidget {
   const ListaDeFichasClinicasScreen({Key? key}) : super(key: key);
@@ -261,6 +263,27 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
     );
   }
 
+  pw.Widget _buildText(String label, String value) {
+    return pw.Container(
+      margin: pw.EdgeInsets.only(bottom: 10),
+      child: pw.RichText(
+        text: pw.TextSpan(
+          style: pw.TextStyle(
+            fontSize: 14,
+            color: PdfColors.black,
+          ),
+          children: [
+            pw.TextSpan(
+              text: '$label',
+              style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
+            ),
+            pw.TextSpan(text: '\n$value'),
+          ],
+        ),
+      ),
+    );
+  }
+
   Future<void> _exportToPDF() async {
     print("entre");
     await requestStoragePermission();
@@ -268,26 +291,46 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
     pdf.addPage(
       pw.Page(
         build: (pw.Context context) {
-          return pw.ListView.builder(
-            itemCount: fichasClinicas.length,
-            itemBuilder: (context, index) {
-              final turno = fichasClinicas[index];
-              return pw.Text(
-                  'Paciente: ${turno['paciente']['nombre']} ${turno['paciente']['apellido']}');
-
-              // Agrega más detalles según sea necesario
-            },
+          return pw.Column(
+            crossAxisAlignment: pw.CrossAxisAlignment.center,
+            children: [
+              pw.SizedBox(height: 20),
+              pw.Text(
+                'Fichas Clínicas',
+                style: pw.TextStyle(
+                  fontSize: 18,
+                  fontWeight: pw.FontWeight.bold,
+                ),
+              ),
+              pw.SizedBox(height: 10),
+              for (final ficha in fichasClinicas)
+                pw.Container(
+                  margin: pw.EdgeInsets.only(bottom: 20),
+                  padding: pw.EdgeInsets.all(10),
+                  decoration: pw.BoxDecoration(
+                    border: pw.Border.all(),
+                    borderRadius: pw.BorderRadius.circular(10),
+                  ),
+                  child: pw.Column(
+                    crossAxisAlignment: pw.CrossAxisAlignment.start,
+                    children: [
+                      _buildText('Paciente: ', '${ficha['paciente']['nombre']} ${ficha['paciente']['apellido']}'),
+                      _buildText('Doctor: ', '${ficha['doctor']['nombre']} ${ficha['doctor']['apellido']}'),
+                      _buildText('Fecha: ', '${DateFormat('dd-MM-yyyy').format(DateTime.parse(ficha['fecha']))} ${ficha['hora']}'),
+                      _buildText('Categoria: ', '${ficha['categoria']['descripcion']}'),
+                      _buildText('Motivo: ', '${ficha['motivoConsulta']}'),
+                      _buildText('Diagnóstico: ', '${ficha['diagnostico']}'),
+                    ],
+                  ),
+                ),
+            ],
           );
         },
       ),
     );
-    final directory =
-        await getExternalStorageDirectory(); // Obtiene la carpeta de descargas
-    final path =
-        directory?.path ?? (await getApplicationDocumentsDirectory()).path;
-    final file = File('$path/turnos.pdf');
-    //final directory = await getApplicationDocumentsDirectory();
-    //final file = File('${directory.path}/turnos.pdf');
+    final directory = await getExternalStorageDirectory();
+    final path = directory?.path ?? (await getApplicationDocumentsDirectory()).path;
+    final file = File('$path/fichas.pdf');
     print(file.path);
     await file.writeAsBytes(await pdf.save());
   }
@@ -311,7 +354,7 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
         await getExternalStorageDirectory(); // Obtiene la carpeta de descargas
     final path =
         directory?.path ?? (await getApplicationDocumentsDirectory()).path;
-    final file = File('$path/turnos.xlsx');
+    final file = File('$path/fichas.xlsx');
     //await file.writeAsBytes(excel.save());
     // Asegúrate de que el resultado de save() no sea nulo
     final bytes = await excel.save();
