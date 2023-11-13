@@ -125,8 +125,7 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
   }
 
   List<DropdownMenuItem<String>> _listaCategorias() {
-    List<DropdownMenuItem<String>> listaCategorias =
-        categorias.map((categoria) {
+    List<DropdownMenuItem<String>> listaCategorias = categorias.map((categoria) {
       String nombre = categoria['descripcion'];
       String categoriaId = categoria['id'].toString();
       return DropdownMenuItem<String>(

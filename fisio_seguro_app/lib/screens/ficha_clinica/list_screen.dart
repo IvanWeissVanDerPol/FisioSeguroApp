@@ -239,20 +239,7 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
                     title: Text(
                         'Paciente: ${fichasClinicas[index]['paciente']['nombre']} ${fichasClinicas[index]['paciente']['apellido']}'),
                     subtitle: Text(
-                        'Doctor: ${fichasClinicas[index]['doctor']['nombre']} ${fichasClinicas[index]['doctor']['apellido']}\nFecha: ${DateFormat('dd-MM-yyyy').format(DateTime.parse(fichasClinicas[index]['fecha']))}\t${fichasClinicas[index]['hora']}\nCategoria: ${fichasClinicas[index]['categoria']['descripcion']}'),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        IconButton(
-                          icon: const Icon(Icons.edit, color: Colors.blue),
-                          onPressed: () => _editaFicha(index),
-                        ),
-                        IconButton(
-                          icon: const Icon(Icons.delete, color: Colors.red),
-                          onPressed: () => _deleteFicha(index),
-                        ),
-                      ],
-                    ),
+                        'Doctor: ${fichasClinicas[index]['doctor']['nombre']} ${fichasClinicas[index]['doctor']['apellido']}\nFecha: ${DateFormat('dd-MM-yyyy').format(DateTime.parse(fichasClinicas[index]['fecha']))}\t${fichasClinicas[index]['hora']}\nCategoria: ${fichasClinicas[index]['categoria']['descripcion']}'),                
                   );
                 },
               ),
@@ -289,42 +276,28 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
     await requestStoragePermission();
     final pdf = pw.Document();
     pdf.addPage(
-      pw.Page(
+      pw.MultiPage(
         build: (pw.Context context) {
-          return pw.Column(
-            crossAxisAlignment: pw.CrossAxisAlignment.center,
-            children: [
-              pw.SizedBox(height: 20),
-              pw.Text(
-                'Fichas Clínicas',
-                style: pw.TextStyle(
-                  fontSize: 18,
-                  fontWeight: pw.FontWeight.bold,
-                ),
-              ),
-              pw.SizedBox(height: 10),
-              for (final ficha in fichasClinicas)
-                pw.Container(
-                  margin: pw.EdgeInsets.only(bottom: 20),
-                  padding: pw.EdgeInsets.all(10),
-                  decoration: pw.BoxDecoration(
-                    border: pw.Border.all(),
-                    borderRadius: pw.BorderRadius.circular(10),
-                  ),
-                  child: pw.Column(
-                    crossAxisAlignment: pw.CrossAxisAlignment.start,
-                    children: [
-                      _buildText('Paciente: ', '${ficha['paciente']['nombre']} ${ficha['paciente']['apellido']}'),
-                      _buildText('Doctor: ', '${ficha['doctor']['nombre']} ${ficha['doctor']['apellido']}'),
-                      _buildText('Fecha: ', '${DateFormat('dd-MM-yyyy').format(DateTime.parse(ficha['fecha']))} ${ficha['hora']}'),
-                      _buildText('Categoria: ', '${ficha['categoria']['descripcion']}'),
-                      _buildText('Motivo: ', '${ficha['motivoConsulta']}'),
-                      _buildText('Diagnóstico: ', '${ficha['diagnostico']}'),
-                    ],
-                  ),
-                ),
-            ],
-          );
+          return[
+            pw.Header(
+              level: 0,
+              child: pw.Text('Fichas Clínicas'),
+            ),
+            pw.Table.fromTextArray(
+              border: null,
+              headers: ['Paciente', 'Doctor', 'Fecha', 'Hora', 'Categoria'],
+              data: [
+                for (final ficha in fichasClinicas)
+                  [
+                    '${ficha['paciente']['nombre']} ${ficha['paciente']['apellido']}',
+                    '${ficha['doctor']['nombre']} ${ficha['doctor']['apellido']}',
+                    '${DateFormat('dd-MM-yyyy').format(DateTime.parse(ficha['fecha']))}',
+                    '${ficha['hora']}',
+                    '${ficha['categoria']['descripcion']}',
+                  ],
+              ],
+            ),
+          ];
         },
       ),
     );
@@ -373,164 +346,4 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
     }
   }
 
-  void _editaFicha(int index) {
-    DateTime EditedDate = DateTime.parse(fichasClinicas[index]['fecha']);
-    String? EditedTime = fichasClinicas[index]['hora'];
-    String? EditedPaciente = fichasClinicas[index]['paciente']['idPersona'];
-    String? EditedDoctor = fichasClinicas[index]['doctor']['idPersona'];
-    String? EditedCategory = fichasClinicas[index]['categoria']['id'];
-
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Editat Ficha Clinica'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            DropdownButton<String>(
-            value: EditedPaciente, // El valor seleccionado (inicialmente null)
-            hint: const Text('Selecciona un paciente'), // Texto que se muestra cuando no se ha seleccionado nada
-            items: _listaPersonas(false),
-            onChanged: (String? newValue) {
-                        setState(() {
-                          if(newValue != null) {
-                            EditedPaciente = newValue;
-                          }
-                        });
-                      },
-            ),
-            DropdownButton<String>(
-            value: EditedDoctor, // El valor seleccionado (inicialmente null)
-            hint: const Text('Selecciona un doctor'), // Texto que se muestra cuando no se ha seleccionado nada
-            items: _listaPersonas(true),
-            onChanged: (String? newValue) {
-                        setState(() {
-                          if(newValue != null) {
-                            EditedDoctor = newValue;
-                          }
-                        });
-                      },
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Selecciona una fecha',
-              ),
-              onTap: () async {
-                DateTime? pickedDate = await showDatePicker(
-                  context: context,
-                  initialDate: DateTime.now(),
-                  firstDate: DateTime(2000),
-                  lastDate: DateTime(2100),
-                );
-
-                if (pickedDate != null && pickedDate != EditedDate) {
-                  setState(() {
-                    EditedDate = pickedDate;
-                  });
-                }
-              },
-              controller: TextEditingController(text: EditedDate.toLocal().toString().split(' ')[0]),
-              readOnly: true,
-            ),
-            DropdownButton<String>(
-              value: EditedTime,
-              hint: const Text('Selecciona una hora'),
-              items: [
-                "09:00 - 10:00",
-                "10:00 - 11:00",
-                "11:00 - 12:00",
-                "12:00 - 13:00",
-                "13:00 - 14:00",
-                "14:00 - 15:00",
-                "15:00 - 16:00",
-                "16:00 - 17:00",
-                "17:00 - 18:00",
-                "18:00 - 19:00",
-                "19:00 - 20:00",
-                "20:00 - 21:00"
-              ]
-              .map((time) => DropdownMenuItem<String>(
-                    value: time,
-                    child: Text(time),
-                  ))
-              .toList(),
-              onChanged: (String? value) {
-                if (value != null) {
-                  setState(() {
-                    EditedTime = value;
-                  });
-                }
-              },
-            ),
-            DropdownButton<String>(
-            value: EditedCategory, // El valor seleccionado (inicialmente null)
-            hint: const Text('Selecciona una Categoria'), // Texto que se muestra cuando no se ha seleccionado nada
-            items: _listaCategorias(),
-            onChanged: (String? newValue) {
-                        setState(() {
-                          if(newValue != null) {
-                            EditedCategory = newValue;
-                          }
-                        });
-                      },
-            ),
-          ],
-        ),
-        actions: [
-          ElevatedButton(
-            onPressed: () {
-              setState(() {
-                fichasClinicas[index] = {
-                  'doctor': {
-                    'idPersona': personas[int.parse(EditedDoctor!) - 1]['idPersona'],
-                    'nombre': personas[int.parse(EditedDoctor!) - 1]['nombre'],
-                    'apellido': personas[int.parse(EditedDoctor!) - 1]['apellido'],
-                    'telefono': personas[int.parse(EditedDoctor!) - 1]['telefono'],
-                    'email': personas[int.parse(EditedDoctor!) - 1]['email'],
-                    'cedula': personas[int.parse(EditedDoctor!) - 1]['cedula'],
-                    'isDoctor': personas[int.parse(EditedDoctor!) - 1]['isDoctor'],
-                    'isEditing': false
-                  },
-                  'paciente': {
-                    'idPersona': personas[int.parse(EditedPaciente!) - 1]['idPersona'],
-                    'nombre': personas[int.parse(EditedPaciente!) - 1]['nombre'],
-                    'apellido': personas[int.parse(EditedPaciente!) - 1]['apellido'],
-                    'telefono': personas[int.parse(EditedPaciente!) - 1]['telefono'],
-                    'email': personas[int.parse(EditedPaciente!) - 1]['email'],
-                    'cedula': personas[int.parse(EditedPaciente!) - 1]['cedula'],
-                    'isDoctor': personas[int.parse(EditedPaciente!) - 1]['isDoctor'],
-                    'isEditing': false
-                  },
-                  // 'fecha' : selectedDate to string
-                  'fecha': EditedDate.toString(),
-                  'hora': EditedTime,
-                  'categoria': {
-                    'id': categorias[int.parse(EditedCategory!) - 1]['id'],
-                    'descripcion': categorias[int.parse(EditedCategory!) - 1]['descripcion'],
-                  }
-                };
-              });
-
-              _savefichas(); // Save changes to file
-              Navigator.of(context).pop();
-            },
-            child: const Text('Update'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: const Text('Cancel'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _deleteFicha(int index) {
-    setState(() {
-      fichasClinicas.removeAt(index);
-    });
-    _savefichas(); // Save changes to file
-  }
 }

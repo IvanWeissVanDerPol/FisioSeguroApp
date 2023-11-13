@@ -93,7 +93,8 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
             ),
             const SizedBox(height: 10),
             CheckboxListTile(
-              title: const Text('Is Doctor'),
+              title: const Text('Es un doctor?'),
+              subtitle: Text('(Marcar=SI, Desmarcar=NO)'),
               value: isDoctor,
               onChanged: (value) {
                 setState(() {

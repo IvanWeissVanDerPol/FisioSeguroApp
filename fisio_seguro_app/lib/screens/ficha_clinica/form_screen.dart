@@ -45,7 +45,7 @@ class _CrearFichasMenu extends State<CrearFichasMenu> {
               children: [
                   ActionCard(icon: Icons.auto_stories,title: 'Registro de fichas con reserva', description: '', onTap: () { context.push('/FichaClinicaFormScreenConReserva'); },),
                   const SizedBox(height: 20.0),
-                  ActionCard(icon: Icons.auto_stories,title: 'Lista De fichas sin reserva', description: '', onTap: () { context.push('/FichaClinicaFormScreenSinReserva'); },),
+                  ActionCard(icon: Icons.auto_stories,title: 'Registro de fichas sin reserva', description: '', onTap: () { context.push('/FichaClinicaFormScreenSinReserva'); },),
                   const SizedBox(height: 20.0),
                   ],
               ),
