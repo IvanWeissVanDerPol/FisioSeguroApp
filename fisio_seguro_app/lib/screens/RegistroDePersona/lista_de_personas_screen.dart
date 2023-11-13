@@ -113,7 +113,7 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
               ),
               const SizedBox(height: 20),
               ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: persons.length,
                 itemBuilder: (context, index) {

@@ -16,15 +16,15 @@ class FichaClinicaFormScreenConReserva extends StatefulWidget {
 
 class _FichaClinicaFormScreenConReserva extends State<FichaClinicaFormScreenConReserva> {
   List<Map<String, dynamic>> turnos = [];
-  List<Map<String, dynamic>> personas = [];
-  List<Map<String, dynamic>> categorias = [];
+/*   List<Map<String, dynamic>> personas = [];
+  List<Map<String, dynamic>> categorias = []; */
   List<Map<String, dynamic>> fichas = [];
   DateTime selectedDate = DateTime.now();
   String? selectedTime;
   String? selectedPaciente;
   String? selectedDoctor;
   String? selectedCategory;
-  String? selectedTurnos;
+  String? selectedTurnos; 
   TextEditingController selectedMotivo = TextEditingController();
   TextEditingController selectedDiagnostico = TextEditingController();
   late String filePathFichas;
@@ -60,11 +60,11 @@ class _FichaClinicaFormScreenConReserva extends State<FichaClinicaFormScreenConR
     final data = await file.readAsString();
     final List<Map<String, dynamic>> loadedData = List.from(json.decode(data));
     setState(() {
-      if (objeto == 'categories') {
+/*       if (objeto == 'categories') {
         categorias = loadedData;
       } else if (objeto == 'persons') {
         personas = loadedData;
-      } else if (objeto == 'turnos') {
+      } else  */if (objeto == 'turnos') {
         turnos = loadedData;
       } else if (objeto == 'fichasClinicas') {
         fichas = loadedData;
@@ -100,8 +100,7 @@ List<DropdownMenuItem<String>> _listaTurnos() {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // Para añadir una nueva ficha
-           Container(
+           SizedBox(
               width: double.infinity,
               child: DropdownButton<String>(
                 isExpanded: true,
@@ -195,8 +194,8 @@ void _addFicha() {
         'fecha': DateFormat('yyyy-MM-dd').format(selectedDate),
         'hora': selectedTime,
         'categoria': {
-          'id': categorias[int.parse(selectedCategory!) - 1]['id'],
-          'descripcion': categorias[int.parse(selectedCategory!) - 1]['descripcion'], 
+          'id': turnos[int.parse(selectedTurnos!) - 1]['categoria']['id'],
+          'descripcion': turnos[int.parse(selectedTurnos!) - 1]['categoria']['descripcion'],
         },
         "motivoConsulta": selectedMotivo.text,
         "diagnostico": selectedDiagnostico.text,

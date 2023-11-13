@@ -224,7 +224,7 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
                 child: const Text('Filtrar'),
               ),
               ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: turnos.length,
                 itemBuilder: (context, index) {

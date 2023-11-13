@@ -231,7 +231,7 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
                 child: const Text('Excel'),
               ),
               ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: fichasClinicas.length,
                 itemBuilder: (context, index) {
@@ -252,16 +252,16 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
 
   pw.Widget _buildText(String label, String value) {
     return pw.Container(
-      margin: pw.EdgeInsets.only(bottom: 10),
+      margin: const pw.EdgeInsets.only(bottom: 10),
       child: pw.RichText(
         text: pw.TextSpan(
-          style: pw.TextStyle(
+          style: const pw.TextStyle(
             fontSize: 14,
             color: PdfColors.black,
           ),
           children: [
             pw.TextSpan(
-              text: '$label',
+              text: label,
               style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
             ),
             pw.TextSpan(text: '\n$value'),
@@ -291,7 +291,7 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
                   [
                     '${ficha['paciente']['nombre']} ${ficha['paciente']['apellido']}',
                     '${ficha['doctor']['nombre']} ${ficha['doctor']['apellido']}',
-                    '${DateFormat('dd-MM-yyyy').format(DateTime.parse(ficha['fecha']))}',
+                    (DateFormat('dd-MM-yyyy').format(DateTime.parse(ficha['fecha']))),
                     '${ficha['hora']}',
                     '${ficha['categoria']['descripcion']}',
                   ],
@@ -330,7 +330,7 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
     final file = File('$path/fichas.xlsx');
     //await file.writeAsBytes(excel.save());
     // Asegúrate de que el resultado de save() no sea nulo
-    final bytes = await excel.save();
+    final bytes = excel.save();
     if (bytes != null) {
       await file.writeAsBytes(bytes);
     } else {
