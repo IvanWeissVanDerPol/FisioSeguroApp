@@ -42,8 +42,8 @@ dependencies:
   provider: ^6.0.1
   path_provider: ^2.1.1
   intl: ^0.17.0
-  pdf: ^3.6.0  # Asegúrate de usar la última versión disponible
-  excel: ^2.0.0  # Asegúrate de usar la última versión disponible
+  pdf: ^3.6.0  
+  excel: ^2.0.5
   permission_handler: ^11.0.1
   
 

@@ -250,74 +250,105 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
     );
   }
 
-  pw.Widget _buildText(String label, String value) {
-    return pw.Container(
-      margin: const pw.EdgeInsets.only(bottom: 10),
-      child: pw.RichText(
-        text: pw.TextSpan(
-          style: const pw.TextStyle(
-            fontSize: 14,
-            color: PdfColors.black,
-          ),
-          children: [
-            pw.TextSpan(
-              text: label,
-              style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
-            ),
-            pw.TextSpan(text: '\n$value'),
-          ],
+ pw.Widget _buildText(String label, String value) {
+  return pw.Container(
+    margin: const pw.EdgeInsets.only(bottom: 10),
+    child: pw.RichText(
+      text: pw.TextSpan(
+        style: const pw.TextStyle(
+          fontSize: 14,
+          color: PdfColors.black,
         ),
+        children: [
+          pw.TextSpan(
+            text: label,
+            style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
+          ),
+          pw.TextSpan(text: '\n$value'),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
 
-  Future<void> _exportToPDF() async {
-    print("entre");
-    await requestStoragePermission();
-    final pdf = pw.Document();
-    pdf.addPage(
-      pw.MultiPage(
-        build: (pw.Context context) {
-          return[
-            pw.Header(
-              level: 0,
-              child: pw.Text('Fichas Clínicas'),
-            ),
-            pw.Table.fromTextArray(
-              border: null,
-              headers: ['Paciente', 'Doctor', 'Fecha', 'Hora', 'Categoria'],
-              data: [
-                for (final ficha in fichasClinicas)
-                  [
-                    '${ficha['paciente']['nombre']} ${ficha['paciente']['apellido']}',
-                    '${ficha['doctor']['nombre']} ${ficha['doctor']['apellido']}',
-                    (DateFormat('dd-MM-yyyy').format(DateTime.parse(ficha['fecha']))),
-                    '${ficha['hora']}',
-                    '${ficha['categoria']['descripcion']}',
-                  ],
-              ],
-            ),
-          ];
-        },
-      ),
-    );
-    final directory = await getExternalStorageDirectory();
-    final path = directory?.path ?? (await getApplicationDocumentsDirectory()).path;
-    final file = File('$path/fichas.pdf');
-    print(file.path);
-    await file.writeAsBytes(await pdf.save());
-  }
+Future<void> _exportToPDF() async {
+  print("entre");
+  await requestStoragePermission();
+  final pdf = pw.Document();
+  pdf.addPage(
+    pw.MultiPage(
+      build: (pw.Context context) {
+        return [
+          pw.Header(
+            level: 0,
+            child: pw.Text('Fichas Clínicas'),
+          ),
+          pw.Table.fromTextArray(
+            border: null,
+            headers: ['Paciente', 'Doctor', 'Fecha', 'Hora', 'Categoria', 'Motivo', 'Diagnostico'],
+            headerStyle: pw.TextStyle(fontWeight: pw.FontWeight.bold), // Añadir estilo a los encabezados
+            cellHeight: 30, // Altura de la celda
+            cellAlignments: {
+              0: pw.Alignment.centerLeft, // Alineación del texto en la primera columna
+              1: pw.Alignment.centerLeft, // Alineación del texto en la segunda columna
+              // ... añadir más alineaciones según sea necesario
+            },
+            data: [
+              for (final ficha in fichasClinicas)
+                [
+                  '${ficha['paciente']['nombre']} ${ficha['paciente']['apellido']}',
+                  '${ficha['doctor']['nombre']} ${ficha['doctor']['apellido']}',
+                  (DateFormat('dd-MM-yyyy').format(DateTime.parse(ficha['fecha']))),
+                  '${ficha['hora']}',
+                  '${ficha['categoria']['descripcion']}',
+                  '${ficha['motivoConsulta']}',
+                  '${ficha['diagnostico']}',
+                ],
+            ],
+          ),
+        ];
+      },
+    ),
+  );
+  final directory = await getExternalStorageDirectory();
+  final path = directory?.path ?? (await getApplicationDocumentsDirectory()).path;
+  final file = File('$path/fichas.pdf');
+  print(file.path);
+  await file.writeAsBytes(await pdf.save());
+}
+
 
   Future<void> _exportToExcel() async {
-    print("entre");
     await requestStoragePermission();
     var excel = Excel.createExcel();
     Sheet sheetObject = excel['Sheet1'];
+    sheetObject.cell(CellIndex.indexByString("A1")).value = 'Paciente';
+    sheetObject.cell(CellIndex.indexByString("B1")).value = 'Doctor';
+    sheetObject.cell(CellIndex.indexByString("C1")).value = 'Fecha';
+    sheetObject.cell(CellIndex.indexByString("D1")).value = 'Hora';
+    sheetObject.cell(CellIndex.indexByString("E1")).value = 'Categoria';
+    sheetObject.cell(CellIndex.indexByString("F1")).value = 'Motivo';
+    sheetObject.cell(CellIndex.indexByString("G1")).value = 'Diagnostico';
 
-    for (var i = 0; i < turnos.length; i++) {
-      var turno = turnos[i];
-      sheetObject.cell(CellIndex.indexByString("A${i + 1}")).value =
-          '${turno['paciente']['nombre']} ${turno['paciente']['apellido']}';
+    for (var i = 0; i < fichasClinicas.length; i++) {
+      var ficha = fichasClinicas[i];
+      sheetObject.cell(CellIndex.indexByString("A${i + 2}")).value =
+          '${ficha['paciente']['nombre']} ${ficha['paciente']['apellido']}';
+      sheetObject.cell(CellIndex.indexByString("B${i + 2}")).value =
+          '${ficha['doctor']['nombre']} ${ficha['doctor']['apellido']}';
+      sheetObject.cell(CellIndex.indexByString("C${i + 2}")).value =
+          (DateFormat('dd-MM-yyyy').format(DateTime.parse(ficha['fecha'])));
+      sheetObject.cell(CellIndex.indexByString("D${i + 2}")).value =
+          '${ficha['hora']}';
+      sheetObject.cell(CellIndex.indexByString("E${i + 2}")).value =
+          '${ficha['categoria']['descripcion']}';
+      sheetObject.cell(CellIndex.indexByString("F${i + 2}")).value =
+          '${ficha['motivoConsulta']}';
+      sheetObject.cell(CellIndex.indexByString("G${i + 2}")).value = 
+          '${ficha['diagnostico']}';
+          
+          
+
       // Agrega más celdas según sea necesario
     }
 
