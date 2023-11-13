@@ -220,15 +220,36 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
               ),
               ElevatedButton(
                 onPressed: _filter,
-                child: const Text('Filtrar'),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.filter), // Icono para el botón de filtrar
+                    const SizedBox(width: 8), // Espacio entre el icono y el texto
+                    const Text('Filtrar'),
+                  ],
+                ),
               ),
               ElevatedButton(
                 onPressed: _exportToPDF,
-                child: const Text('PDF'),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(Icons.picture_as_pdf), // Icono para el botón de PDF
+                  const SizedBox(width: 8),
+                  const Text('PDF'),
+                ],
+              ),
               ),
               ElevatedButton(
                 onPressed: _exportToExcel,
-                child: const Text('Excel'),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.table_chart), // Icono para el botón de Excel
+                      const SizedBox(width: 8),
+                      const Text('Excel'),
+                    ],
+                  ),
               ),
               ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),

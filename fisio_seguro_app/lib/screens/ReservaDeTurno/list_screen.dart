@@ -221,7 +221,14 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
               ),
               ElevatedButton(
                 onPressed: _filter,
-                child: const Text('Filtrar'),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.filter), // Icono para el botón de filtrar
+                    const SizedBox(width: 8), // Espacio entre el icono y el texto
+                    const Text('Filtrar'),
+                  ],
+                ),
               ),
               ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),

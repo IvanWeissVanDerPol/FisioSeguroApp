@@ -105,7 +105,14 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
             const SizedBox(height: 10),
             ElevatedButton(
               onPressed: _addPerson,
-              child: const Text('Agregar Persona'),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(Icons.person_add), // Icono para el botón de agregar persona
+                  const SizedBox(width: 8),
+                  const Text('Agregar Persona'),
+                ],
+              ),
             ),
             const SizedBox(height: 20),
             Expanded(

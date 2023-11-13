@@ -43,9 +43,9 @@ class _CrearFichasMenu extends State<CrearFichasMenu> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                  ActionCard(icon: Icons.auto_stories,title: 'Registro de fichas con reserva', description: '', onTap: () { context.push('/FichaClinicaFormScreenConReserva'); },),
+                  ActionCard(icon: Icons.content_paste_rounded,title: 'Registro de fichas con reserva', description: '', onTap: () { context.push('/FichaClinicaFormScreenConReserva'); },),
                   const SizedBox(height: 20.0),
-                  ActionCard(icon: Icons.auto_stories,title: 'Registro de fichas sin reserva', description: '', onTap: () { context.push('/FichaClinicaFormScreenSinReserva'); },),
+                  ActionCard(icon: Icons.content_paste_off_rounded,title: 'Registro de fichas sin reserva', description: '', onTap: () { context.push('/FichaClinicaFormScreenSinReserva'); },),
                   const SizedBox(height: 20.0),
                   ],
               ),

@@ -214,7 +214,14 @@ class _FichaClinicaFormScreenSinReserva extends State<FichaClinicaFormScreenSinR
             ),
             ElevatedButton(
               onPressed: _addFicha,
-              child: const Text('Agendar Ficha Clinica'),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(Icons.description), // Icono para el botón de agregar ficha clínica
+                  const SizedBox(width: 8),
+                  const Text('Agregar Ficha Clínica'),
+                ],
+              ),
             ),
             const SizedBox(height: 20),
             // Table to display fichas
