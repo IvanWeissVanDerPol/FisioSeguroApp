@@ -250,73 +250,74 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
     );
   }
 
- pw.Widget _buildText(String label, String value) {
-  return pw.Container(
-    margin: const pw.EdgeInsets.only(bottom: 10),
-    child: pw.RichText(
-      text: pw.TextSpan(
-        style: const pw.TextStyle(
-          fontSize: 14,
-          color: PdfColors.black,
+  pw.Widget _buildText(String label, String value) {
+    return pw.Container(
+      margin: const pw.EdgeInsets.only(bottom: 10),
+      child: pw.RichText(
+        text: pw.TextSpan(
+          style: const pw.TextStyle(
+            fontSize: 14,
+            color: PdfColors.black,
+          ),
+          children: [
+            pw.TextSpan(
+              text: label,
+              style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
+            ),
+            pw.TextSpan(text: '\n$value'),
+          ],
         ),
-        children: [
-          pw.TextSpan(
-            text: label,
-            style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
-          ),
-          pw.TextSpan(text: '\n$value'),
-        ],
       ),
-    ),
-  );
-}
+    );
+  }
 
-Future<void> _exportToPDF() async {
-  print("entre");
-  await requestStoragePermission();
-  final pdf = pw.Document();
-  pdf.addPage(
-    pw.MultiPage(
-      build: (pw.Context context) {
-        return [
-          pw.Header(
-            level: 0,
-            child: pw.Text('Fichas Clínicas'),
-          ),
-          pw.Table.fromTextArray(
-            border: null,
-            headers: ['Paciente', 'Doctor', 'Fecha', 'Hora', 'Categoria', 'Motivo', 'Diagnostico'],
-            headerStyle: pw.TextStyle(fontWeight: pw.FontWeight.bold), // Añadir estilo a los encabezados
-            cellHeight: 30, // Altura de la celda
-            cellAlignments: {
-              0: pw.Alignment.centerLeft, // Alineación del texto en la primera columna
-              1: pw.Alignment.centerLeft, // Alineación del texto en la segunda columna
-              // ... añadir más alineaciones según sea necesario
-            },
-            data: [
-              for (final ficha in fichasClinicas)
-                [
-                  '${ficha['paciente']['nombre']} ${ficha['paciente']['apellido']}',
-                  '${ficha['doctor']['nombre']} ${ficha['doctor']['apellido']}',
-                  (DateFormat('dd-MM-yyyy').format(DateTime.parse(ficha['fecha']))),
-                  '${ficha['hora']}',
-                  '${ficha['categoria']['descripcion']}',
-                  '${ficha['motivoConsulta']}',
-                  '${ficha['diagnostico']}',
-                ],
-            ],
-          ),
-        ];
-      },
-    ),
-  );
-  final directory = await getExternalStorageDirectory();
-  final path = directory?.path ?? (await getApplicationDocumentsDirectory()).path;
-  final file = File('$path/fichas.pdf');
-  print(file.path);
-  await file.writeAsBytes(await pdf.save());
-}
-
+  Future<void> _exportToPDF() async {
+    print("entre");
+    await requestStoragePermission();
+    final pdf = pw.Document();
+    pdf.addPage(
+      pw.MultiPage(
+        build: (pw.Context context) {
+          return [
+            pw.Header(
+              level: 0,
+              child: pw.Text('Fichas Clínicas'),
+            ),
+            pw.Table.fromTextArray(
+              border: null,
+              headers: ['Paciente', 'Doctor', 'Fecha', 'Hora', 'Categoria', 'Motivo', 'Diagnostico'],
+              headerStyle: pw.TextStyle(fontWeight: pw.FontWeight.bold), // Añadir estilo a los encabezados
+              cellAlignments: {
+                0: pw.Alignment.centerLeft, 
+                1: pw.Alignment.centerLeft,
+              },
+              cellStyle: pw.TextStyle(
+                fontSize: 10, 
+              ),
+              cellPadding: const pw.EdgeInsets.all(5), // Ajustar el relleno de la celda
+              data: [
+                for (final ficha in fichasClinicas)
+                  [
+                    '${ficha['paciente']['nombre']} ${ficha['paciente']['apellido']}',
+                    '${ficha['doctor']['nombre']} ${ficha['doctor']['apellido']}',
+                    (DateFormat('dd-MM-yyyy').format(DateTime.parse(ficha['fecha']))),
+                    '${ficha['hora']}',
+                    '${ficha['categoria']['descripcion']}',
+                    '${ficha['motivoConsulta']}',
+                    '${ficha['diagnostico']}',
+                  ],
+              ],
+            ),
+          ];
+        },
+      ),
+    );
+    final directory = await getExternalStorageDirectory();
+    final path = directory?.path ?? (await getApplicationDocumentsDirectory()).path;
+    final file = File('$path/fichas.pdf');
+    print(file.path);
+    await file.writeAsBytes(await pdf.save());
+  }
 
   Future<void> _exportToExcel() async {
     await requestStoragePermission();
