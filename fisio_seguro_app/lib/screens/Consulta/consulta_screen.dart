@@ -125,10 +125,10 @@ class _ConsultaScreenState extends State<ConsultaScreen> {
     if (idController.text.isNotEmpty && descripcionController.text.isNotEmpty) {
       int newId = int.parse(idController.text);
       // Check if ID already exists
-      bool idExists = categories.any((category) => category['id'] == newId);
+      bool idExists = categories.every((category) => category['id'] == newId);
 
       if (idExists) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('ID already exists!')));
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Ya existe una categoria con ese ID')));
         return;
       }
 
@@ -178,7 +178,7 @@ class _ConsultaScreenState extends State<ConsultaScreen> {
 
             // Check if updated ID is unique (excluding the current category being edited)
             if (categories.where((category) => category['id'] == newId && categories.indexOf(category) != index).isNotEmpty) {
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('ID already exists!')));
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Ya existe una categoria con ese ID')));
               return;
             }
 

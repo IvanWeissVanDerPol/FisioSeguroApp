@@ -44,13 +44,13 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                  ActionCard(icon: Icons.auto_stories,title: 'Categoria de Consultas', description: 'Se puede agregar, modificar o eliminar la categoria de las consultas.', onTap: () { context.push('/ConsultasScreen'); },),
+                  ActionCard(icon: Icons.category_rounded,title: 'Categorias', description: 'Permite administrar las categorías para agrupar las consultas de los pacientes', onTap: () { context.push('/ConsultasScreen'); },),
                   const SizedBox(height: 5.0),
-                  ActionCard(icon: Icons.app_registration, title: 'Registro De Personas', description: 'Accede al registro de personas donde se puede crear un nuevo persona o modificar uno ya existente, Tambien se le asigna si es doctor o paciente.', onTap: () { context.push('/PersonRegistryScreen'); },),
+                  ActionCard(icon: Icons.co_present_rounded, title: 'Pacientes y Doctores', description: 'Permite administrar los pacientes y doctores de la clínica', onTap: () { context.push('/PersonRegistryScreen'); },),
                   const SizedBox(height: 5.0),
-                  ActionCard(icon: Icons.mode_edit,title: 'Reserva de Turnos', description: 'Accede a la reserva de turnos para agregar o modificar un turno, tambien se puede indicar a que hora se tendra el turno.', onTap: () {context.push('/ReservaDeTurnosMenuScreen');  },),
+                  ActionCard(icon: Icons.calendar_month_rounded,title: 'Reserva de turnos', description: 'Permite agregar y consultar reservas de turnos', onTap: () {context.push('/ReservaDeTurnosMenuScreen');  },),
                   const SizedBox(height: 5.0),
-                  ActionCard(icon: Icons.view_list,title: 'Ficha Clinica', description: 'Accede a la ficha clinica para agregar o modificar la ficha, tambien se puede hacer un reporte en excel o pdf.', onTap: () {context.push('/FichaClinicaMenuScreen');},),
+                  ActionCard(icon: Icons.assignment,title: 'Ficha clínica', description: 'Premite registrar fichas clínicas con o sin una reserva existente, incluyendo un motivo de consulta y diagnóstico a la ficha. Admite exportar los reportes en excel y pdf.', onTap: () {context.push('/FichaClinicaMenuScreen');},),
              ],
               ),
             ),

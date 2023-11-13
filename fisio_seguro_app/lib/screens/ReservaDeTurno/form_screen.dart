@@ -195,10 +195,17 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
                         });
                       },
             ),
-            ElevatedButton(
-              onPressed: _addTurno,
-              child: const Text('Agendar Reserva'),
+          ElevatedButton(
+            onPressed: _addTurno,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.calendar_today), // Icono para el botón de agendar reserva
+                const SizedBox(width: 8),
+                const Text('Agendar Reserva'),
+              ],
             ),
+          ),
             const SizedBox(height: 20),
             // Table to display turnos
             Expanded(

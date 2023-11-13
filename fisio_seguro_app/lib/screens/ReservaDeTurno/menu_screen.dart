@@ -43,9 +43,9 @@ class _TurnosMenu extends State<TurnosMenu> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                  ActionCard(icon: Icons.auto_stories,title: 'Registro de Turnos', description: '', onTap: () { context.push('/ReservaDeTurnosFormScreen'); },),
+                  ActionCard(icon: Icons.edit_calendar_rounded,title: 'Registro de turnos', description: '', onTap: () { context.push('/ReservaDeTurnosFormScreen'); },),
                   const SizedBox(height: 20.0),
-                  ActionCard(icon: Icons.auto_stories,title: 'Lista De Turnos', description: '', onTap: () { context.push('/ReservaDeTurnosListScreen'); },),
+                  ActionCard(icon: Icons.filter_alt_rounded,title: 'Lista de turnos', description: '', onTap: () { context.push('/ReservaDeTurnosListScreen'); },),
                   const SizedBox(height: 20.0),
                   ],
               ),

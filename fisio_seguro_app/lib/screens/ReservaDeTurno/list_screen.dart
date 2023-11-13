@@ -5,11 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:intl/intl.dart';
-import 'package:pdf/widgets.dart' as pw;
-import 'package:pdf/pdf.dart';
-import 'package:excel/excel.dart';
-import 'dart:io';
-import 'package:permission_handler/permission_handler.dart';
 
 class ListaDeTurnosScreen extends StatefulWidget {
   const ListaDeTurnosScreen({Key? key}) : super(key: key);
@@ -60,20 +55,18 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
     }
 
     DateTime selectedDateEndFilter = DateTime(
-        selectedDateEnd.year, selectedDateEnd.month, selectedDateEnd.day);
+        selectedDateEnd.year, selectedDateEnd.month, selectedDateEnd.day,23, 59, 59);
     DateTime selectedDateStartFilter = DateTime(
         selectedDateStart.year, selectedDateStart.month, selectedDateStart.day);
     filteredList = filteredList
         .where((turno) =>
             DateTime.parse(turno['fecha']).isAfter(selectedDateStartFilter) ||
-            DateTime.parse(turno['fecha'])
-                .isAtSameMomentAs(selectedDateStartFilter))
+            DateTime.parse(turno['fecha']).isAtSameMomentAs(selectedDateStartFilter))
         .toList();
     filteredList = filteredList
         .where((turno) =>
             DateTime.parse(turno['fecha']).isBefore(selectedDateEndFilter) ||
-            DateTime.parse(turno['fecha'])
-                .isAtSameMomentAs(selectedDateEndFilter))
+            DateTime.parse(turno['fecha']).isAtSameMomentAs(selectedDateEndFilter))
         .toList();
 
     setState(() {
@@ -90,14 +83,17 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
       filePathTurno = filePath;
     }
     final File file = File(filePath);
-    final String jsonString =
+
+/*     final String jsonString =
         await rootBundle.loadString('assets/$objeto.json');
-    await file.writeAsString(jsonString);
+    await file.writeAsString(jsonString); */
+
     if (!await file.exists()) {
       final String jsonString =
           await rootBundle.loadString('assets/$objeto.json');
       await file.writeAsString(jsonString);
     }
+
     final data = await file.readAsString();
     final List<Map<String, dynamic>> loadedData = List.from(json.decode(data));
     setState(() {
@@ -129,8 +125,7 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
   }
 
   List<DropdownMenuItem<String>> _listaCategorias() {
-    List<DropdownMenuItem<String>> listaCategorias =
-        categorias.map((categoria) {
+    List<DropdownMenuItem<String>> listaCategorias = categorias.map((categoria) {
       String nombre = categoria['descripcion'];
       String categoriaId = categoria['id'].toString();
       return DropdownMenuItem<String>(
@@ -226,10 +221,17 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
               ),
               ElevatedButton(
                 onPressed: _filter,
-                child: const Text('Filtrar'),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.filter), // Icono para el botón de filtrar
+                    const SizedBox(width: 8), // Espacio entre el icono y el texto
+                    const Text('Filtrar'),
+                  ],
+                ),
               ),
               ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: turnos.length,
                 itemBuilder: (context, index) {
@@ -254,87 +256,11 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
                   );
                 },
               ),
-              ElevatedButton(
-                onPressed: _exportToPDF,
-                child: const Text('PDF'),
-              ),
-              ElevatedButton(
-                onPressed: _exportToExcel,
-                child: const Text('Excel'),
-              ),
             ],
           ),
         ),
       ),
     );
-  }
-
-  Future<void> _exportToPDF() async {
-    print("entre");
-    await requestStoragePermission();
-    final pdf = pw.Document();
-    pdf.addPage(
-      pw.Page(
-        build: (pw.Context context) {
-          return pw.ListView.builder(
-            itemCount: turnos.length,
-            itemBuilder: (context, index) {
-              final turno = turnos[index];
-              return pw.Text(
-                  'Paciente: ${turno['paciente']['nombre']} ${turno['paciente']['apellido']}');
-              // Agrega más detalles según sea necesario
-            },
-          );
-        },
-      ),
-    );
-    final directory =
-        await getExternalStorageDirectory(); // Obtiene la carpeta de descargas
-    final path =
-        directory?.path ?? (await getApplicationDocumentsDirectory()).path;
-    final file = File('$path/turnos.pdf');
-    //final directory = await getApplicationDocumentsDirectory();
-    //final file = File('${directory.path}/turnos.pdf');
-    print(file.path);
-    await file.writeAsBytes(await pdf.save());
-  }
-
-  Future<void> _exportToExcel() async {
-    print("entre");
-    await requestStoragePermission();
-    var excel = Excel.createExcel();
-    Sheet sheetObject = excel['Sheet1'];
-
-    for (var i = 0; i < turnos.length; i++) {
-      var turno = turnos[i];
-      sheetObject.cell(CellIndex.indexByString("A${i + 1}")).value =
-          '${turno['paciente']['nombre']} ${turno['paciente']['apellido']}';
-      // Agrega más celdas según sea necesario
-    }
-
-    //final directory = await getApplicationDocumentsDirectory();
-    //final file = File('${directory.path}/turnos.xlsx');
-    final directory =
-        await getExternalStorageDirectory(); // Obtiene la carpeta de descargas
-    final path =
-        directory?.path ?? (await getApplicationDocumentsDirectory()).path;
-    final file = File('$path/turnos.xlsx');
-    //await file.writeAsBytes(excel.save());
-    // Asegúrate de que el resultado de save() no sea nulo
-    final bytes = await excel.save();
-    if (bytes != null) {
-      await file.writeAsBytes(bytes);
-    } else {
-      // Manejar el caso en que bytes es nulo
-      print("No se pudo generar el archivo Excel");
-    }
-  }
-
-  Future<void> requestStoragePermission() async {
-    var status = await Permission.storage.status;
-    if (!status.isGranted) {
-      await Permission.storage.request();
-    }
   }
 
   void _editTurno(int index) {
@@ -347,7 +273,7 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Edit Turno'),
+        title: const Text('Editar Turno'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
