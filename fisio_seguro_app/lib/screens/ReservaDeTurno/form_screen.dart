@@ -30,7 +30,6 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
   void initState() {
     super.initState();
     _initialize('categories');
-    _initialize('persons');
     _initialize('turnos');
   }
 
