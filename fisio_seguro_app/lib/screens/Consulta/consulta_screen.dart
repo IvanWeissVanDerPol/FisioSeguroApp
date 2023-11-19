@@ -38,7 +38,8 @@ class _ConsultaScreenState extends State<ConsultaScreen> {
     filePath = '${directory.path}/categories.json';
 
     final File file = File(filePath);
-
+    final String jsonString = await rootBundle.loadString('assets/categories.json');
+      await file.writeAsString(jsonString);
     if (!await file.exists()) {
       final String jsonString = await rootBundle.loadString('assets/categories.json');
       await file.writeAsString(jsonString);
@@ -64,7 +65,7 @@ class _ConsultaScreenState extends State<ConsultaScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Categoria de Consultas')),
+      appBar: AppBar(title: const Text('Categoria de productos')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -81,7 +82,7 @@ class _ConsultaScreenState extends State<ConsultaScreen> {
             TextField(
               controller: descripcionController,
               decoration: const InputDecoration(
-                labelText: 'Descripción',
+                labelText: 'Nombre',
               ),
             ),
             const SizedBox(height: 10),
@@ -97,7 +98,7 @@ class _ConsultaScreenState extends State<ConsultaScreen> {
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text('Id: ${categories[index]['id']}'),
-                    subtitle: Text('Descripción: ${categories[index]['descripcion']}'),
+                    subtitle: Text('Nombre: ${categories[index]['descripcion']}'),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -133,7 +134,7 @@ class _ConsultaScreenState extends State<ConsultaScreen> {
       }
 
       setState(() {
-        categories.add({'id': newId, 'descripcion': descripcionController.text});
+        categories.add({'id': newId, 'Nombre': descripcionController.text});
         categories.sort((a, b) => a['id'].compareTo(b['id']));
 
         idController.clear();
@@ -146,7 +147,7 @@ class _ConsultaScreenState extends State<ConsultaScreen> {
 
   void _editCategory(int index) {
   final TextEditingController idEditController = TextEditingController(text: categories[index]['id'].toString());
-  final TextEditingController descripcionEditController = TextEditingController(text: categories[index]['descripcion']);
+  final TextEditingController descripcionEditController = TextEditingController(text: categories[index]['Nombre']);
 
   showDialog(
     context: context,
@@ -159,13 +160,13 @@ class _ConsultaScreenState extends State<ConsultaScreen> {
             controller: idEditController,
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(
-              labelText: 'Id Categoría',
+              labelText: 'ID',
             ),
           ),
           TextField(
             controller: descripcionEditController,
             decoration: const InputDecoration(
-              labelText: 'Descripción',
+              labelText: 'Nombre',
             ),
           ),
         ],
@@ -185,7 +186,7 @@ class _ConsultaScreenState extends State<ConsultaScreen> {
             setState(() {
               categories[index] = {
                 'id': newId,
-                'descripcion': newDescripcion,
+                'Nombre': newDescripcion,
               };
               categories.sort((a, b) => a['id'].compareTo(b['id']));
             });
