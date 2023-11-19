@@ -19,7 +19,7 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
   late String filePath;
   TextEditingController nameController = TextEditingController();
   TextEditingController apellidoController = TextEditingController();
-  TextEditingController telefonoController = TextEditingController();
+  TextEditingController rucController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController cedulaController = TextEditingController();
 
@@ -62,7 +62,7 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Registro de Personas')),
+      appBar: AppBar(title: const Text('Registro de Clientes')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -78,8 +78,8 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
             ),
             const SizedBox(height: 10),
             TextField(
-              controller: telefonoController,
-              decoration: const InputDecoration(labelText: 'Teléfono'),
+              controller: rucController,
+              decoration: const InputDecoration(labelText: 'RUC'),
             ),
             const SizedBox(height: 10),
             TextField(
@@ -92,25 +92,14 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
               decoration: const InputDecoration(labelText: 'Cédula'),
             ),
             const SizedBox(height: 10),
-            CheckboxListTile(
-              title: const Text('Es un doctor?'),
-              subtitle: const Text('(Marcar=SI, Desmarcar=NO)'),
-              value: isDoctor,
-              onChanged: (value) {
-                setState(() {
-                  isDoctor = value!;
-                });
-              },
-            ),
-            const SizedBox(height: 10),
             ElevatedButton(
               onPressed: _addPerson,
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.person_add), // Icono para el botón de agregar persona
-                  const SizedBox(width: 8),
-                  const Text('Agregar Persona'),
+                  Icon(Icons.person_add), // Icono para el botón de agregar persona
+                  SizedBox(width: 8),
+                  Text('Agregar Persona'),
                 ],
               ),
             ),
@@ -121,7 +110,7 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text('Nombre: ${persons[index]['nombre']} ${persons[index]['apellido']}'),
-                    subtitle: Text('Teléfono: ${persons[index]['telefono']} \nEmail: ${persons[index]['email']} \nCédula: ${persons[index]['cedula']} \nIsDoctor: ${persons[index]['isDoctor']}'),
+                    subtitle: Text('RUC: ${persons[index]['RUC']} \nEmail: ${persons[index]['email']} \nCédula: ${persons[index]['cedula']}'),
                   );
                 },
               ),
@@ -135,7 +124,7 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
   void _addPerson() {
     if (nameController.text.isNotEmpty &&
         apellidoController.text.isNotEmpty &&
-        telefonoController.text.isNotEmpty &&
+        rucController.text.isNotEmpty &&
         emailController.text.isNotEmpty &&
         cedulaController.text.isNotEmpty) {
       int newId = persons.isNotEmpty ? persons.last['idPersona'] + 1 : 1;
@@ -145,7 +134,7 @@ class _RegistrationFormScreenState extends State<RegistrationFormScreen> {
           'idPersona': newId,
           'nombre': nameController.text,
           'apellido': apellidoController.text,
-          'telefono': telefonoController.text,
+          'RUC': rucController.text,
           'email': emailController.text,
           'cedula': cedulaController.text,
           'isDoctor': isDoctor,

@@ -86,35 +86,15 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
                   labelText: 'Apellido',
                 ),
               ),
-              CheckboxListTile(
-                title: const Text('Paciente'),
-                value: filterPaciente,
-                onChanged: (value) {
-                  setState(() {
-                    filterPaciente = value ?? false;
-                    _filter();
-                  });
-                },
-              ),
-              CheckboxListTile(
-                title: const Text('Doctor'),
-                value: filterDoctor,
-                onChanged: (value) {
-                  setState(() {
-                    filterDoctor = value ?? false;
-                    _filter();
-                  });
-                },
-              ),
               const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: _filter,
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(Icons.filter), // Icono para el botón de filtrar
-                    const SizedBox(width: 8), // Espacio entre el icono y el texto
-                    const Text('Filtrar'),
+                    Icon(Icons.filter), // Icono para el botón de filtrar
+                    SizedBox(width: 8), // Espacio entre el icono y el texto
+                    Text('Filtrar'),
                   ],
                 ),
               ),
@@ -126,7 +106,7 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text('Nombre: ${persons[index]['nombre']} ${persons[index]['apellido']}'),
-                    subtitle: Text('Teléfono: ${persons[index]['telefono']} \nEmail: ${persons[index]['email']} \nCédula: ${persons[index]['cedula']} \nIsDoctor: ${persons[index]['isDoctor']}'),
+                    subtitle: Text('RUC: ${persons[index]['RUC']} \nEmail: ${persons[index]['email']} \nCédula: ${persons[index]['cedula']}'),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -178,11 +158,9 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
   void _editPerson(int index) {
     final TextEditingController nameEditController = TextEditingController(text: persons[index]['nombre']);
     final TextEditingController apellidoEditController = TextEditingController(text: persons[index]['apellido']);
-    final TextEditingController telefonoEditController = TextEditingController(text: persons[index]['telefono']);
+    final TextEditingController rucEditController = TextEditingController(text: persons[index]['RUC']);
     final TextEditingController emailEditController = TextEditingController(text: persons[index]['email']);
     final TextEditingController cedulaEditController = TextEditingController(text: persons[index]['cedula'].toString());
-    bool isDoctor = persons[index]['isDoctor'];
-
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -204,9 +182,9 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
                 ),
               ),
               TextField(
-                controller: telefonoEditController,
+                controller: rucEditController,
                 decoration: const InputDecoration(
-                  labelText: 'Teléfono',
+                  labelText: 'RUC',
                 ),
               ),
               TextField(
@@ -222,15 +200,6 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
                   labelText: 'Cédula',
                 ),
               ),
-              CheckboxListTile(
-                title: const Text('Is Doctor'),
-                value: isDoctor,
-                onChanged: (value) {
-                  setState(() {
-                    isDoctor = value ?? false;
-                  });
-                },
-              ),
             ],
           ),
         ),
@@ -241,10 +210,9 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
                 persons[index] = {
                   'nombre': nameEditController.text,
                   'apellido': apellidoEditController.text,
-                  'telefono': telefonoEditController.text,
+                  'RUC': rucEditController.text,
                   'email': emailEditController.text,
                   'cedula': cedulaEditController.text,
-                  'isDoctor': isDoctor,
                 };
 
                 // Actualizar la misma entrada en originalPersons

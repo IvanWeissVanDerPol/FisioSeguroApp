@@ -135,12 +135,12 @@ List<DropdownMenuItem<String>> _listaTurnos() {
             ),
             ElevatedButton(
               onPressed: _addFicha,
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.description), // Icono para el botón de agregar ficha clínica
-                  const SizedBox(width: 8),
-                  const Text('Agregar Ficha Clínica'),
+                  Icon(Icons.description), // Icono para el botón de agregar ficha clínica
+                  SizedBox(width: 8),
+                  Text('Agregar Ficha Clínica'),
                 ],
               ),
             ),
@@ -181,7 +181,7 @@ void _addFicha() {
           'idPersona': turnos[int.parse(selectedTurnos!) - 1]['doctor']['idPersona'],
           'nombre': turnos[int.parse(selectedTurnos!) - 1]['doctor']['nombre'],
           'apellido': turnos[int.parse(selectedTurnos!) - 1]['doctor']['apellido'],
-          'telefono': turnos[int.parse(selectedTurnos!) - 1]['doctor']['telefono'],
+          'RUC': turnos[int.parse(selectedTurnos!) - 1]['doctor']['RUC'],
           'email': turnos[int.parse(selectedTurnos!) - 1]['doctor']['email'],
           'cedula': turnos[int.parse(selectedTurnos!) - 1]['doctor']['cedula'],
           'isDoctor': turnos[int.parse(selectedTurnos!) - 1]['doctor']['isDoctor'],
@@ -191,7 +191,7 @@ void _addFicha() {
           'idPersona': turnos[int.parse(selectedTurnos!) - 1]['paciente']['idPersona'],
           'nombre': turnos[int.parse(selectedTurnos!) - 1]['paciente']['nombre'],
           'apellido': turnos[int.parse(selectedTurnos!) - 1]['paciente']['apellido'],
-          'telefono': turnos[int.parse(selectedTurnos!) - 1]['paciente']['telefono'],
+          'RUC': turnos[int.parse(selectedTurnos!) - 1]['paciente']['RUC'],
           'email': turnos[int.parse(selectedTurnos!) - 1]['paciente']['email'],
           'cedula': turnos[int.parse(selectedTurnos!) - 1]['paciente']['cedula'],
           'isDoctor': turnos[int.parse(selectedTurnos!) - 1]['paciente']['isDoctor'],

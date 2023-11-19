@@ -43,9 +43,9 @@ class _PersonRegistryScreenState extends State<PersonRegistryScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                  ActionCard(icon: Icons.person_add_alt_1,title: 'Registro de pacientes y doctores', description: '', onTap: () { context.push('/RegisterPersonScreen'); },),
+                  ActionCard(icon: Icons.person_add_alt_1,title: 'Registro De Clientes', description: '', onTap: () { context.push('/RegisterPersonScreen'); },),
                   const SizedBox(height: 20.0),
-                  ActionCard(icon: Icons.filter_alt_rounded,title: 'Lista De Pacientes', description: '', onTap: () { context.push('/ListaDePersonasScreen'); },),
+                  ActionCard(icon: Icons.filter_alt_rounded,title: 'Lista De Clientes', description: '', onTap: () { context.push('/ListaDePersonasScreen'); },),
                   const SizedBox(height: 20.0),
                   ],
               ),

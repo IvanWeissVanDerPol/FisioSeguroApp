@@ -221,12 +221,12 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
               ),
               ElevatedButton(
                 onPressed: _filter,
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(Icons.filter), // Icono para el botón de filtrar
-                    const SizedBox(width: 8), // Espacio entre el icono y el texto
-                    const Text('Filtrar'),
+                    Icon(Icons.filter), // Icono para el botón de filtrar
+                    SizedBox(width: 8), // Espacio entre el icono y el texto
+                    Text('Filtrar'),
                   ],
                 ),
               ),
@@ -264,11 +264,11 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
   }
 
   void _editTurno(int index) {
-    DateTime EditedDate = DateTime.parse(turnos[index]['fecha']);
-    String? EditedTime = turnos[index]['hora'];
-    String? EditedPaciente = turnos[index]['paciente']['idPersona'];
-    String? EditedDoctor = turnos[index]['doctor']['idPersona'];
-    String? EditedCategory = turnos[index]['categoria']['id'];
+    DateTime editedDate = DateTime.parse(turnos[index]['fecha']);
+    String? editedTime = turnos[index]['hora'];
+    String? editedPaciente = turnos[index]['paciente']['idPersona'];
+    String? editedDoctor = turnos[index]['doctor']['idPersona'];
+    String? editedCategory = turnos[index]['categoria']['id'];
 
     showDialog(
       context: context,
@@ -279,27 +279,27 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
           children: [
             DropdownButton<String>(
               value:
-                  EditedPaciente, // El valor seleccionado (inicialmente null)
+                  editedPaciente, // El valor seleccionado (inicialmente null)
               hint: const Text(
                   'Selecciona un paciente'), // Texto que se muestra cuando no se ha seleccionado nada
               items: _listaPersonas(false),
               onChanged: (String? newValue) {
                 setState(() {
                   if (newValue != null) {
-                    EditedPaciente = newValue;
+                    editedPaciente = newValue;
                   }
                 });
               },
             ),
             DropdownButton<String>(
-              value: EditedDoctor, // El valor seleccionado (inicialmente null)
+              value: editedDoctor, // El valor seleccionado (inicialmente null)
               hint: const Text(
                   'Selecciona un doctor'), // Texto que se muestra cuando no se ha seleccionado nada
               items: _listaPersonas(true),
               onChanged: (String? newValue) {
                 setState(() {
                   if (newValue != null) {
-                    EditedDoctor = newValue;
+                    editedDoctor = newValue;
                   }
                 });
               },
@@ -316,18 +316,18 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
                   lastDate: DateTime(2100),
                 );
 
-                if (pickedDate != null && pickedDate != EditedDate) {
+                if (pickedDate != null && pickedDate != editedDate) {
                   setState(() {
-                    EditedDate = pickedDate;
+                    editedDate = pickedDate;
                   });
                 }
               },
               controller: TextEditingController(
-                  text: EditedDate.toLocal().toString().split(' ')[0]),
+                  text: editedDate.toLocal().toString().split(' ')[0]),
               readOnly: true,
             ),
             DropdownButton<String>(
-              value: EditedTime,
+              value: editedTime,
               hint: const Text('Selecciona una hora'),
               items: [
                 "09:00 - 10:00",
@@ -351,21 +351,21 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
               onChanged: (String? value) {
                 if (value != null) {
                   setState(() {
-                    EditedTime = value;
+                    editedTime = value;
                   });
                 }
               },
             ),
             DropdownButton<String>(
               value:
-                  EditedCategory, // El valor seleccionado (inicialmente null)
+                  editedCategory, // El valor seleccionado (inicialmente null)
               hint: const Text(
                   'Selecciona una Categoria'), // Texto que se muestra cuando no se ha seleccionado nada
               items: _listaCategorias(),
               onChanged: (String? newValue) {
                 setState(() {
                   if (newValue != null) {
-                    EditedCategory = newValue;
+                    editedCategory = newValue;
                   }
                 });
               },
@@ -378,41 +378,41 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
               setState(() {
                 turnos[index] = {
                   'doctor': {
-                    'idPersona': personas[int.parse(EditedDoctor!) - 1]
+                    'idPersona': personas[int.parse(editedDoctor!) - 1]
                         ['idPersona'],
-                    'nombre': personas[int.parse(EditedDoctor!) - 1]['nombre'],
-                    'apellido': personas[int.parse(EditedDoctor!) - 1]
+                    'nombre': personas[int.parse(editedDoctor!) - 1]['nombre'],
+                    'apellido': personas[int.parse(editedDoctor!) - 1]
                         ['apellido'],
-                    'telefono': personas[int.parse(EditedDoctor!) - 1]
-                        ['telefono'],
-                    'email': personas[int.parse(EditedDoctor!) - 1]['email'],
-                    'cedula': personas[int.parse(EditedDoctor!) - 1]['cedula'],
-                    'isDoctor': personas[int.parse(EditedDoctor!) - 1]
+                    'RUC': personas[int.parse(editedDoctor!) - 1]
+                        ['RUC'],
+                    'email': personas[int.parse(editedDoctor!) - 1]['email'],
+                    'cedula': personas[int.parse(editedDoctor!) - 1]['cedula'],
+                    'isDoctor': personas[int.parse(editedDoctor!) - 1]
                         ['isDoctor'],
                     'isEditing': false
                   },
                   'paciente': {
-                    'idPersona': personas[int.parse(EditedPaciente!) - 1]
+                    'idPersona': personas[int.parse(editedPaciente!) - 1]
                         ['idPersona'],
-                    'nombre': personas[int.parse(EditedPaciente!) - 1]
+                    'nombre': personas[int.parse(editedPaciente!) - 1]
                         ['nombre'],
-                    'apellido': personas[int.parse(EditedPaciente!) - 1]
+                    'apellido': personas[int.parse(editedPaciente!) - 1]
                         ['apellido'],
-                    'telefono': personas[int.parse(EditedPaciente!) - 1]
-                        ['telefono'],
-                    'email': personas[int.parse(EditedPaciente!) - 1]['email'],
-                    'cedula': personas[int.parse(EditedPaciente!) - 1]
+                    'RUC': personas[int.parse(editedPaciente!) - 1]
+                        ['RUC'],
+                    'email': personas[int.parse(editedPaciente!) - 1]['email'],
+                    'cedula': personas[int.parse(editedPaciente!) - 1]
                         ['cedula'],
-                    'isDoctor': personas[int.parse(EditedPaciente!) - 1]
+                    'isDoctor': personas[int.parse(editedPaciente!) - 1]
                         ['isDoctor'],
                     'isEditing': false
                   },
                   // 'fecha' : selectedDate to string
-                  'fecha': EditedDate.toString(),
-                  'hora': EditedTime,
+                  'fecha': editedDate.toString(),
+                  'hora': editedTime,
                   'categoria': {
-                    'id': categorias[int.parse(EditedCategory!) - 1]['id'],
-                    'descripcion': categorias[int.parse(EditedCategory!) - 1]
+                    'id': categorias[int.parse(editedCategory!) - 1]['id'],
+                    'descripcion': categorias[int.parse(editedCategory!) - 1]
                         ['descripcion'],
                   }
                 };

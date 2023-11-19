@@ -7,12 +7,12 @@
 //   final int idPersona;
 //   final String nombre;
 //   final String apellido;
-//   final String telefono;
+//   final String RUC;
 //   final String email;
 //   final String cedula;
 //   final bool isDoctor;
 
-//   Patient(this.idPersona, this.nombre, this.apellido, this.telefono, this.email, this.cedula, this.isDoctor);
+//   Patient(this.idPersona, this.nombre, this.apellido, this.RUC, this.email, this.cedula, this.isDoctor);
 // }
 
 // class PatientListScreen extends StatefulWidget {
@@ -86,7 +86,7 @@
 //             DataColumn(label: Text('ID Persona'), numeric: true),
 //             DataColumn(label: Text('Nombre'), onSort: (int columnIndex, bool ascending) => _sort<String>((p) => p.nombre, columnIndex)),
 //             DataColumn(label: Text('Apellido'), onSort: (int columnIndex, bool ascending) => _sort<String>((p) => p.apellido, columnIndex)),
-//             DataColumn(label: Text('Telefono'), numeric: true),
+//             DataColumn(label: Text('RUC'), numeric: true),
 //             DataColumn(label: Text('Email')),
 //             DataColumn(label: Text('Cedula')),
 //             DataColumn(label: Text('Es Doctor'), numeric: true),
@@ -98,7 +98,7 @@
 //                 DataCell(Text('${patient.idPersona}')),
 //                 DataCell(Text(patient.nombre)),
 //                 DataCell(Text(patient.apellido)),
-//                 DataCell(Text(patient.telefono)),
+//                 DataCell(Text(patient.RUC)),
 //                 DataCell(Text(patient.email)),
 //                 DataCell(Text(patient.cedula)),
 //                 DataCell(Text(patient.isDoctor.toString())),

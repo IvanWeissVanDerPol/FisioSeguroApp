@@ -220,34 +220,34 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
               ),
               ElevatedButton(
                 onPressed: _filter,
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(Icons.filter), // Icono para el botón de filtrar
-                    const SizedBox(width: 8), // Espacio entre el icono y el texto
-                    const Text('Filtrar'),
+                    Icon(Icons.filter), // Icono para el botón de filtrar
+                    SizedBox(width: 8), // Espacio entre el icono y el texto
+                    Text('Filtrar'),
                   ],
                 ),
               ),
               ElevatedButton(
                 onPressed: _exportToPDF,
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.picture_as_pdf), // Icono para el botón de PDF
-                  const SizedBox(width: 8),
-                  const Text('PDF'),
+                  Icon(Icons.picture_as_pdf), // Icono para el botón de PDF
+                  SizedBox(width: 8),
+                  Text('PDF'),
                 ],
               ),
               ),
               ElevatedButton(
                 onPressed: _exportToExcel,
-                child: Row(
+                child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.table_chart), // Icono para el botón de Excel
-                      const SizedBox(width: 8),
-                      const Text('Excel'),
+                      Icon(Icons.table_chart), // Icono para el botón de Excel
+                      SizedBox(width: 8),
+                      Text('Excel'),
                     ],
                   ),
               ),
@@ -293,7 +293,6 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
   }
 
   Future<void> _exportToPDF() async {
-    print("entre");
     await requestStoragePermission();
     final pdf = pw.Document();
     pdf.addPage(
@@ -312,7 +311,7 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
                 0: pw.Alignment.centerLeft, 
                 1: pw.Alignment.centerLeft,
               },
-              cellStyle: pw.TextStyle(
+              cellStyle: const pw.TextStyle(
                 fontSize: 10, 
               ),
               cellPadding: const pw.EdgeInsets.all(5), // Ajustar el relleno de la celda
@@ -336,7 +335,6 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
     final directory = await getExternalStorageDirectory();
     final path = directory?.path ?? (await getApplicationDocumentsDirectory()).path;
     final file = File('$path/fichas.pdf');
-    print(file.path);
     await file.writeAsBytes(await pdf.save());
   }
 
@@ -388,7 +386,6 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
       await file.writeAsBytes(bytes);
     } else {
       // Manejar el caso en que bytes es nulo
-      print("No se pudo generar el archivo Excel");
     }
   }
 

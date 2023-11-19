@@ -214,12 +214,12 @@ class _FichaClinicaFormScreenSinReserva extends State<FichaClinicaFormScreenSinR
             ),
             ElevatedButton(
               onPressed: _addFicha,
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.description), // Icono para el botón de agregar ficha clínica
-                  const SizedBox(width: 8),
-                  const Text('Agregar Ficha Clínica'),
+                  Icon(Icons.description), // Icono para el botón de agregar ficha clínica
+                  SizedBox(width: 8),
+                  Text('Agregar Ficha Clínica'),
                 ],
               ),
             ),
@@ -263,7 +263,7 @@ void _addFicha() {
           'idPersona': personas[doctorIndex]['idPersona'],
           'nombre': personas[doctorIndex]['nombre'],
           'apellido': personas[doctorIndex]['apellido'],
-          'telefono': personas[doctorIndex]['telefono'],
+          'RUC': personas[doctorIndex]['RUC'],
           'email': personas[doctorIndex]['email'],
           'cedula': personas[doctorIndex]['cedula'],
           'isDoctor': personas[doctorIndex]['isDoctor'],
@@ -273,7 +273,7 @@ void _addFicha() {
           'idPersona': personas[pacienteIndex]['idPersona'],
           'nombre': personas[pacienteIndex]['nombre'],
           'apellido': personas[pacienteIndex]['apellido'],
-          'telefono': personas[pacienteIndex]['telefono'],
+          'RUC': personas[pacienteIndex]['RUC'],
           'email': personas[pacienteIndex]['email'],
           'cedula': personas[pacienteIndex]['cedula'],
           'isDoctor': personas[pacienteIndex]['isDoctor'],

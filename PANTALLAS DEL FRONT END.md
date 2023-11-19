@@ -58,7 +58,7 @@ Esta pantalla muestra información detallada de un paciente seleccionado.
 
 - **Detalles del Paciente:** Esta sección muestra información detallada sobre el paciente seleccionado. Los detalles pueden incluir:
   - Nombre completo del paciente.
-  - Número de teléfono.
+  - Número de RUC.
   - Dirección de correo electrónico.
   - Otros detalles relevantes, como fecha de nacimiento, número de identificación, etc.
   - Esta sección permite a los usuarios ver la información completa del paciente.
