@@ -38,8 +38,8 @@ class _ConsultaScreenState extends State<ConsultaScreen> {
     filePath = '${directory.path}/categories.json';
 
     final File file = File(filePath);
-    final String jsonString = await rootBundle.loadString('assets/categories.json');
-      await file.writeAsString(jsonString);
+/*      final String jsonString = await rootBundle.loadString('assets/categories.json');
+      await file.writeAsString(jsonString);  */
     if (!await file.exists()) {
       final String jsonString = await rootBundle.loadString('assets/categories.json');
       await file.writeAsString(jsonString);
@@ -98,7 +98,7 @@ class _ConsultaScreenState extends State<ConsultaScreen> {
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text('Id: ${categories[index]['id']}'),
-                    subtitle: Text('Nombre: ${categories[index]['descripcion']}'),
+                    subtitle: Text('Nombre: ${categories[index]['Nombre']}'),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
