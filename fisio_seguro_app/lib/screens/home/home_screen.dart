@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Fisio Seguro',
+          'Sistema de ventas de productos',
         ),
         actions: [
           IconButton(
@@ -44,11 +44,11 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                  ActionCard(icon: Icons.category_rounded,title: 'Categorias', description: 'Administración de categoría de productos', onTap: () { context.push('/ConsultasScreen'); },),
+                  ActionCard(icon: Icons.category_rounded,title: ' Categorías', description: 'Administración de categoría de productos', onTap: () { context.push('/ConsultasScreen'); },),
                   const SizedBox(height: 5.0),
-                  ActionCard(icon: Icons.calendar_month_rounded,title: 'productos', description: 'Administración de datos de productos', onTap: () {context.push('/ReservaDeTurnosMenuScreen');  },),
+                  ActionCard(icon: Icons.calendar_month_rounded,title: 'Productos', description: 'Administración de datos de productos', onTap: () { context.push('/ReservaDeTurnosFormScreen'); },),
                   const SizedBox(height: 5.0),
-                  ActionCard(icon: Icons.co_present_rounded, title: 'clientes', description: 'Administracion de clientes', onTap: () { context.push('/PersonRegistryScreen'); },),
+                  ActionCard(icon: Icons.co_present_rounded, title: 'Clientes', description: 'Administracion de clientes', onTap: () { context.push('/PersonRegistryScreen'); },),
                   const SizedBox(height: 5.0),
                   ActionCard(icon: Icons.assignment,title: 'Ficha clínica', description: 'Premite registrar fichas clínicas con o sin una reserva existente, incluyendo un motivo de consulta y diagnóstico a la ficha. Admite exportar los reportes en excel y pdf.', onTap: () {context.push('/FichaClinicaMenuScreen');},),
              ],

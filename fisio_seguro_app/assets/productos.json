@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "codigoProducto": "ABC123",
+        "nombreProducto": "Camiseta",
+        "idCategoria": 2,
+        "precioVenta": 1000
+    },
+    {
+        "id": 2,
+        "codigoProducto": "DEF456",
+        "nombreProducto": "Pantalón",
+        "idCategoria": 1,
+        "precioVenta": 2000
+    },
+    {
+        "id": 3,
+        "codigoProducto": "GHI789",
+        "nombreProducto": "Zapatos",
+        "idCategoria": 3,
+        "precioVenta": 1500
+    },
+    {
+        "id": 4,
+        "codigoProducto": "JKL012",
+        "nombreProducto": "Sombrero",
+        "idCategoria": 2,
+        "precioVenta": 800
+    },
+    {
+        "id": 5,
+        "codigoProducto": "MNO345",
+        "nombreProducto": "Bufanda",
+        "idCategoria": 1,
+        "precioVenta": 1200
+    },
+    {
+        "id": 6,
+        "codigoProducto": "PQR678",
+        "nombreProducto": "Guantes",
+        "idCategoria": 3,
+        "precioVenta": 900
+    },
+    {
+        "id": 7,
+        "codigoProducto": "STU901",
+        "nombreProducto": "Calcetines",
+        "idCategoria": 2,
+        "precioVenta": 500
+    },
+    {
+        "id": 8,
+        "codigoProducto": "VWX234",
+        "nombreProducto": "Gorra",
+        "idCategoria": 1,
+        "precioVenta": 700
+    },
+    {
+        "id": 9,
+        "codigoProducto": "YZA567",
+        "nombreProducto": "Chaqueta",
+        "idCategoria": 3,
+        "precioVenta": 2500
+    },
+    {
+        "id": 10,
+        "codigoProducto": "BCD890",
+        "nombreProducto": "Vestido",
+        "idCategoria": 2,
+        "precioVenta": 1800
+    },
+    {
+        "id": 11,
+        "codigoProducto": "EFG123",
+        "nombreProducto": "Falda",
+        "idCategoria": 1,
+        "precioVenta": 1500
+    },
+    {
+        "id": 12,
+        "codigoProducto": "HIJ456",
+        "nombreProducto": "Bolso",
+        "idCategoria": 3,
+        "precioVenta": 3000
+    }
+]

@@ -45,8 +45,8 @@ class _TurnosMenu extends State<TurnosMenu> {
               children: [
                   ActionCard(icon: Icons.edit_calendar_rounded,title: 'Registro de Productos', description: '', onTap: () { context.push('/ReservaDeTurnosFormScreen'); },),
                   const SizedBox(height: 20.0),
-                  ActionCard(icon: Icons.filter_alt_rounded,title: 'Lista de productos', description: '', onTap: () { context.push('/ReservaDeTurnosListScreen'); },),
-                  const SizedBox(height: 20.0),
+                 /*  ActionCard(icon: Icons.filter_alt_rounded,title: 'Lista de productos', description: '', onTap: () { context.push('/ReservaDeTurnosListScreen'); },),
+                  const SizedBox(height: 20.0), */
                   ],
               ),
             ),

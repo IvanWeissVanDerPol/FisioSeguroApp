@@ -37,8 +37,8 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
   }
 
   Future<void> _initializeFilePath() async {
-    final directory = await getApplicationDocumentsDirectory();
-    filePath = '${directory.path}/persons.json';
+/*     final directory = await getApplicationDocumentsDirectory();
+    filePath = '${directory.path}/persons.json'; */
 
     final File file = File(filePath);
 
