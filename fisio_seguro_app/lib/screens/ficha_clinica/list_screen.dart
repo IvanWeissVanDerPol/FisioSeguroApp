@@ -10,7 +10,7 @@ import 'package:intl/intl.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 
 class ListaDeVentasScreen extends StatefulWidget {
   const ListaDeVentasScreen({Key? key}) : super(key: key);
@@ -200,6 +200,30 @@ class _ListaDeVentasScreenState extends State<ListaDeVentasScreen> {
     );
   }
 
+  void _sendEmail() async {
+      //CAMBIAR EL CORREO DESTINO POR EL CORREO AL QUE SE QUIERE ENVIAR EL PDF
+      String correoDestino = 'example@gmail.com';
+      final Email email = Email(
+        body: 'Le agradecemos por su preferencia. Adjunto encontrará el reporte de ventas.',
+        subject: 'Reporte de ventas',
+        recipients: [correoDestino],
+        attachmentPaths: ['/sdcard/Android/data/com.example.fisio_seguro_app/files/fichas.pdf'],
+        isHTML: false,
+      );
+
+      String platformResponse;
+
+    try {
+      await FlutterEmailSender.send(email);
+      platformResponse = 'success';
+    } catch (error) {
+      platformResponse = error.toString();
+
+      print(platformResponse);
+
+    }
+  }
+
   pw.Widget _buildText(String label, String value) {
     return pw.Container(
       margin: const pw.EdgeInsets.only(bottom: 10),
@@ -265,6 +289,9 @@ class _ListaDeVentasScreenState extends State<ListaDeVentasScreen> {
     final path = directory?.path ?? (await getApplicationDocumentsDirectory()).path;
     final file = File('$path/fichas.pdf');
     await file.writeAsBytes(await pdf.save());
+
+    //enviar el pdf por correo
+    _sendEmail();
   }
 
   Future<void> _exportToExcel() async {
