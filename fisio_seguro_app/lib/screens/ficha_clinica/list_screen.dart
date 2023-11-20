@@ -71,8 +71,6 @@ class _ListaDeVentasScreenState extends State<ListaDeVentasScreen> {
       filePathVenta = filePath;
     }
     final File file = File(filePath);
-    final String jsonString = await rootBundle.loadString('assets/$objeto.json');
-    await file.writeAsString(jsonString);
     if (!await file.exists()) {
       final String jsonString = await rootBundle.loadString('assets/$objeto.json');
       await file.writeAsString(jsonString);
@@ -187,6 +185,7 @@ class _ListaDeVentasScreenState extends State<ListaDeVentasScreen> {
   itemCount: ventas.length,
   itemBuilder: (context, index) {
     final sale = ventas[index]['header'];
+    final detail = ventas[index]['details'];
     return Card( // Wrapping with a Card for better UI
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -197,7 +196,7 @@ class _ListaDeVentasScreenState extends State<ListaDeVentasScreen> {
               'Venta ID: ${sale['saleId']}',
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
-            Text('Factura: ${sale['invoiceNumber']}'),
+            Text('Factura: ${sale['factura']}'),
             Text('Fecha: ${sale['date']}'),
             Text(
               'Total: \$${sale['total']}',
@@ -208,9 +207,8 @@ class _ListaDeVentasScreenState extends State<ListaDeVentasScreen> {
               'Detalles:',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            ...ventas[index]['details'].map<Widget>((detail) {
-              return Text('Producto: ${detail['productId']}, Cantidad: ${detail['quantity']}');
-            }).toList(),
+            Text('Producto: ${detail['productId']}, Cantidad: ${detail['quantity']}'),
+            
           ],
         ),
       ),
