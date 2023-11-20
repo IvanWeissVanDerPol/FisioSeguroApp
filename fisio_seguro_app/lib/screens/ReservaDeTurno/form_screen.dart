@@ -71,7 +71,7 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
   List<DropdownMenuItem<String>> _listaCategorias() {
     List<DropdownMenuItem<String>> listaCategorias = categorias
       .map((categoria) {
-        String nombre = categoria['descripcion'];
+        String nombre = categoria['Nombre'];
         String categoriaId = categoria['id'].toString();
         return DropdownMenuItem<String>(
           value: categoriaId,
@@ -147,7 +147,7 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('Código: ${productos[index]['codigoProducto']}'),
-                        Text('Categoría: ${productos[index]['idCategoria']}'),
+                        Text('Categoría: ${categorias.firstWhere((categoria) => categoria['id'] == productos[index]['idCategoria'])['Nombre']}'),
                         Text('Precio de venta: ${productos[index]['precioVenta']}'),
                       ],
                     ),
