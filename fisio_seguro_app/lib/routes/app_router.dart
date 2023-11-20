@@ -8,7 +8,6 @@ import 'package:fisio_seguro_app/screens/ReservaDeTurno/menu_screen.dart';
 import 'package:fisio_seguro_app/screens/auth/main_screen.dart';
 import 'package:fisio_seguro_app/screens/Consulta/consulta_screen.dart';
 import 'package:fisio_seguro_app/screens/ficha_clinica/form_screen.dart';
-import 'package:fisio_seguro_app/screens/ficha_clinica/form_screen_con_reserva.dart';
 import 'package:fisio_seguro_app/screens/ficha_clinica/form_screen_sin_reserva.dart';
 import 'package:fisio_seguro_app/screens/ficha_clinica/list_screen.dart';
 import 'package:fisio_seguro_app/screens/ficha_clinica/menu_screen.dart';
@@ -89,29 +88,24 @@ class AppRouter {
             const MaterialPage(child: ListaDeTurnosScreen()),
       ),
       GoRoute(
-        path: '/FichaClinicaMenuScreen',
+        path: '/VentasMenuScreen',
         pageBuilder: (context, state) =>
-            const MaterialPage(child: FichasMenu()),
+            const MaterialPage(child: VentasMenu()),
       ),
       GoRoute(
-        path: '/FichaClinicaFormScreen',
+        path: '/VentaFormScreen',
         pageBuilder: (context, state) =>
-            const MaterialPage(child: CrearFichasMenu()),
+            const MaterialPage(child: CrearVentasMenu()),
       ),
       GoRoute(
-        path: '/FichaClinicaFormScreenConReserva',
+        path: '/VentaFormScreenSinReserva',
         pageBuilder: (context, state) => 
-          const MaterialPage(child: FichaClinicaFormScreenConReserva()),
+          const MaterialPage(child: VentaFormScreenSinReserva()),
       ),
       GoRoute(
-        path: '/FichaClinicaFormScreenSinReserva',
-        pageBuilder: (context, state) => 
-          const MaterialPage(child: FichaClinicaFormScreenSinReserva()),
-      ),
-      GoRoute(
-        path: '/FichaClinicaListScreen',
+        path: '/VentaListScreen',
         pageBuilder: (context, state) =>
-            const MaterialPage(child: ListaDeFichasClinicasScreen()),
+            const MaterialPage(child: ListaDeVentasScreen()),
       ),
     ],
   );

@@ -20,7 +20,7 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
   List<Map<String, dynamic>> originalTurnos = [];
   DateTime selectedDateStart = DateTime.now();
   DateTime selectedDateEnd = DateTime.now();
-  String? selectedPaciente;
+  String? selectedCliente;
   String? selectedDoctor;
   late String filePathTurno;
 
@@ -47,10 +47,10 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
               turno['doctor']['idPersona'] == int.parse(selectedDoctor!))
           .toList();
     }
-    if (selectedPaciente != null) {
+    if (selectedCliente != null) {
       filteredList = filteredList
           .where((turno) =>
-              turno['paciente']['idPersona'] == int.parse(selectedPaciente!))
+              turno['paciente']['idPersona'] == int.parse(selectedCliente!))
           .toList();
     }
 
@@ -109,7 +109,7 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
   }
 
   List<DropdownMenuItem<String>> _listaPersonas(bool isDoctor) {
-    List<DropdownMenuItem<String>> listaPacientes = personas
+    List<DropdownMenuItem<String>> listaClientes = personas
         .where((persona) => persona['isDoctor'] == isDoctor)
         .map((persona) {
       String nombre = persona['nombre'];
@@ -121,7 +121,7 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
         child: Text(nombreCompleto),
       );
     }).toList();
-    return listaPacientes;
+    return listaClientes;
   }
 
   List<DropdownMenuItem<String>> _listaCategorias() {
@@ -147,14 +147,14 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
             children: [
               DropdownButton<String>(
                 value:
-                    selectedPaciente, // El valor seleccionado (inicialmente null)
+                    selectedCliente, // El valor seleccionado (inicialmente null)
                 hint: const Text(
                     'Selecciona un paciente'), // Texto que se muestra cuando no se ha seleccionado nada
                 items: _listaPersonas(false),
                 onChanged: (String? newValue) {
                   setState(() {
                     if (newValue != null) {
-                      selectedPaciente = newValue;
+                      selectedCliente = newValue;
                     }
                   });
                 },
@@ -237,7 +237,7 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text(
-                        'Paciente: ${turnos[index]['paciente']['nombre']} ${turnos[index]['paciente']['apellido']}'),
+                        'Cliente: ${turnos[index]['paciente']['nombre']} ${turnos[index]['paciente']['apellido']}'),
                     subtitle: Text(
                         'Doctor: ${turnos[index]['doctor']['nombre']} ${turnos[index]['doctor']['apellido']}\nFecha: ${DateFormat('dd-MM-yyyy').format(DateTime.parse(turnos[index]['fecha']))}\t${turnos[index]['hora']}\nCategoria: ${turnos[index]['categoria']['descripcion']}'),
                     trailing: Row(
@@ -266,7 +266,7 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
   void _editTurno(int index) {
     DateTime editedDate = DateTime.parse(turnos[index]['fecha']);
     String? editedTime = turnos[index]['hora'];
-    String? editedPaciente = turnos[index]['paciente']['idPersona'];
+    String? editedCliente = turnos[index]['paciente']['idPersona'];
     String? editedDoctor = turnos[index]['doctor']['idPersona'];
     String? editedCategory = turnos[index]['categoria']['id'];
 
@@ -279,14 +279,14 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
           children: [
             DropdownButton<String>(
               value:
-                  editedPaciente, // El valor seleccionado (inicialmente null)
+                  editedCliente, // El valor seleccionado (inicialmente null)
               hint: const Text(
                   'Selecciona un paciente'), // Texto que se muestra cuando no se ha seleccionado nada
               items: _listaPersonas(false),
               onChanged: (String? newValue) {
                 setState(() {
                   if (newValue != null) {
-                    editedPaciente = newValue;
+                    editedCliente = newValue;
                   }
                 });
               },
@@ -392,18 +392,18 @@ class _ListaDeTurnosScreenState extends State<ListaDeTurnosScreen> {
                     'isEditing': false
                   },
                   'paciente': {
-                    'idPersona': personas[int.parse(editedPaciente!) - 1]
+                    'idPersona': personas[int.parse(editedCliente!) - 1]
                         ['idPersona'],
-                    'nombre': personas[int.parse(editedPaciente!) - 1]
+                    'nombre': personas[int.parse(editedCliente!) - 1]
                         ['nombre'],
-                    'apellido': personas[int.parse(editedPaciente!) - 1]
+                    'apellido': personas[int.parse(editedCliente!) - 1]
                         ['apellido'],
-                    'RUC': personas[int.parse(editedPaciente!) - 1]
+                    'RUC': personas[int.parse(editedCliente!) - 1]
                         ['RUC'],
-                    'email': personas[int.parse(editedPaciente!) - 1]['email'],
-                    'cedula': personas[int.parse(editedPaciente!) - 1]
+                    'email': personas[int.parse(editedCliente!) - 1]['email'],
+                    'cedula': personas[int.parse(editedCliente!) - 1]
                         ['cedula'],
-                    'isDoctor': personas[int.parse(editedPaciente!) - 1]
+                    'isDoctor': personas[int.parse(editedCliente!) - 1]
                         ['isDoctor'],
                     'isEditing': false
                   },

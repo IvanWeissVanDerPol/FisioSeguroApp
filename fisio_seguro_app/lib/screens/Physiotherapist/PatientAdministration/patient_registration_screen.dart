@@ -9,7 +9,7 @@ class PatientRegistrationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Registro de Paciente'),
+        title: const Text('Registro de Cliente'),
       ),
       // body: // Aquí va el formulario de registro de paciente
 

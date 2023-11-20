@@ -1,0 +1,1416 @@
+{
+    "saleRecords": [
+        {
+            "header": {
+                "saleId": 1,
+                "invoiceNumber": "326-573-1296433",
+                "date": "2023-11-06",
+                "total": 30276
+            },
+            "details": [
+                {
+                    "productId": 110,
+                    "quantity": 8,
+                    "unitPrice": 1983,
+                    "totalPrice": 15864
+                },
+                {
+                    "productId": 106,
+                    "quantity": 8,
+                    "unitPrice": 653,
+                    "totalPrice": 5224
+                },
+                {
+                    "productId": 108,
+                    "quantity": 3,
+                    "unitPrice": 1796,
+                    "totalPrice": 5388
+                },
+                {
+                    "productId": 103,
+                    "quantity": 4,
+                    "unitPrice": 950,
+                    "totalPrice": 3800
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 2,
+                "invoiceNumber": "687-538-9179904",
+                "date": "2023-11-07",
+                "total": 48374
+            },
+            "details": [
+                {
+                    "productId": 107,
+                    "quantity": 5,
+                    "unitPrice": 1577,
+                    "totalPrice": 7885
+                },
+                {
+                    "productId": 107,
+                    "quantity": 9,
+                    "unitPrice": 1503,
+                    "totalPrice": 13527
+                },
+                {
+                    "productId": 108,
+                    "quantity": 8,
+                    "unitPrice": 1896,
+                    "totalPrice": 15168
+                },
+                {
+                    "productId": 109,
+                    "quantity": 7,
+                    "unitPrice": 1018,
+                    "totalPrice": 7126
+                },
+                {
+                    "productId": 104,
+                    "quantity": 6,
+                    "unitPrice": 778,
+                    "totalPrice": 4668
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 3,
+                "invoiceNumber": "694-474-4139002",
+                "date": "2023-11-07",
+                "total": 1178
+            },
+            "details": [
+                {
+                    "productId": 108,
+                    "quantity": 2,
+                    "unitPrice": 589,
+                    "totalPrice": 1178
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 4,
+                "invoiceNumber": "727-736-9570859",
+                "date": "2023-11-21",
+                "total": 42244
+            },
+            "details": [
+                {
+                    "productId": 108,
+                    "quantity": 5,
+                    "unitPrice": 1276,
+                    "totalPrice": 6380
+                },
+                {
+                    "productId": 110,
+                    "quantity": 6,
+                    "unitPrice": 1439,
+                    "totalPrice": 8634
+                },
+                {
+                    "productId": 106,
+                    "quantity": 10,
+                    "unitPrice": 1889,
+                    "totalPrice": 18890
+                },
+                {
+                    "productId": 102,
+                    "quantity": 10,
+                    "unitPrice": 834,
+                    "totalPrice": 8340
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 5,
+                "invoiceNumber": "454-712-3036712",
+                "date": "2023-11-15",
+                "total": 28479
+            },
+            "details": [
+                {
+                    "productId": 106,
+                    "quantity": 3,
+                    "unitPrice": 827,
+                    "totalPrice": 2481
+                },
+                {
+                    "productId": 102,
+                    "quantity": 5,
+                    "unitPrice": 1963,
+                    "totalPrice": 9815
+                },
+                {
+                    "productId": 109,
+                    "quantity": 8,
+                    "unitPrice": 1190,
+                    "totalPrice": 9520
+                },
+                {
+                    "productId": 104,
+                    "quantity": 3,
+                    "unitPrice": 688,
+                    "totalPrice": 2064
+                },
+                {
+                    "productId": 104,
+                    "quantity": 7,
+                    "unitPrice": 657,
+                    "totalPrice": 4599
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 6,
+                "invoiceNumber": "766-536-1299070",
+                "date": "2023-11-30",
+                "total": 55129
+            },
+            "details": [
+                {
+                    "productId": 104,
+                    "quantity": 9,
+                    "unitPrice": 1322,
+                    "totalPrice": 11898
+                },
+                {
+                    "productId": 106,
+                    "quantity": 10,
+                    "unitPrice": 1483,
+                    "totalPrice": 14830
+                },
+                {
+                    "productId": 103,
+                    "quantity": 5,
+                    "unitPrice": 1832,
+                    "totalPrice": 9160
+                },
+                {
+                    "productId": 101,
+                    "quantity": 9,
+                    "unitPrice": 1253,
+                    "totalPrice": 11277
+                },
+                {
+                    "productId": 105,
+                    "quantity": 4,
+                    "unitPrice": 1991,
+                    "totalPrice": 7964
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 7,
+                "invoiceNumber": "410-222-5163981",
+                "date": "2023-11-26",
+                "total": 15754
+            },
+            "details": [
+                {
+                    "productId": 109,
+                    "quantity": 8,
+                    "unitPrice": 1777,
+                    "totalPrice": 14216
+                },
+                {
+                    "productId": 106,
+                    "quantity": 1,
+                    "unitPrice": 1538,
+                    "totalPrice": 1538
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 8,
+                "invoiceNumber": "214-350-9156926",
+                "date": "2023-11-14",
+                "total": 19992
+            },
+            "details": [
+                {
+                    "productId": 101,
+                    "quantity": 8,
+                    "unitPrice": 1566,
+                    "totalPrice": 12528
+                },
+                {
+                    "productId": 110,
+                    "quantity": 6,
+                    "unitPrice": 1244,
+                    "totalPrice": 7464
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 9,
+                "invoiceNumber": "863-389-4432590",
+                "date": "2023-11-25",
+                "total": 11706
+            },
+            "details": [
+                {
+                    "productId": 106,
+                    "quantity": 6,
+                    "unitPrice": 1951,
+                    "totalPrice": 11706
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 10,
+                "invoiceNumber": "629-551-7455028",
+                "date": "2023-11-05",
+                "total": 12248
+            },
+            "details": [
+                {
+                    "productId": 105,
+                    "quantity": 9,
+                    "unitPrice": 1184,
+                    "totalPrice": 10656
+                },
+                {
+                    "productId": 103,
+                    "quantity": 2,
+                    "unitPrice": 796,
+                    "totalPrice": 1592
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 11,
+                "invoiceNumber": "328-976-8868506",
+                "date": "2023-11-19",
+                "total": 17176
+            },
+            "details": [
+                {
+                    "productId": 102,
+                    "quantity": 5,
+                    "unitPrice": 1057,
+                    "totalPrice": 5285
+                },
+                {
+                    "productId": 107,
+                    "quantity": 2,
+                    "unitPrice": 1258,
+                    "totalPrice": 2516
+                },
+                {
+                    "productId": 106,
+                    "quantity": 1,
+                    "unitPrice": 1690,
+                    "totalPrice": 1690
+                },
+                {
+                    "productId": 101,
+                    "quantity": 4,
+                    "unitPrice": 1265,
+                    "totalPrice": 5060
+                },
+                {
+                    "productId": 107,
+                    "quantity": 3,
+                    "unitPrice": 875,
+                    "totalPrice": 2625
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 12,
+                "invoiceNumber": "824-172-8042083",
+                "date": "2023-11-18",
+                "total": 16097
+            },
+            "details": [
+                {
+                    "productId": 107,
+                    "quantity": 1,
+                    "unitPrice": 529,
+                    "totalPrice": 529
+                },
+                {
+                    "productId": 102,
+                    "quantity": 9,
+                    "unitPrice": 588,
+                    "totalPrice": 5292
+                },
+                {
+                    "productId": 105,
+                    "quantity": 7,
+                    "unitPrice": 508,
+                    "totalPrice": 3556
+                },
+                {
+                    "productId": 103,
+                    "quantity": 7,
+                    "unitPrice": 960,
+                    "totalPrice": 6720
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 13,
+                "invoiceNumber": "892-587-9049541",
+                "date": "2023-11-23",
+                "total": 13176
+            },
+            "details": [
+                {
+                    "productId": 108,
+                    "quantity": 2,
+                    "unitPrice": 648,
+                    "totalPrice": 1296
+                },
+                {
+                    "productId": 110,
+                    "quantity": 8,
+                    "unitPrice": 1485,
+                    "totalPrice": 11880
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 14,
+                "invoiceNumber": "827-195-1022854",
+                "date": "2023-11-09",
+                "total": 16558
+            },
+            "details": [
+                {
+                    "productId": 104,
+                    "quantity": 9,
+                    "unitPrice": 950,
+                    "totalPrice": 8550
+                },
+                {
+                    "productId": 108,
+                    "quantity": 1,
+                    "unitPrice": 916,
+                    "totalPrice": 916
+                },
+                {
+                    "productId": 101,
+                    "quantity": 9,
+                    "unitPrice": 788,
+                    "totalPrice": 7092
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 15,
+                "invoiceNumber": "295-972-7774316",
+                "date": "2023-11-21",
+                "total": 35137
+            },
+            "details": [
+                {
+                    "productId": 109,
+                    "quantity": 7,
+                    "unitPrice": 1277,
+                    "totalPrice": 8939
+                },
+                {
+                    "productId": 101,
+                    "quantity": 1,
+                    "unitPrice": 1764,
+                    "totalPrice": 1764
+                },
+                {
+                    "productId": 108,
+                    "quantity": 5,
+                    "unitPrice": 1090,
+                    "totalPrice": 5450
+                },
+                {
+                    "productId": 106,
+                    "quantity": 8,
+                    "unitPrice": 1935,
+                    "totalPrice": 15480
+                },
+                {
+                    "productId": 105,
+                    "quantity": 2,
+                    "unitPrice": 1752,
+                    "totalPrice": 3504
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 16,
+                "invoiceNumber": "749-759-6852141",
+                "date": "2023-11-04",
+                "total": 35685
+            },
+            "details": [
+                {
+                    "productId": 106,
+                    "quantity": 2,
+                    "unitPrice": 967,
+                    "totalPrice": 1934
+                },
+                {
+                    "productId": 109,
+                    "quantity": 9,
+                    "unitPrice": 1466,
+                    "totalPrice": 13194
+                },
+                {
+                    "productId": 106,
+                    "quantity": 5,
+                    "unitPrice": 1889,
+                    "totalPrice": 9445
+                },
+                {
+                    "productId": 107,
+                    "quantity": 5,
+                    "unitPrice": 936,
+                    "totalPrice": 4680
+                },
+                {
+                    "productId": 103,
+                    "quantity": 4,
+                    "unitPrice": 1608,
+                    "totalPrice": 6432
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 17,
+                "invoiceNumber": "472-338-8486258",
+                "date": "2023-11-30",
+                "total": 10940
+            },
+            "details": [
+                {
+                    "productId": 109,
+                    "quantity": 10,
+                    "unitPrice": 1094,
+                    "totalPrice": 10940
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 18,
+                "invoiceNumber": "847-404-1089798",
+                "date": "2023-11-07",
+                "total": 1008
+            },
+            "details": [
+                {
+                    "productId": 104,
+                    "quantity": 1,
+                    "unitPrice": 1008,
+                    "totalPrice": 1008
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 19,
+                "invoiceNumber": "572-123-1675736",
+                "date": "2023-11-17",
+                "total": 27078
+            },
+            "details": [
+                {
+                    "productId": 104,
+                    "quantity": 1,
+                    "unitPrice": 1236,
+                    "totalPrice": 1236
+                },
+                {
+                    "productId": 103,
+                    "quantity": 3,
+                    "unitPrice": 1621,
+                    "totalPrice": 4863
+                },
+                {
+                    "productId": 108,
+                    "quantity": 6,
+                    "unitPrice": 1504,
+                    "totalPrice": 9024
+                },
+                {
+                    "productId": 105,
+                    "quantity": 5,
+                    "unitPrice": 1205,
+                    "totalPrice": 6025
+                },
+                {
+                    "productId": 104,
+                    "quantity": 5,
+                    "unitPrice": 1186,
+                    "totalPrice": 5930
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 20,
+                "invoiceNumber": "608-568-8184450",
+                "date": "2023-11-10",
+                "total": 40425
+            },
+            "details": [
+                {
+                    "productId": 104,
+                    "quantity": 10,
+                    "unitPrice": 835,
+                    "totalPrice": 8350
+                },
+                {
+                    "productId": 102,
+                    "quantity": 10,
+                    "unitPrice": 1673,
+                    "totalPrice": 16730
+                },
+                {
+                    "productId": 101,
+                    "quantity": 9,
+                    "unitPrice": 639,
+                    "totalPrice": 5751
+                },
+                {
+                    "productId": 107,
+                    "quantity": 9,
+                    "unitPrice": 1066,
+                    "totalPrice": 9594
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 21,
+                "invoiceNumber": "967-435-3939921",
+                "date": "2023-11-15",
+                "total": 1710
+            },
+            "details": [
+                {
+                    "productId": 110,
+                    "quantity": 2,
+                    "unitPrice": 855,
+                    "totalPrice": 1710
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 22,
+                "invoiceNumber": "403-144-1228553",
+                "date": "2023-11-15",
+                "total": 14682
+            },
+            "details": [
+                {
+                    "productId": 103,
+                    "quantity": 8,
+                    "unitPrice": 924,
+                    "totalPrice": 7392
+                },
+                {
+                    "productId": 108,
+                    "quantity": 10,
+                    "unitPrice": 729,
+                    "totalPrice": 7290
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 23,
+                "invoiceNumber": "170-462-8919717",
+                "date": "2023-11-06",
+                "total": 24736
+            },
+            "details": [
+                {
+                    "productId": 109,
+                    "quantity": 10,
+                    "unitPrice": 1099,
+                    "totalPrice": 10990
+                },
+                {
+                    "productId": 108,
+                    "quantity": 5,
+                    "unitPrice": 1186,
+                    "totalPrice": 5930
+                },
+                {
+                    "productId": 106,
+                    "quantity": 2,
+                    "unitPrice": 1831,
+                    "totalPrice": 3662
+                },
+                {
+                    "productId": 103,
+                    "quantity": 2,
+                    "unitPrice": 682,
+                    "totalPrice": 1364
+                },
+                {
+                    "productId": 108,
+                    "quantity": 5,
+                    "unitPrice": 558,
+                    "totalPrice": 2790
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 24,
+                "invoiceNumber": "237-686-8566944",
+                "date": "2023-11-27",
+                "total": 12429
+            },
+            "details": [
+                {
+                    "productId": 106,
+                    "quantity": 9,
+                    "unitPrice": 662,
+                    "totalPrice": 5958
+                },
+                {
+                    "productId": 108,
+                    "quantity": 9,
+                    "unitPrice": 719,
+                    "totalPrice": 6471
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 25,
+                "invoiceNumber": "179-431-8204396",
+                "date": "2023-11-23",
+                "total": 6972
+            },
+            "details": [
+                {
+                    "productId": 108,
+                    "quantity": 6,
+                    "unitPrice": 592,
+                    "totalPrice": 3552
+                },
+                {
+                    "productId": 110,
+                    "quantity": 4,
+                    "unitPrice": 855,
+                    "totalPrice": 3420
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 26,
+                "invoiceNumber": "549-395-7596675",
+                "date": "2023-11-13",
+                "total": 17868
+            },
+            "details": [
+                {
+                    "productId": 110,
+                    "quantity": 8,
+                    "unitPrice": 1089,
+                    "totalPrice": 8712
+                },
+                {
+                    "productId": 107,
+                    "quantity": 7,
+                    "unitPrice": 1308,
+                    "totalPrice": 9156
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 27,
+                "invoiceNumber": "945-323-3698736",
+                "date": "2023-11-20",
+                "total": 35893
+            },
+            "details": [
+                {
+                    "productId": 105,
+                    "quantity": 5,
+                    "unitPrice": 1438,
+                    "totalPrice": 7190
+                },
+                {
+                    "productId": 103,
+                    "quantity": 5,
+                    "unitPrice": 1075,
+                    "totalPrice": 5375
+                },
+                {
+                    "productId": 101,
+                    "quantity": 5,
+                    "unitPrice": 1935,
+                    "totalPrice": 9675
+                },
+                {
+                    "productId": 110,
+                    "quantity": 4,
+                    "unitPrice": 1357,
+                    "totalPrice": 5428
+                },
+                {
+                    "productId": 109,
+                    "quantity": 5,
+                    "unitPrice": 1645,
+                    "totalPrice": 8225
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 28,
+                "invoiceNumber": "232-687-5709957",
+                "date": "2023-11-18",
+                "total": 22163
+            },
+            "details": [
+                {
+                    "productId": 108,
+                    "quantity": 9,
+                    "unitPrice": 1315,
+                    "totalPrice": 11835
+                },
+                {
+                    "productId": 104,
+                    "quantity": 1,
+                    "unitPrice": 1238,
+                    "totalPrice": 1238
+                },
+                {
+                    "productId": 106,
+                    "quantity": 4,
+                    "unitPrice": 1430,
+                    "totalPrice": 5720
+                },
+                {
+                    "productId": 101,
+                    "quantity": 5,
+                    "unitPrice": 674,
+                    "totalPrice": 3370
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 29,
+                "invoiceNumber": "726-388-4955990",
+                "date": "2023-11-15",
+                "total": 35989
+            },
+            "details": [
+                {
+                    "productId": 110,
+                    "quantity": 4,
+                    "unitPrice": 1084,
+                    "totalPrice": 4336
+                },
+                {
+                    "productId": 105,
+                    "quantity": 3,
+                    "unitPrice": 1357,
+                    "totalPrice": 4071
+                },
+                {
+                    "productId": 110,
+                    "quantity": 4,
+                    "unitPrice": 1446,
+                    "totalPrice": 5784
+                },
+                {
+                    "productId": 104,
+                    "quantity": 10,
+                    "unitPrice": 1481,
+                    "totalPrice": 14810
+                },
+                {
+                    "productId": 108,
+                    "quantity": 4,
+                    "unitPrice": 1747,
+                    "totalPrice": 6988
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 30,
+                "invoiceNumber": "147-158-8452038",
+                "date": "2023-11-19",
+                "total": 2416
+            },
+            "details": [
+                {
+                    "productId": 109,
+                    "quantity": 2,
+                    "unitPrice": 1208,
+                    "totalPrice": 2416
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 31,
+                "invoiceNumber": "948-194-4386351",
+                "date": "2023-11-08",
+                "total": 20904
+            },
+            "details": [
+                {
+                    "productId": 109,
+                    "quantity": 3,
+                    "unitPrice": 989,
+                    "totalPrice": 2967
+                },
+                {
+                    "productId": 108,
+                    "quantity": 9,
+                    "unitPrice": 1993,
+                    "totalPrice": 17937
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 32,
+                "invoiceNumber": "598-796-8474034",
+                "date": "2023-11-04",
+                "total": 21502
+            },
+            "details": [
+                {
+                    "productId": 107,
+                    "quantity": 5,
+                    "unitPrice": 714,
+                    "totalPrice": 3570
+                },
+                {
+                    "productId": 101,
+                    "quantity": 3,
+                    "unitPrice": 1198,
+                    "totalPrice": 3594
+                },
+                {
+                    "productId": 102,
+                    "quantity": 6,
+                    "unitPrice": 1208,
+                    "totalPrice": 7248
+                },
+                {
+                    "productId": 107,
+                    "quantity": 10,
+                    "unitPrice": 709,
+                    "totalPrice": 7090
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 33,
+                "invoiceNumber": "501-536-9177041",
+                "date": "2023-11-05",
+                "total": 3364
+            },
+            "details": [
+                {
+                    "productId": 105,
+                    "quantity": 4,
+                    "unitPrice": 841,
+                    "totalPrice": 3364
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 34,
+                "invoiceNumber": "496-564-6397626",
+                "date": "2023-11-24",
+                "total": 22028
+            },
+            "details": [
+                {
+                    "productId": 104,
+                    "quantity": 4,
+                    "unitPrice": 1395,
+                    "totalPrice": 5580
+                },
+                {
+                    "productId": 107,
+                    "quantity": 1,
+                    "unitPrice": 1221,
+                    "totalPrice": 1221
+                },
+                {
+                    "productId": 107,
+                    "quantity": 5,
+                    "unitPrice": 1485,
+                    "totalPrice": 7425
+                },
+                {
+                    "productId": 107,
+                    "quantity": 2,
+                    "unitPrice": 921,
+                    "totalPrice": 1842
+                },
+                {
+                    "productId": 103,
+                    "quantity": 5,
+                    "unitPrice": 1192,
+                    "totalPrice": 5960
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 35,
+                "invoiceNumber": "687-957-2741729",
+                "date": "2023-11-30",
+                "total": 36087
+            },
+            "details": [
+                {
+                    "productId": 102,
+                    "quantity": 7,
+                    "unitPrice": 1810,
+                    "totalPrice": 12670
+                },
+                {
+                    "productId": 105,
+                    "quantity": 1,
+                    "unitPrice": 1486,
+                    "totalPrice": 1486
+                },
+                {
+                    "productId": 101,
+                    "quantity": 2,
+                    "unitPrice": 1580,
+                    "totalPrice": 3160
+                },
+                {
+                    "productId": 106,
+                    "quantity": 9,
+                    "unitPrice": 1745,
+                    "totalPrice": 15705
+                },
+                {
+                    "productId": 103,
+                    "quantity": 2,
+                    "unitPrice": 1533,
+                    "totalPrice": 3066
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 36,
+                "invoiceNumber": "594-788-1195446",
+                "date": "2023-11-29",
+                "total": 4317
+            },
+            "details": [
+                {
+                    "productId": 108,
+                    "quantity": 1,
+                    "unitPrice": 1617,
+                    "totalPrice": 1617
+                },
+                {
+                    "productId": 101,
+                    "quantity": 2,
+                    "unitPrice": 1350,
+                    "totalPrice": 2700
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 37,
+                "invoiceNumber": "695-228-4015724",
+                "date": "2023-11-15",
+                "total": 5475
+            },
+            "details": [
+                {
+                    "productId": 102,
+                    "quantity": 3,
+                    "unitPrice": 1825,
+                    "totalPrice": 5475
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 38,
+                "invoiceNumber": "674-437-6924753",
+                "date": "2023-11-29",
+                "total": 32942
+            },
+            "details": [
+                {
+                    "productId": 104,
+                    "quantity": 4,
+                    "unitPrice": 1068,
+                    "totalPrice": 4272
+                },
+                {
+                    "productId": 105,
+                    "quantity": 9,
+                    "unitPrice": 719,
+                    "totalPrice": 6471
+                },
+                {
+                    "productId": 104,
+                    "quantity": 2,
+                    "unitPrice": 1261,
+                    "totalPrice": 2522
+                },
+                {
+                    "productId": 107,
+                    "quantity": 7,
+                    "unitPrice": 1281,
+                    "totalPrice": 8967
+                },
+                {
+                    "productId": 101,
+                    "quantity": 10,
+                    "unitPrice": 1071,
+                    "totalPrice": 10710
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 39,
+                "invoiceNumber": "486-225-1995740",
+                "date": "2023-11-15",
+                "total": 7963
+            },
+            "details": [
+                {
+                    "productId": 106,
+                    "quantity": 3,
+                    "unitPrice": 888,
+                    "totalPrice": 2664
+                },
+                {
+                    "productId": 108,
+                    "quantity": 7,
+                    "unitPrice": 757,
+                    "totalPrice": 5299
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 40,
+                "invoiceNumber": "640-718-1719257",
+                "date": "2023-11-22",
+                "total": 15922
+            },
+            "details": [
+                {
+                    "productId": 103,
+                    "quantity": 5,
+                    "unitPrice": 1693,
+                    "totalPrice": 8465
+                },
+                {
+                    "productId": 103,
+                    "quantity": 4,
+                    "unitPrice": 1241,
+                    "totalPrice": 4964
+                },
+                {
+                    "productId": 109,
+                    "quantity": 3,
+                    "unitPrice": 831,
+                    "totalPrice": 2493
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 41,
+                "invoiceNumber": "918-847-9067660",
+                "date": "2023-11-19",
+                "total": 28126
+            },
+            "details": [
+                {
+                    "productId": 109,
+                    "quantity": 2,
+                    "unitPrice": 1812,
+                    "totalPrice": 3624
+                },
+                {
+                    "productId": 102,
+                    "quantity": 5,
+                    "unitPrice": 752,
+                    "totalPrice": 3760
+                },
+                {
+                    "productId": 101,
+                    "quantity": 4,
+                    "unitPrice": 1898,
+                    "totalPrice": 7592
+                },
+                {
+                    "productId": 109,
+                    "quantity": 10,
+                    "unitPrice": 1171,
+                    "totalPrice": 11710
+                },
+                {
+                    "productId": 109,
+                    "quantity": 2,
+                    "unitPrice": 720,
+                    "totalPrice": 1440
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 42,
+                "invoiceNumber": "312-388-2473424",
+                "date": "2023-11-09",
+                "total": 5104
+            },
+            "details": [
+                {
+                    "productId": 106,
+                    "quantity": 2,
+                    "unitPrice": 1761,
+                    "totalPrice": 3522
+                },
+                {
+                    "productId": 105,
+                    "quantity": 1,
+                    "unitPrice": 1582,
+                    "totalPrice": 1582
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 43,
+                "invoiceNumber": "339-377-3011338",
+                "date": "2023-11-07",
+                "total": 18168
+            },
+            "details": [
+                {
+                    "productId": 104,
+                    "quantity": 5,
+                    "unitPrice": 1956,
+                    "totalPrice": 9780
+                },
+                {
+                    "productId": 108,
+                    "quantity": 6,
+                    "unitPrice": 1398,
+                    "totalPrice": 8388
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 44,
+                "invoiceNumber": "505-775-6159869",
+                "date": "2023-11-20",
+                "total": 21064
+            },
+            "details": [
+                {
+                    "productId": 101,
+                    "quantity": 10,
+                    "unitPrice": 1012,
+                    "totalPrice": 10120
+                },
+                {
+                    "productId": 104,
+                    "quantity": 2,
+                    "unitPrice": 1518,
+                    "totalPrice": 3036
+                },
+                {
+                    "productId": 108,
+                    "quantity": 4,
+                    "unitPrice": 1977,
+                    "totalPrice": 7908
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 45,
+                "invoiceNumber": "832-772-4779640",
+                "date": "2023-11-05",
+                "total": 37818
+            },
+            "details": [
+                {
+                    "productId": 107,
+                    "quantity": 10,
+                    "unitPrice": 1845,
+                    "totalPrice": 18450
+                },
+                {
+                    "productId": 110,
+                    "quantity": 7,
+                    "unitPrice": 740,
+                    "totalPrice": 5180
+                },
+                {
+                    "productId": 110,
+                    "quantity": 8,
+                    "unitPrice": 1130,
+                    "totalPrice": 9040
+                },
+                {
+                    "productId": 109,
+                    "quantity": 6,
+                    "unitPrice": 858,
+                    "totalPrice": 5148
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 46,
+                "invoiceNumber": "338-744-8111618",
+                "date": "2023-11-26",
+                "total": 5597
+            },
+            "details": [
+                {
+                    "productId": 108,
+                    "quantity": 2,
+                    "unitPrice": 905,
+                    "totalPrice": 1810
+                },
+                {
+                    "productId": 103,
+                    "quantity": 7,
+                    "unitPrice": 541,
+                    "totalPrice": 3787
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 47,
+                "invoiceNumber": "900-472-3624853",
+                "date": "2023-11-09",
+                "total": 50215
+            },
+            "details": [
+                {
+                    "productId": 101,
+                    "quantity": 9,
+                    "unitPrice": 1412,
+                    "totalPrice": 12708
+                },
+                {
+                    "productId": 108,
+                    "quantity": 9,
+                    "unitPrice": 1110,
+                    "totalPrice": 9990
+                },
+                {
+                    "productId": 103,
+                    "quantity": 8,
+                    "unitPrice": 1657,
+                    "totalPrice": 13256
+                },
+                {
+                    "productId": 104,
+                    "quantity": 9,
+                    "unitPrice": 699,
+                    "totalPrice": 6291
+                },
+                {
+                    "productId": 107,
+                    "quantity": 5,
+                    "unitPrice": 1594,
+                    "totalPrice": 7970
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 48,
+                "invoiceNumber": "691-249-9254760",
+                "date": "2023-11-13",
+                "total": 10126
+            },
+            "details": [
+                {
+                    "productId": 106,
+                    "quantity": 2,
+                    "unitPrice": 1553,
+                    "totalPrice": 3106
+                },
+                {
+                    "productId": 102,
+                    "quantity": 9,
+                    "unitPrice": 780,
+                    "totalPrice": 7020
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 49,
+                "invoiceNumber": "153-356-9679914",
+                "date": "2023-11-29",
+                "total": 1851
+            },
+            "details": [
+                {
+                    "productId": 109,
+                    "quantity": 1,
+                    "unitPrice": 1851,
+                    "totalPrice": 1851
+                }
+            ]
+        },
+        {
+            "header": {
+                "saleId": 50,
+                "invoiceNumber": "124-467-2039253",
+                "date": "2023-11-01",
+                "total": 2308
+            },
+            "details": [
+                {
+                    "productId": 101,
+                    "quantity": 2,
+                    "unitPrice": 1154,
+                    "totalPrice": 2308
+                }
+            ]
+        }
+    ]
+}

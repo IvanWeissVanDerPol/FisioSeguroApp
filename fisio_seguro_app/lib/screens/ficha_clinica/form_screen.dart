@@ -1,19 +1,19 @@
-
+//file fisio_seguro_app/lib/screens/ficha_clinica/form_screen.dart
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fisio_seguro_app/reusable_widgets/reusable_widget.dart';
 import 'package:fisio_seguro_app/screens/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class CrearFichasMenu extends StatefulWidget {
-  const CrearFichasMenu({Key? key}) : super(key: key);
+class CrearVentasMenu extends StatefulWidget {
+  const CrearVentasMenu({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _CrearFichasMenu createState() => _CrearFichasMenu();
+  _CrearVentasMenu createState() => _CrearVentasMenu();
 }
 
-class _CrearFichasMenu extends State<CrearFichasMenu> {
+class _CrearVentasMenu extends State<CrearVentasMenu> {
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +43,8 @@ class _CrearFichasMenu extends State<CrearFichasMenu> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                  ActionCard(icon: Icons.content_paste_rounded,title: 'Registro de fichas con reserva', description: '', onTap: () { context.push('/FichaClinicaFormScreenConReserva'); },),
-                  const SizedBox(height: 20.0),
-                  ActionCard(icon: Icons.content_paste_off_rounded,title: 'Registro de fichas sin reserva', description: '', onTap: () { context.push('/FichaClinicaFormScreenSinReserva'); },),
+
+                  ActionCard(icon: Icons.content_paste_off_rounded,title: 'Registro de fichas sin reserva', description: '', onTap: () { context.push('/VentaFormScreenSinReserva'); },),
                   const SizedBox(height: 20.0),
                   ],
               ),

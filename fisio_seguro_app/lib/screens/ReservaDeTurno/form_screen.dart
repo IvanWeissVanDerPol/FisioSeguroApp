@@ -22,7 +22,7 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
   List<Map<String, dynamic>> categorias = [];//categorias del producto
   DateTime selectedDate = DateTime.now();
   String? selectedTime;
-  String? selectedPaciente;
+  String? selectedCliente;
   String? selectedDoctor;
   String? selectedCategory;
   late String filePathTurno;
@@ -62,9 +62,7 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
     setState(() {
       if (objeto == 'categories') {
         categorias = loadedData;
-      }  /*else if (objeto == 'persons') {
-        personas = loadedData;
-      } */ else if (objeto == 'productos') {
+      }  else if (objeto == 'productos') {
         productos = loadedData;
       }
     });
@@ -73,7 +71,7 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
   List<DropdownMenuItem<String>> _listaCategorias() {
     List<DropdownMenuItem<String>> listaCategorias = categorias
       .map((categoria) {
-        String nombre = categoria['Nombre'];
+        String nombre = categoria['descripcion'];
         String categoriaId = categoria['id'].toString();
         return DropdownMenuItem<String>(
           value: categoriaId,
@@ -164,7 +162,7 @@ class _ReservaDeTurnosScreenState extends State<ReservaDeTurnosScreen> {
   }
 
   void _addTurno() {
-    if (/* selectedPaciente != null && selectedDoctor != null && selectedTime != null */ selectedCategory != null) {
+    if (/* selectedCliente != null && selectedDoctor != null && selectedTime != null */ selectedCategory != null) {
       int newId =  productos.isNotEmpty ? productos.last['id'] + 1 : 1;
       
       setState(() {

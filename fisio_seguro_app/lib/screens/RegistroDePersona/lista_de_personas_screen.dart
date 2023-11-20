@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:path_provider/path_provider.dart';
 
 class ListaDePersonasScreen extends StatefulWidget {
   const ListaDePersonasScreen({Key? key}) : super(key: key);
@@ -21,7 +20,7 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
   TextEditingController apellidoController = TextEditingController();
   TextEditingController isDoctorController = TextEditingController();
 
-  bool filterPaciente = false;
+  bool filterCliente = false;
   bool filterDoctor = false;
 
   @override
@@ -136,9 +135,9 @@ class _ListaDePersonasScreenState extends State<ListaDePersonasScreen> {
     String filterName = nameController.text.trim().toLowerCase();
     String filterApellido = apellidoController.text.trim().toLowerCase();
 
-    if (filterPaciente && !filterDoctor) {
+    if (filterCliente && !filterDoctor) {
       filteredList = filteredList.where((person) => !person['isDoctor']).toList();
-    } else if (!filterPaciente && filterDoctor) {
+    } else if (!filterCliente && filterDoctor) {
       filteredList = filteredList.where((person) => person['isDoctor']).toList();
     }
 

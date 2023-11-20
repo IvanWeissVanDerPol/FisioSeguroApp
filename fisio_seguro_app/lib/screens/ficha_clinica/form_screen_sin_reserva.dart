@@ -1,3 +1,4 @@
+//file fisio_seguro_app/lib/screens/RegistroDePersona/form_screen.dart
 import 'dart:convert';
 import 'dart:io';
 
@@ -7,41 +8,41 @@ import 'package:path_provider/path_provider.dart';
 import 'package:intl/intl.dart';
 
 
-class FichaClinicaFormScreenSinReserva extends StatefulWidget {
-  const FichaClinicaFormScreenSinReserva({super.key});
+class VentaFormScreenSinReserva extends StatefulWidget {
+  const VentaFormScreenSinReserva({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _FichaClinicaFormScreenSinReserva createState() => _FichaClinicaFormScreenSinReserva();
+  _VentaFormScreenSinReserva createState() => _VentaFormScreenSinReserva();
 }
 
-class _FichaClinicaFormScreenSinReserva extends State<FichaClinicaFormScreenSinReserva> {
-  // List<Map<String, dynamic>> turnos = [];
+class _VentaFormScreenSinReserva extends State<VentaFormScreenSinReserva> {
+  List<Map<String, dynamic>> productos = [];
   List<Map<String, dynamic>> personas = [];
   List<Map<String, dynamic>> categorias = [];
-  List<Map<String, dynamic>> fichas = [];
+  List<Map<String, dynamic>> ventas = [];
   DateTime selectedDate = DateTime.now();
   String? selectedTime;
-  String? selectedPaciente;
+  String? selectedCliente;
   String? selectedDoctor;
   String? selectedCategory;
-  // String? selectedTurnos;
+  String? selectedProductos;
   TextEditingController selectedMotivo = TextEditingController();
   TextEditingController selectedDiagnostico = TextEditingController();
-  late String filePathFichas;
+  late String filePathVentas;
 
   @override
   void initState() {
     super.initState();
     _initialize('categories');
     _initialize('persons');
-    // _initialize('turnos');
-    _initialize('fichasClinicas');
+    _initialize('productos');
+    _initialize('ventas');
   }
 
-  Future<void> _savefichas() async {
-    final File file = File(filePathFichas);
-    final String data = json.encode(fichas);
+  Future<void> _saveVentas() async {
+    final File file = File(filePathVentas);
+    final String data = json.encode(ventas);
     await file.writeAsString(data);
   }
 
@@ -50,8 +51,8 @@ class _FichaClinicaFormScreenSinReserva extends State<FichaClinicaFormScreenSinR
   Future<void> _initialize(String objeto) async {
     final directory = await getApplicationDocumentsDirectory();
     String filePath = '${directory.path}/$objeto.json';
-    if (objeto == 'fichasClinicas') {
-      filePathFichas = filePath;
+    if (objeto == 'ventas') {
+      filePathVentas = filePath;
     }
     final File file = File(filePath);
     if (!await file.exists()) {
@@ -65,16 +66,16 @@ class _FichaClinicaFormScreenSinReserva extends State<FichaClinicaFormScreenSinR
         categorias = loadedData;
       } else if (objeto == 'persons') {
         personas = loadedData;
-      // } else if (objeto == 'turnos') {
-      //   turnos = loadedData;
-      } else if (objeto == 'fichasClinicas') {
-        fichas = loadedData;
+      } else if (objeto == 'productos') {
+        productos = loadedData;
+      } else if (objeto == 'ventas') {
+        ventas = loadedData;
       }
     });
   }
 
   List<DropdownMenuItem<String>> _listaPersonas(bool isDoctor) {
-    List<DropdownMenuItem<String>> listaPacientes = personas
+    List<DropdownMenuItem<String>> listaClientes = personas
       .where((persona) => persona['isDoctor'] == isDoctor)
       .map((persona) {
         String nombre = persona['nombre'];
@@ -87,7 +88,7 @@ class _FichaClinicaFormScreenSinReserva extends State<FichaClinicaFormScreenSinR
         );
       })
       .toList();
-    return listaPacientes;
+    return listaClientes;
   }
 
   List<DropdownMenuItem<String>> _listaCategorias() {
@@ -107,32 +108,20 @@ class _FichaClinicaFormScreenSinReserva extends State<FichaClinicaFormScreenSinR
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Reserva de fichas')),
+      appBar: AppBar(title: const Text('registro de ventas')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
 
             DropdownButton<String>(
-            value: selectedPaciente, // El valor seleccionado (inicialmente null)
-            hint: const Text('Selecciona un paciente'), // Texto que se muestra cuando no se ha seleccionado nada
+            value: selectedCliente, // El valor seleccionado (inicialmente null)
+            hint: const Text('Selecciona un cliente'), // Texto que se muestra cuando no se ha seleccionado nada
             items: _listaPersonas(false),
             onChanged: (String? newValue) {
                         setState(() {
                           if(newValue != null) {
-                            selectedPaciente = newValue;
-                          }
-                        });
-                      },
-            ),
-            DropdownButton<String>(
-            value: selectedDoctor, // El valor seleccionado (inicialmente null)
-            hint: const Text('Selecciona un doctor'), // Texto que se muestra cuando no se ha seleccionado nada
-            items: _listaPersonas(true),
-            onChanged: (String? newValue) {
-                        setState(() {
-                          if(newValue != null) {
-                            selectedDoctor = newValue;
+                            selectedCliente = newValue;
                           }
                         });
                       },
@@ -188,28 +177,16 @@ class _FichaClinicaFormScreenSinReserva extends State<FichaClinicaFormScreenSinR
                 }
               },
             ),
-            DropdownButton<String>(
-            value: selectedCategory, // El valor seleccionado (inicialmente null)
-            hint: const Text('Selecciona una Categoria'), // Texto que se muestra cuando no se ha seleccionado nada
-            items: _listaCategorias(),
-            onChanged: (String? newValue) {
-                        setState(() {
-                          if(newValue != null) {
-                            selectedCategory = newValue;
-                          }
-                        });
-                      },
-            ),
             TextField(
               controller: selectedMotivo,
               decoration: const InputDecoration(
-                labelText: 'Motivo de la consulta',
+                labelText: 'codigo de producto',
               ),
             ),
             TextField(
               controller: selectedDiagnostico,
               decoration: const InputDecoration(
-                labelText: 'Diagnostico',
+                labelText: 'cantidad',
               ),
             ),
             ElevatedButton(
@@ -219,21 +196,21 @@ class _FichaClinicaFormScreenSinReserva extends State<FichaClinicaFormScreenSinR
                 children: [
                   Icon(Icons.description), // Icono para el botón de agregar ficha clínica
                   SizedBox(width: 8),
-                  Text('Agregar Ficha Clínica'),
+                  Text('Agregar Venta'),
                 ],
               ),
             ),
             const SizedBox(height: 20),
-            // Table to display fichas
+            // Table to display ventas
             Expanded(
               child: ListView.builder(
-                itemCount: fichas.length,
+                itemCount: ventas.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text('Paciente: ${fichas[index]['paciente']['nombre']} ${fichas[index]['paciente']['apellido']}'),
-                    subtitle: Text('Doctor: ${fichas[index]['doctor']['nombre']} ${fichas[index]['doctor']['apellido']}\nFecha: ${
-                      DateFormat('dd-MM-yyyy').format(DateTime.parse(fichas[index]['fecha']))}\t${fichas[index]['hora']}\nCategoria: ${
-                        fichas[index]['categoria']['descripcion']}\nMotivo: ${fichas[index]['motivoConsulta']}\nDiagnostico: ${fichas[index]['diagnostico']}'),
+                    title: Text('Cliente: ${ventas[index]['cliente']['nombre']} ${ventas[index]['cliente']['apellido']}'),
+                    subtitle: Text('Fecha: ${
+                      DateFormat('dd-MM-yyyy').format(DateTime.parse(ventas[index]['fecha']))}\t${ventas[index]['hora']}\nCategoria: ${
+                        ventas[index]['categoria']['descripcion']}\nMotivo: ${ventas[index]['motivoConsulta']}\nDiagnostico: ${ventas[index]['diagnostico']}'),
                   );
                 },
               ),
@@ -245,38 +222,27 @@ class _FichaClinicaFormScreenSinReserva extends State<FichaClinicaFormScreenSinR
   }
 
 void _addFicha() {
-  if (selectedPaciente != null &&
+  if (selectedCliente != null &&
       selectedDoctor != null &&
       selectedCategory != null &&
       selectedTime != null &&
       selectedMotivo.text.isNotEmpty &&
       selectedDiagnostico.text.isNotEmpty) {
-    int newId = fichas.isNotEmpty ? fichas.last['id'] + 1 : 1;
-    int doctorIndex = int.parse(selectedDoctor!) - 1;
-    int pacienteIndex = int.parse(selectedPaciente!) - 1;
+    int newId = ventas.isNotEmpty ? ventas.last['id'] + 1 : 1;
+    int clienteIndex = int.parse(selectedCliente!) - 1;
     int categoriaIndex = int.parse(selectedCategory!) - 1;
 
     setState(() {
-      fichas.add({
+      ventas.add({
         'id': newId,
-        'doctor': {
-          'idPersona': personas[doctorIndex]['idPersona'],
-          'nombre': personas[doctorIndex]['nombre'],
-          'apellido': personas[doctorIndex]['apellido'],
-          'RUC': personas[doctorIndex]['RUC'],
-          'email': personas[doctorIndex]['email'],
-          'cedula': personas[doctorIndex]['cedula'],
-          'isDoctor': personas[doctorIndex]['isDoctor'],
-          'isEditing': false
-        },
-        'paciente': {
-          'idPersona': personas[pacienteIndex]['idPersona'],
-          'nombre': personas[pacienteIndex]['nombre'],
-          'apellido': personas[pacienteIndex]['apellido'],
-          'RUC': personas[pacienteIndex]['RUC'],
-          'email': personas[pacienteIndex]['email'],
-          'cedula': personas[pacienteIndex]['cedula'],
-          'isDoctor': personas[pacienteIndex]['isDoctor'],
+        'cliente': {
+          'idPersona': personas[clienteIndex]['idPersona'],
+          'nombre': personas[clienteIndex]['nombre'],
+          'apellido': personas[clienteIndex]['apellido'],
+          'RUC': personas[clienteIndex]['RUC'],
+          'email': personas[clienteIndex]['email'],
+          'cedula': personas[clienteIndex]['cedula'],
+          'isDoctor': personas[clienteIndex]['isDoctor'],
           'isEditing': false
         },
         'fecha': DateFormat('yyyy-MM-dd').format(selectedDate), // Format the date
@@ -289,7 +255,7 @@ void _addFicha() {
         "diagnostico": selectedDiagnostico.text,
       });
 
-      selectedPaciente = null;
+      selectedCliente = null;
       selectedDoctor = null;
       selectedDate = DateTime.now();
       selectedTime = null;
@@ -298,7 +264,7 @@ void _addFicha() {
       selectedDiagnostico.clear();
     });
 
-    _savefichas(); // Save changes to file
+    _saveVentas(); // Save changes to file
   }
 }
 

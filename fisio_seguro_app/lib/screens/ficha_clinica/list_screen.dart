@@ -1,3 +1,4 @@
+//file fisio_seguro_app/lib/screens/ficha_clinica/list_screen.dart
 import 'dart:convert';
 import 'dart:io';
 
@@ -11,167 +12,95 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 
 
-class ListaDeFichasClinicasScreen extends StatefulWidget {
-  const ListaDeFichasClinicasScreen({Key? key}) : super(key: key);
+class ListaDeVentasScreen extends StatefulWidget {
+  const ListaDeVentasScreen({Key? key}) : super(key: key);
 
   @override
-  _ListaDeFichasClinicasScreenState createState() =>_ListaDeFichasClinicasScreenState();
+  _ListaDeVentasScreenState createState() =>_ListaDeVentasScreenState();
 }
 
-class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScreen> {
+class _ListaDeVentasScreenState extends State<ListaDeVentasScreen> {
   List<Map<String, dynamic>> turnos = [];
-  List<Map<String, dynamic>> personas = [];
+  List<Map<String, dynamic>> productos = [];
   List<Map<String, dynamic>> categorias = [];
   List<Map<String, dynamic>> originalTurnos = [];
-  List<Map<String, dynamic>> fichasClinicas = [];
-  List<Map<String, dynamic>> originalFichasClinicas = [];
+  List<Map<String, dynamic>> ventas = [];
+  List<Map<String, dynamic>> originalVentas = [];
   DateTime selectedDateStart = DateTime.now();
   DateTime selectedDateEnd = DateTime.now();
-  String? selectedPaciente;
+  String? selectedCliente;
   String? selectedDoctor;
-  late String filePathFichaClinica;
+  late String filePathVenta;
 
   @override
   void initState() {
     super.initState();
+    
+    _initialize('ventas');
     _initialize('categories');
-    _initialize('persons');
-    _initialize('turnos');
-    _initialize('fichasClinicas');
+    _initialize('productos');
+    // _initialize('turnos');
   }
 
   Future<void> _savefichas() async {
-    final File file = File(filePathFichaClinica);
-    final String data = json.encode(fichasClinicas);
+    final File file = File(filePathVenta);
+    final String data = json.encode(ventas);
     await file.writeAsString(data);
   }
 
   void _filter() {
-    List<Map<String, dynamic>> filteredList = originalFichasClinicas;
+  DateTime selectedDateEndFilter = DateTime(selectedDateEnd.year, selectedDateEnd.month, selectedDateEnd.day, 23, 59, 59);
+  DateTime selectedDateStartFilter = DateTime(selectedDateStart.year, selectedDateStart.month, selectedDateStart.day);
 
-    if (selectedDoctor != null) {
-      filteredList = filteredList
-          .where((fichaClinica) =>
-              fichaClinica['doctor']['idPersona'] == int.parse(selectedDoctor!))
-          .toList();
-    }
-    if (selectedPaciente != null) {
-      filteredList = filteredList
-          .where((fichaClinica) =>
-              fichaClinica['paciente']['idPersona'] == int.parse(selectedPaciente!))
-          .toList();
-    }
+  // Filtering based on the selected date range
+  List<Map<String, dynamic>> filteredList = originalVentas.where((venta) {
+    DateTime saleDate = DateTime.parse(venta['header']['date']);
+    return saleDate.isAfter(selectedDateStartFilter) && saleDate.isBefore(selectedDateEndFilter);
+  }).toList();
 
-    DateTime selectedDateEndFilter =DateTime(
-      selectedDateEnd.year, selectedDateEnd.month, selectedDateEnd.day, 23, 59, 59);
-    DateTime selectedDateStartFilter = DateTime(
-        selectedDateStart.year, selectedDateStart.month, selectedDateStart.day);
-    filteredList = filteredList
-        .where((fichaClinica) =>
-            DateTime.parse(fichaClinica['fecha']).isAfter(selectedDateStartFilter) ||
-            DateTime.parse(fichaClinica['fecha']).isAtSameMomentAs(selectedDateStartFilter))
-        .toList();
-    filteredList = filteredList
-        .where((fichaClinica) =>
-            DateTime.parse(fichaClinica['fecha']).isBefore(selectedDateEndFilter) ||
-            DateTime.parse(fichaClinica['fecha']).isAtSameMomentAs(selectedDateEndFilter))
-        .toList();
+  setState(() {
+    ventas = filteredList;
+  });
+}
 
-    setState(() {
-      fichasClinicas = filteredList;
-    });
-  }
 
   Future<void> _initialize(String objeto) async {
     final directory = await getApplicationDocumentsDirectory();
     String filePath = '${directory.path}/$objeto.json';
-    if (objeto == 'fichasClinicas') {
-      filePathFichaClinica = filePath;
+    if (objeto == 'ventas') {
+      filePathVenta = filePath;
     }
     final File file = File(filePath);
 
     if (!await file.exists()) {
-      final String jsonString = 
-        await rootBundle.loadString('assets/$objeto.json');
+      final String jsonString = await rootBundle.loadString('assets/$objeto.json');
       await file.writeAsString(jsonString);
     }
 
     final data = await file.readAsString();
-    final List<Map<String, dynamic>> loadedData = List.from(json.decode(data));
+    final List<Map<String, dynamic>> loadedData = List.from(json.decode(data)["saleRecords"]);
     setState(() {
       if (objeto == 'categories') {
         categorias = loadedData;
-      } else if (objeto == 'persons') {
-        personas = loadedData;
-      } else if (objeto == 'fichasClinicas') {
-        originalFichasClinicas = loadedData;
+      } else if (objeto == 'productos') {
+        productos = loadedData;
+      } else if (objeto == 'ventas') {
+        originalVentas = loadedData;
         _filter();
       }
     });
   }
 
-  List<DropdownMenuItem<String>> _listaPersonas(bool isDoctor) {
-    List<DropdownMenuItem<String>> listaPacientes = personas
-        .where((persona) => persona['isDoctor'] == isDoctor)
-        .map((persona) {
-      String nombre = persona['nombre'];
-      String apellido = persona['apellido'];
-      String personaId = persona['idPersona'].toString();
-      String nombreCompleto = '$nombre $apellido';
-      return DropdownMenuItem<String>(
-        value: personaId,
-        child: Text(nombreCompleto),
-      );
-    }).toList();
-    return listaPacientes;
-  }
-
-  List<DropdownMenuItem<String>> _listaCategorias() {
-    List<DropdownMenuItem<String>> listaCategorias = categorias
-        .map((categoria) {
-      String nombre = categoria['descripcion'];
-      String categoriaId = categoria['id'].toString();
-      return DropdownMenuItem<String>(
-        value: categoriaId,
-        child: Text(nombre),
-      );
-    }).toList();
-    return listaCategorias;
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Ficha Clínicas')),
+      appBar: AppBar(title: const Text('Ventas')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              DropdownButton<String>(
-                value: selectedPaciente,
-                hint: const Text('Selecciona un paciente'),
-                items: _listaPersonas(false),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    if (newValue != null) {
-                      selectedPaciente = newValue;
-                    }
-                  });
-                },
-              ),
-              DropdownButton<String>(
-                value: selectedDoctor,
-                hint: const Text('Selecciona un doctor'),
-                items: _listaPersonas(true),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    if (newValue != null) {
-                      selectedDoctor = newValue;
-                    }
-                  });
-                },
-              ),
               TextFormField(
                 decoration: const InputDecoration(
                   hintText: 'Desde',
@@ -254,13 +183,13 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
               ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: fichasClinicas.length,
+                itemCount: ventas.length,
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text(
-                        'Paciente: ${fichasClinicas[index]['paciente']['nombre']} ${fichasClinicas[index]['paciente']['apellido']}'),
+                        'Cliente: ${ventas[index]['paciente']['nombre']} ${ventas[index]['paciente']['apellido']}'),
                     subtitle: Text(
-                        'Doctor: ${fichasClinicas[index]['doctor']['nombre']} ${fichasClinicas[index]['doctor']['apellido']}\nFecha: ${DateFormat('dd-MM-yyyy').format(DateTime.parse(fichasClinicas[index]['fecha']))}\t${fichasClinicas[index]['hora']}\nCategoria: ${fichasClinicas[index]['categoria']['descripcion']}'),                
+                        'Doctor: ${ventas[index]['doctor']['nombre']} ${ventas[index]['doctor']['apellido']}\nFecha: ${DateFormat('dd-MM-yyyy').format(DateTime.parse(ventas[index]['fecha']))}\t${ventas[index]['hora']}\nCategoria: ${ventas[index]['categoria']['descripcion']}'),                
                   );
                 },
               ),
@@ -305,7 +234,7 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
             ),
             pw.Table.fromTextArray(
               border: null,
-              headers: ['Paciente', 'Doctor', 'Fecha', 'Hora', 'Categoria', 'Motivo', 'Diagnostico'],
+              headers: ['saleId', 'invoiceNumber', 'date', 'total'],
               headerStyle: pw.TextStyle(fontWeight: pw.FontWeight.bold), // Añadir estilo a los encabezados
               cellAlignments: {
                 0: pw.Alignment.centerLeft, 
@@ -316,15 +245,15 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
               ),
               cellPadding: const pw.EdgeInsets.all(5), // Ajustar el relleno de la celda
               data: [
-                for (final ficha in fichasClinicas)
+                for (final venta in ventas)
                   [
-                    '${ficha['paciente']['nombre']} ${ficha['paciente']['apellido']}',
-                    '${ficha['doctor']['nombre']} ${ficha['doctor']['apellido']}',
-                    (DateFormat('dd-MM-yyyy').format(DateTime.parse(ficha['fecha']))),
-                    '${ficha['hora']}',
-                    '${ficha['categoria']['descripcion']}',
-                    '${ficha['motivoConsulta']}',
-                    '${ficha['diagnostico']}',
+                    '${venta['paciente']['nombre']} ${venta['paciente']['apellido']}',
+                    '${venta['doctor']['nombre']} ${venta['doctor']['apellido']}',
+                    (DateFormat('dd-MM-yyyy').format(DateTime.parse(venta['fecha']))),
+                    '${venta['hora']}',
+                    '${venta['categoria']['descripcion']}',
+                    '${venta['motivoConsulta']}',
+                    '${venta['diagnostico']}',
                   ],
               ],
             ),
@@ -342,7 +271,7 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
     await requestStoragePermission();
     var excel = Excel.createExcel();
     Sheet sheetObject = excel['Sheet1'];
-    sheetObject.cell(CellIndex.indexByString("A1")).value = 'Paciente';
+    sheetObject.cell(CellIndex.indexByString("A1")).value = 'Cliente';
     sheetObject.cell(CellIndex.indexByString("B1")).value = 'Doctor';
     sheetObject.cell(CellIndex.indexByString("C1")).value = 'Fecha';
     sheetObject.cell(CellIndex.indexByString("D1")).value = 'Hora';
@@ -350,8 +279,8 @@ class _ListaDeFichasClinicasScreenState extends State<ListaDeFichasClinicasScree
     sheetObject.cell(CellIndex.indexByString("F1")).value = 'Motivo';
     sheetObject.cell(CellIndex.indexByString("G1")).value = 'Diagnostico';
 
-    for (var i = 0; i < fichasClinicas.length; i++) {
-      var ficha = fichasClinicas[i];
+    for (var i = 0; i < ventas.length; i++) {
+      var ficha = ventas[i];
       sheetObject.cell(CellIndex.indexByString("A${i + 2}")).value =
           '${ficha['paciente']['nombre']} ${ficha['paciente']['apellido']}';
       sheetObject.cell(CellIndex.indexByString("B${i + 2}")).value =
