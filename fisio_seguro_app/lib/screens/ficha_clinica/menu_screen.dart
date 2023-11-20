@@ -43,7 +43,7 @@ class _VentasMenu extends State<VentasMenu> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                  ActionCard(icon: Icons.assignment_add,title: 'Registrar nuevas Venta', description: '', onTap: () { context.push('/VentaFormScreen'); },),
+                  ActionCard(icon: Icons.assignment_add,title: 'Registrar nuevas Venta', description: '', onTap: () { context.push('/VentaFormScreenSinReserva'); },),
                   const SizedBox(height: 20.0),
                   ActionCard(icon: Icons.filter_alt_rounded,title: 'Mostrar Ventas', description: '', onTap: () { context.push('/VentaListScreen'); },),
                   const SizedBox(height: 20.0),

@@ -7,12 +7,10 @@ import 'package:fisio_seguro_app/screens/ReservaDeTurno/list_screen.dart';
 import 'package:fisio_seguro_app/screens/ReservaDeTurno/menu_screen.dart';
 import 'package:fisio_seguro_app/screens/auth/main_screen.dart';
 import 'package:fisio_seguro_app/screens/Consulta/consulta_screen.dart';
-import 'package:fisio_seguro_app/screens/ficha_clinica/form_screen.dart';
 import 'package:fisio_seguro_app/screens/ficha_clinica/form_screen_sin_reserva.dart';
 import 'package:fisio_seguro_app/screens/ficha_clinica/list_screen.dart';
 import 'package:fisio_seguro_app/screens/ficha_clinica/menu_screen.dart';
 import 'package:fisio_seguro_app/screens/home/home_screen.dart';
-
 import 'package:fisio_seguro_app/screens/home/log_out_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -91,11 +89,6 @@ class AppRouter {
         path: '/VentasMenuScreen',
         pageBuilder: (context, state) =>
             const MaterialPage(child: VentasMenu()),
-      ),
-      GoRoute(
-        path: '/VentaFormScreen',
-        pageBuilder: (context, state) =>
-            const MaterialPage(child: CrearVentasMenu()),
       ),
       GoRoute(
         path: '/VentaFormScreenSinReserva',

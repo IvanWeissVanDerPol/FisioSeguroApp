@@ -71,14 +71,13 @@ class _ListaDeVentasScreenState extends State<ListaDeVentasScreen> {
       filePathVenta = filePath;
     }
     final File file = File(filePath);
-
     if (!await file.exists()) {
       final String jsonString = await rootBundle.loadString('assets/$objeto.json');
       await file.writeAsString(jsonString);
     }
 
     final data = await file.readAsString();
-    final List<Map<String, dynamic>> loadedData = List.from(json.decode(data)["saleRecords"]);
+    final List<Map<String, dynamic>> loadedData = List.from(json.decode(data));
     setState(() {
       if (objeto == 'categories') {
         categorias = loadedData;
@@ -181,18 +180,42 @@ class _ListaDeVentasScreenState extends State<ListaDeVentasScreen> {
                   ),
               ),
               ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: ventas.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(
-                        'Cliente: ${ventas[index]['paciente']['nombre']} ${ventas[index]['paciente']['apellido']}'),
-                    subtitle: Text(
-                        'Doctor: ${ventas[index]['doctor']['nombre']} ${ventas[index]['doctor']['apellido']}\nFecha: ${DateFormat('dd-MM-yyyy').format(DateTime.parse(ventas[index]['fecha']))}\t${ventas[index]['hora']}\nCategoria: ${ventas[index]['categoria']['descripcion']}'),                
-                  );
-                },
-              ),
+  physics: const NeverScrollableScrollPhysics(),
+  shrinkWrap: true,
+  itemCount: ventas.length,
+  itemBuilder: (context, index) {
+    final sale = ventas[index]['header'];
+    final detail = ventas[index]['details'];
+    return Card( // Wrapping with a Card for better UI
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Venta ID: ${sale['saleId']}',
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+            Text('Factura: ${sale['factura']}'),
+            Text('Fecha: ${sale['date']}'),
+            Text(
+              'Total: \$${sale['total']}',
+              style: const TextStyle(color: Colors.green),
+            ),
+            const Divider(),
+            const Text(
+              'Detalles:',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            Text('Producto: ${detail['productId']}, Cantidad: ${detail['quantity']}'),
+            
+          ],
+        ),
+      ),
+    );
+  },
+),
+
             ],
           ),
         ),

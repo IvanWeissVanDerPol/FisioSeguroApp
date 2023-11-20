@@ -27,15 +27,18 @@ class _VentaFormScreenSinReserva extends State<VentaFormScreenSinReserva> {
   String? selectedDoctor;
   String? selectedCategory;
   String? selectedProductos;
-  TextEditingController selectedMotivo = TextEditingController();
-  TextEditingController selectedDiagnostico = TextEditingController();
+  TextEditingController? idController = TextEditingController();
+  TextEditingController? facturaController = TextEditingController();
+  TextEditingController? totalController = TextEditingController();
+  TextEditingController? codigoProductoController = TextEditingController();
+  TextEditingController? cantidadProductoController = TextEditingController();
+
   late String filePathVentas;
 
   @override
   void initState() {
     super.initState();
     _initialize('categories');
-    _initialize('persons');
     _initialize('productos');
     _initialize('ventas');
   }
@@ -64,45 +67,12 @@ class _VentaFormScreenSinReserva extends State<VentaFormScreenSinReserva> {
     setState(() {
       if (objeto == 'categories') {
         categorias = loadedData;
-      } else if (objeto == 'persons') {
-        personas = loadedData;
       } else if (objeto == 'productos') {
         productos = loadedData;
       } else if (objeto == 'ventas') {
         ventas = loadedData;
       }
     });
-  }
-
-  List<DropdownMenuItem<String>> _listaPersonas(bool isDoctor) {
-    List<DropdownMenuItem<String>> listaClientes = personas
-      .where((persona) => persona['isDoctor'] == isDoctor)
-      .map((persona) {
-        String nombre = persona['nombre'];
-        String apellido = persona['apellido'];
-        String personaId = persona['idPersona'].toString();
-        String nombreCompleto = '$nombre $apellido';
-        return DropdownMenuItem<String>(
-          value: personaId,
-          child: Text(nombreCompleto),
-        );
-      })
-      .toList();
-    return listaClientes;
-  }
-
-  List<DropdownMenuItem<String>> _listaCategorias() {
-    List<DropdownMenuItem<String>> listaCategorias = categorias
-      .map((categoria) {
-        String nombre = categoria['descripcion'];
-        String categoriaId = categoria['id'].toString();
-        return DropdownMenuItem<String>(
-          value: categoriaId,
-          child: Text(nombre),
-        );
-      })
-      .toList();
-    return listaCategorias;
   }
 
   @override
@@ -113,18 +83,19 @@ class _VentaFormScreenSinReserva extends State<VentaFormScreenSinReserva> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-
-            DropdownButton<String>(
-            value: selectedCliente, // El valor seleccionado (inicialmente null)
-            hint: const Text('Selecciona un cliente'), // Texto que se muestra cuando no se ha seleccionado nada
-            items: _listaPersonas(false),
-            onChanged: (String? newValue) {
-                        setState(() {
-                          if(newValue != null) {
-                            selectedCliente = newValue;
-                          }
-                        });
-                      },
+            TextField(
+              controller: idController,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                labelText: 'Id Venta',
+              ),
+            ),
+            TextField(
+              controller: facturaController,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                labelText: 'Numero de factura',
+              ),
             ),
             TextFormField(
               decoration: const InputDecoration(
@@ -147,44 +118,23 @@ class _VentaFormScreenSinReserva extends State<VentaFormScreenSinReserva> {
               controller: TextEditingController(text: selectedDate.toLocal().toString().split(' ')[0]),
               readOnly: true,
             ),
-            DropdownButton<String>(
-              value: selectedTime,
-              hint: const Text('Selecciona una hora'),
-              items: [
-                "09:00 - 10:00",
-                "10:00 - 11:00",
-                "11:00 - 12:00",
-                "12:00 - 13:00",
-                "13:00 - 14:00",
-                "14:00 - 15:00",
-                "15:00 - 16:00",
-                "16:00 - 17:00",
-                "17:00 - 18:00",
-                "18:00 - 19:00",
-                "19:00 - 20:00",
-                "20:00 - 21:00"
-              ]
-              .map((time) => DropdownMenuItem<String>(
-                    value: time,
-                    child: Text(time),
-                  ))
-              .toList(),
-              onChanged: (String? value) {
-                if (value != null) {
-                  setState(() {
-                    selectedTime = value;
-                  });
-                }
-              },
+            TextField(
+              controller: totalController,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                labelText: 'Total',
+              ),
             ),
             TextField(
-              controller: selectedMotivo,
+              controller: codigoProductoController,
+              keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                 labelText: 'codigo de producto',
               ),
             ),
             TextField(
-              controller: selectedDiagnostico,
+              controller: cantidadProductoController,
+              keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                 labelText: 'cantidad',
               ),
@@ -200,21 +150,6 @@ class _VentaFormScreenSinReserva extends State<VentaFormScreenSinReserva> {
                 ],
               ),
             ),
-            const SizedBox(height: 20),
-            // Table to display ventas
-            Expanded(
-              child: ListView.builder(
-                itemCount: ventas.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text('Cliente: ${ventas[index]['cliente']['nombre']} ${ventas[index]['cliente']['apellido']}'),
-                    subtitle: Text('Fecha: ${
-                      DateFormat('dd-MM-yyyy').format(DateTime.parse(ventas[index]['fecha']))}\t${ventas[index]['hora']}\nCategoria: ${
-                        ventas[index]['categoria']['descripcion']}\nMotivo: ${ventas[index]['motivoConsulta']}\nDiagnostico: ${ventas[index]['diagnostico']}'),
-                  );
-                },
-              ),
-            ),
           ],
         ),
       ),
@@ -222,46 +157,48 @@ class _VentaFormScreenSinReserva extends State<VentaFormScreenSinReserva> {
   }
 
 void _addFicha() {
-  if (selectedCliente != null &&
-      selectedDoctor != null &&
-      selectedCategory != null &&
-      selectedTime != null &&
-      selectedMotivo.text.isNotEmpty &&
-      selectedDiagnostico.text.isNotEmpty) {
-    int newId = ventas.isNotEmpty ? ventas.last['id'] + 1 : 1;
-    int clienteIndex = int.parse(selectedCliente!) - 1;
-    int categoriaIndex = int.parse(selectedCategory!) - 1;
+  if (idController!.text.isNotEmpty && facturaController!.text.isNotEmpty && totalController!.text.isNotEmpty && codigoProductoController!.text.isNotEmpty && cantidadProductoController!.text.isNotEmpty) {
+    int newId = int.parse(idController!.text);    
+
+
+    // Check if ID already exists
+    bool idExists = ventas.every((venta) => venta['header']['SaleId'] == newId);
+
+    if (idExists) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Ya existe una venta con ese ID')));
+      return;
+    }
+
+    // check if factura already exists
+    bool facturaExists = ventas.every((venta) => venta['header']['factura'] == facturaController!.text);
+
+    if (facturaExists) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Ya existe una factura con ese ID')));
+      return;
+    }
 
     setState(() {
       ventas.add({
-        'id': newId,
-        'cliente': {
-          'idPersona': personas[clienteIndex]['idPersona'],
-          'nombre': personas[clienteIndex]['nombre'],
-          'apellido': personas[clienteIndex]['apellido'],
-          'RUC': personas[clienteIndex]['RUC'],
-          'email': personas[clienteIndex]['email'],
-          'cedula': personas[clienteIndex]['cedula'],
-          'isDoctor': personas[clienteIndex]['isDoctor'],
-          'isEditing': false
+        'header': {
+          "saleId": newId,
+          "factura": facturaController!.text,
+          "date": selectedDate,
+          "total": double.parse(totalController!.text),
         },
-        'fecha': DateFormat('yyyy-MM-dd').format(selectedDate), // Format the date
-        'hora': selectedTime,
-        'categoria': {
-          'id': categorias[int.parse(selectedCategory!) - 1]['id'],
-          'descripcion': categorias[categoriaIndex]['descripcion'],
-        },
-        "motivoConsulta": selectedMotivo.text,
-        "diagnostico": selectedDiagnostico.text,
+        'details': {
+          "productId": int.parse(codigoProductoController!.text),
+          "quantity": int.parse(cantidadProductoController!.text),
+        }
+        
       });
 
-      selectedCliente = null;
-      selectedDoctor = null;
       selectedDate = DateTime.now();
-      selectedTime = null;
-      selectedCategory = null;
-      selectedMotivo.clear();
-      selectedDiagnostico.clear();
+      idController!.clear();
+      facturaController!.clear();
+      totalController!.clear();
+      codigoProductoController!.clear();
+      cantidadProductoController!.clear();
+
     });
 
     _saveVentas(); // Save changes to file
