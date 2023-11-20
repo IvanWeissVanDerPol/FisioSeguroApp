@@ -182,15 +182,42 @@ class _ListaDeVentasScreenState extends State<ListaDeVentasScreen> {
                   ),
               ),
               ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: ventas.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(
-                        'Cabezera: ${ventas[index]['header']['saleId']} ${ventas[index]['header']['invoiceNumber']} ${ventas[index]['header']['date']} ${ventas[index]['header']['total']}'),                                            );
-                },
-              ),
+  physics: const NeverScrollableScrollPhysics(),
+  shrinkWrap: true,
+  itemCount: ventas.length,
+  itemBuilder: (context, index) {
+    final sale = ventas[index]['header'];
+    return Card( // Wrapping with a Card for better UI
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Venta ID: ${sale['saleId']}',
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+            Text('Factura: ${sale['invoiceNumber']}'),
+            Text('Fecha: ${sale['date']}'),
+            Text(
+              'Total: \$${sale['total']}',
+              style: const TextStyle(color: Colors.green),
+            ),
+            const Divider(),
+            const Text(
+              'Detalles:',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            ...ventas[index]['details'].map<Widget>((detail) {
+              return Text('Producto: ${detail['productId']}, Cantidad: ${detail['quantity']}');
+            }).toList(),
+          ],
+        ),
+      ),
+    );
+  },
+),
+
             ],
           ),
         ),
