@@ -71,14 +71,15 @@ class _ListaDeVentasScreenState extends State<ListaDeVentasScreen> {
       filePathVenta = filePath;
     }
     final File file = File(filePath);
-
+    final String jsonString = await rootBundle.loadString('assets/$objeto.json');
+    await file.writeAsString(jsonString);
     if (!await file.exists()) {
       final String jsonString = await rootBundle.loadString('assets/$objeto.json');
       await file.writeAsString(jsonString);
     }
 
     final data = await file.readAsString();
-    final List<Map<String, dynamic>> loadedData = List.from(json.decode(data)["saleRecords"]);
+    final List<Map<String, dynamic>> loadedData = List.from(json.decode(data));
     setState(() {
       if (objeto == 'categories') {
         categorias = loadedData;
@@ -187,10 +188,7 @@ class _ListaDeVentasScreenState extends State<ListaDeVentasScreen> {
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text(
-                        'Cliente: ${ventas[index]['paciente']['nombre']} ${ventas[index]['paciente']['apellido']}'),
-                    subtitle: Text(
-                        'Doctor: ${ventas[index]['doctor']['nombre']} ${ventas[index]['doctor']['apellido']}\nFecha: ${DateFormat('dd-MM-yyyy').format(DateTime.parse(ventas[index]['fecha']))}\t${ventas[index]['hora']}\nCategoria: ${ventas[index]['categoria']['descripcion']}'),                
-                  );
+                        'Cabezera: ${ventas[index]['header']['saleId']} ${ventas[index]['header']['invoiceNumber']} ${ventas[index]['header']['date']} ${ventas[index]['header']['total']}'),                                            );
                 },
               ),
             ],
