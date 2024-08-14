@@ -1,5 +1,5 @@
 1. **Entorno de Desarrollo Integrado (IDE):** Visual Studio Code (para React Native o Flutter)
-2. **Lenguaje de Programación:** React Native: JavaScript y React
+2. **Lenguaje de Programación:** Flutter
 3. 
 4. **Herramientas de Emulación o Dispositivo Real:** Para probar tu aplicación, necesitarás un emulador de dispositivo móvil o un dispositivo físico en el que puedas instalar y ejecutar la aplicación. Los IDEs proporcionan emuladores para pruebas en Android e iOS.
 5. **Bibliotecas o Frameworks:** Dependiendo de la tecnología que elijas, necesitarás las bibliotecas o frameworks específicos para el desarrollo móvil. Por ejemplo, si optas por React Native, utilizarás las bibliotecas de React Native y las que necesites para la comunicación con la API.
